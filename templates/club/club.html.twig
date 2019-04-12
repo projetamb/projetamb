@@ -3,18 +3,55 @@
 {% block title %}{{ pagetitle }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 <div class="example-wrapper">
-    <h1>{{ pagetitle }}</h1>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ pagetitle }}</h1>
+            <p class="lead text-muted mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus.</p>
+        </div>
+    </section>
+</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/projetamb/projetamb/src/Controller/ClubController.php'|file_link(0) }}">src/Controller/ClubController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/projetamb/projetamb/templates/club/club.html.twig'|file_link(0) }}">templates/club/club.html.twig</a></code></li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/projetamb/monkey.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title"><a title="View Product">Président :</a></h2>
+                            <h3 class="card-title"><a title="View Product">Vincent Robin</a></h3>
+                            <p>Télephone : 0606060606</p>
+                            <p>Mail : toto@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title"><a title="View Product">Secrétaire :</a></h2>
+                            <h3 class="card-title"><a title="View Product">Vincent Robin</a></h3>
+                            <p>Télephone : 0606060606</p>
+                            <p>Mail : toto@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title"><a title="View Product">Trésorier :</a></h2>
+                            <h3 class="card-title"><a title="View Product">Vincent Robin</a></h3>
+                            <p>Télephone : 0606060606</p>
+                            <p>Mail : toto@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
