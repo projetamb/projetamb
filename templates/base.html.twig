@@ -11,9 +11,13 @@
     </head>
 
     <body>
+
+        {{ include('_navbar.html.twig') }}
+
         <div class="container my-5">
             {% block body %}{% endblock %}
         </div>
+
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

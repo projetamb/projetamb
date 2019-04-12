@@ -13,7 +13,7 @@ class ClubController extends AbstractController
     public function index()
     {
         return $this->render('club/club.html.twig', [
-            'pagetitle' => 'Art Martiaux Basséens',
+            'pagetitle' => 'Arts Martiaux Basséens',
         ]);
     }
 }
