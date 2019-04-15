@@ -8,7 +8,6 @@
   
     "content-hash": "bafc1010af3628d6eb9b32d600fcd01c"
   
-
     "packages": [
         {
             "name": "doctrine/annotations",
