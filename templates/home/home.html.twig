@@ -1,19 +1,26 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block body %}
-    <h1>Page d'accueil</h1>
 
     <!-- Carousel -->
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://dummyimage.com/855x365/55595c/fff" class="d-block w-100" alt="...">
+                <img src="https://dummyimage.com/1100x470/ebd4cb/fff" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="https://dummyimage.com/855x365/55595c/fff" class="d-block w-100" alt="...">
+                <img src="https://dummyimage.com/1100x470/da9f93/fff" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="https://dummyimage.com/855x365/55595c/fff" class="d-block w-100" alt="...">
+                <img src="https://dummyimage.com/1100x470/c8563f/fff" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://dummyimage.com/1100x470/890620/fff" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://dummyimage.com/1100x470/2c0703/fff" class="d-block w-100" alt="...">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -24,6 +31,55 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-        
     </div>
+
+    <div class="container my-5">
+
+        <h2 class="text-center">Association sportive</h2>
+        <h1 class="text-center">Art Martiaux Basséen</h1>
+
+        <!-- Présentation -->
+        <div class="row my-5">
+            <div class="col-6 py-3 px-5">
+                <h3>Taekwondo</h3>
+                <p>Quisquam pharetra, dignissimos minus corrupti ullamco, praesent illum occaecat, aperiam, feugiat molestiae, tempore aliquid. Mauris nec torquent, autem, id, consequat.</p>
+            </div>
+            <div class="col-6 py-3 px-5">
+                <h3>Krav maga</h3>
+                <p>Lorem do culpa. Scelerisque conubia minima integer rem molestie exercitation? Necessitatibus, tincidunt? Conubia pariatur occaecati! Diamlorem tempora accusamus eius suscipit.</p>
+            </div>
+        </div>
+
+        <!--  -->
+        <div class="row my-5">
+            <!-- Form contact -->
+            <div class="col-6 px-5">
+                <h3>Nous contacter :</h3>
+
+                <div id="contactForm" class="">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                        <div class="">
+                            {{ form_row(form.name) }}
+                            {{ form_row(form.email) }}
+                            {{ form_row(form.phone) }}
+                            {{ form_row(form.message) }}
+                        </div>
+                        <button type="submit" class="btn btn-secondary text-white">Envoyer</button>
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
+            <!-- Map -->
+            <div class="col-6 px-5">
+                <h3>Où nous trouver ?</h3>
+
+                <p>Art Martiaux Basséen<br>
+                    76 rue Maurice Bouchery<br>
+                    59480 La Bassée</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2536.17710308437!2d2.808800574989685!3d50.53087641284638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd2f7ac0fe8403%3A0xeb02064c253b7e85!2s76+Rue+Maurice+Bouchery%2C+59480+La+Bass%C3%A9e!5e0!3m2!1sfr!2sfr!4v1555080511172!5m2!1sfr!2sfr" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

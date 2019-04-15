@@ -1,24 +1,47 @@
 security:
+    encoders:
+      App\Entity\User:
+        algorithm: bcrypt
+        cost: 12
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: ~ }
+            in_database:
+                 entity:
+                     class: App\Entity\User
+                     property: email #propriete a utilisee
+            #in_memory: { memory: ~ }
+    role_hierarchy:
+            ROLE_USER: ROLE_USER
+            ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
+            provider: in_database
 
             # activate different ways to authenticate
 
             # http_basic: true
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            # quel controller nous permet de nous logger
+            # symfony appel la même route pour afficher et checker le formulaire
+            form_login:
+                login_path: security_login
+                check_path: security_login
+                default_target_path: security_admin
+                failure_path: home
 
-            # form_login: true
+
+            logout:
+                path: security_logout
+                target: /
             # https://symfony.com/doc/current/security/form_login_setup.html
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

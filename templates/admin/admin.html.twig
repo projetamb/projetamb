@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Admin!{% endblock %}
+
+{% block body %}
+<h1>DashBoard Administrateur </h1>
+    {% if not is_granted("ROLE_ADMIN") %}
+        <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                {{ "connexion ok" }}
+            </div>
+    {% endif %}
+   {#
+    {% for message in app.flashes('information') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+   #}
+
+
+
+{% endblock %}
