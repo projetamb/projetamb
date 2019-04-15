@@ -48,6 +48,11 @@ class User implements UserInterface
      */
     private $confirm_password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $typeRole;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,7 +119,20 @@ class User implements UserInterface
     }
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+
+        return [$this->typeRole];
         // TODO: Implement getRoles() method.
+    }
+
+    public function getTypeRole(): ?string
+    {
+        return $this->typeRole;
+    }
+
+    public function setTypeRole(string $typeRole): self
+    {
+        $this->typeRole = $typeRole;
+
+        return $this;
     }
 }

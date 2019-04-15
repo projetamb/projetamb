@@ -35,9 +35,10 @@ class SecurityController extends AbstractController
             // dès que l'on a encoder, on va dans le fichier yml et on regarde sur quelle class on fait la relation. ici c'est la clss user
             $hash=$encoder->encodePassword($user,$user->getPassword());
             $user->setPassword($hash);// user je modifie ton MDP avec le hash
+            $user->setTypeRole("ROLE_USER");
             $manager->persist($user);
             $manager->flush();
-            //
+            // on redirige vers la page d'acceuil
             return $this->redirectToRoute('security_login');
         }
             return $this->render('security/registration.html.twig',[
@@ -58,10 +59,10 @@ class SecurityController extends AbstractController
 
        // last username entered by the user
        $lastUsername = $authenticationUtils->getLastUsername();
-       $this->addFlash(
+  /* $this->addFlash(
            'information',
            'Connexion reussie'
-       );
+       );*/
        return $this->render('security/login.html.twig', [
            'last_username' => $lastUsername,
            'error'         => $error,
