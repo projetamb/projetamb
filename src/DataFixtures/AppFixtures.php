@@ -18,15 +18,20 @@ class AppFixtures extends Fixture
 
         for ($i = 1; $i <= 10; $i++) {
             $personnal = new Personnal();
-            $personnal->setLastName($faker->name);
-            $personnal->setFirstName($faker->name);
-            $personnal->setEmail($faker->name);
-            $personnal->setPhone($faker->name);
-            $personnal->setAddress($faker->name);
-            $personnal->setRole($faker->name);
-            $personnal->setGrade($faker->name);
-            $personnal->setDescription($faker->name);
-            $personnal->setLink($faker->name);
+            $personnal->setLastName($faker->lastName);
+            $personnal->setFirstName($faker->firstName);
+            $personnal->setEmail($faker->safeEmail);
+            $personnal->setPhone($faker->phoneNumber);
+            $personnal->setAddress($faker->address);
+            $personnal->setRole($faker->randomElement([
+                'Instructeur', 'Membre'
+            ]));
+            $personnal->setGrade($faker->randomElement([
+                'Ceinture Noire', 'Ceinture Blanche'
+            ]));
+            $personnal->setDescription($faker->text(75));
+            $personnal->setLink($faker->url);
+            $personnal->setPhoto($faker->imageUrl('260', '260', 'people'));
             $manager->persist($personnal);
         }
         // $product = new Product();
