@@ -1,9 +1,17 @@
+/**
+    CLUB PAGE
+ */
 .club_role, .club_h2 {
      text-decoration: underline;
  }
 .club_description {
     height:100vh;
+    border: 2px;
 }
+/**
+    END CLUB PAGE
+*/
+
 
 /**
     INSTRUCTORS PAGE
