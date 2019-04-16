@@ -1,0 +1,14 @@
+CLUB PAGE
+*/
+.club_role, .club_h2 {
+    text-decoration: underline;
+}
+.club_description {
+    height:90vh;
+    display: flex; /* contexte sur le parent */
+    flex-direction: column; /* direction d'affichage verticale */
+    justify-content: center; /* alignement vertical */
+}
+/**
+    END CLUB PAGE
+*/
