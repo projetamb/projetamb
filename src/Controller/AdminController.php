@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use http\Env\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +21,7 @@ class AdminController extends AbstractController
      */
     public function admin()
     {
+
 
         return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',
