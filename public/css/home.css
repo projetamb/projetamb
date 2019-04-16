@@ -1,25 +1,12 @@
 /* ##### Home ##### */
 
 /* carousel */
-.img-carousel-1,
-.img-carousel-2,
-.img-carousel-3{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 400px;
-}
 
-.img-carousel-1{
-    background-image: url("../img/IMG_20190406_164927.jpg");
-}
-
-.img-carousel-2{
-    background-image: url("../img/IMG_20190406_170643.jpg");
-}
-
-.img-carousel-3{
-    background-image: url("../img/IMG_20190406_173044.jpg");
+@media screen and (max-width: 868px) {
+    #carousel {
+        visibility: hidden;
+        max-height: 0px;
+    }
 }
 
 /* formulaire de contact */
