@@ -6,38 +6,28 @@
  <span class="badge badge-pill badge-info">Info Les évènements</span>
     <div class="container">
 
-                    <table class="tabEvent">
-                        <colgroup span="4" class="columns"></colgroup>
-                        <tr><strong>
-                            Titre
-                            </strong>
-                        </tr>
-                        <tr><strong>
-                            description </strong>
-                        </tr>
-                        <tr><strong>
-                            Date </strong>
-                        </tr>
-                        <tr><strong>
-                            Organisateur </strong>
-                        </tr>
-                    </table>
-
+        <div class="container">
+            <div class="row">
                 {% for evenement in event %}
-                    <table class="tabEvent">
-                        <tbody>
-                        <tr>
-                            <td>
-                                {{ evenement.title }}
-                                {{ evenement.description }}
-                                {{ evenement.date | date("d/m/Y") }}
-                                {{ evenement.organisator }}
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-            {% endfor %}
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
+
+
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ evenement.photo }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ evenement.title }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
+                                    <p class="card-text">{{ evenement.description }}</p>
+
+                                </div>
+                            </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
+
 
 
 {% endblock %}
