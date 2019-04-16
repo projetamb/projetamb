@@ -1,5 +1,4 @@
 #myFooter {
-    background-color: #182c39;
     color: white;
     padding-top: 10px;
 }
@@ -9,7 +8,7 @@
 }
 
 #myFooter .footer-copyright {
-    background-color: #10222e;
+    
     padding-top: 3px;
     padding-bottom: 3px;
     text-align: center;
@@ -60,7 +59,7 @@
     font-size: 15px;
 }
 footer .card {
-    background-color: #10222e;
+
     color: #F5F6CE;
 }
 

@@ -4,67 +4,66 @@
 
 {% block body %}
 
-<div class="example-wrapper">
-    <section class="jumbotron text-center">
+<div class="example-wrapper club_description">
+    <section class="text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ pagetitle }}</h1>
-            <p>76 rue Maurice Bouchery 59000 La Bassée</p>
-            <p>artsmartiauxbasseens@gmail.com</p>
+            <p>45 Rue Gabriel Péri 59480 La Bassée</p>
+            <p><i class="fa fa-envelope mr-2"></i>artsmartiauxbasseens@gmail.com</p>
             <p class="lead text-muted mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus.</p>
         </div>
     </section>
 </div>
 
 <div class="container">
-
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 mb-5">
-                    <div class="card">
-                        {% for personnal in personnals %}
-                        {% if  personnal.role == 'Président' %}
-                            <img class="card-img-top" src="./img/vincent.jpg" alt="Président AMB">
-                            <div class="card-body">
-                                <h2 class="card-title"><a title="View Product">{{ personnal.role }} :</a></h2>
-                                <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                                <p>Télephone : {{ personnal.phone }}</p>
-                                <p>Mail : {{ personnal.email }}</p>
-                            </div>
-                        {% endif %}
-                        {% endfor %}
+    <h2 class="text-center club_h2">Membres du bureau</h2>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <div class="card text-white bg-primary mb-3">
+                {% for personnal in personnals %}
+                {% if  personnal.role == 'Président' %}
+                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
+                    <div class="card-body">
+                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
                     </div>
-                </div>
-                    <div class="col-12 col-md-6 col-lg-4 mb-5">
-                        <div class="card">
-                            {% for personnal in personnals %}
-                            {% if  personnal.role == 'Secrétaire' %}
-                                <img class="card-img-top" src="./img/melisande.jpg" alt="Secrétaire AMB">
-                                <div class="card-body">
-                                    <h2 class="card-title"><a title="View Product">{{ personnal.role }} :</a></h2>
-                                    <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                                    <p>Télephone : {{ personnal.phone }}</p>
-                                    <p>Mail : {{ personnal.email }}</p>
-                                </div>
-                            {% endif %}
-                            {% endfor %}
-                        </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <div class="card text-white bg-primary mb-3">
+                {% for personnal in personnals %}
+                {% if  personnal.role == 'Secrétaire' %}
+                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire AMB">
+                    <div class="card-body">
+                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 mb-5">
-                        <div class="card">
-                            {% for personnal in personnals %}
-                            {% if  personnal.role == 'Trésorier' %}
-                                <img class="card-img-top" src="./img/geoffrey.jpg" alt="Trésorier AMB">
-                                <div class="card-body">
-                                    <h2 class="card-title"><a title="View Product">{{ personnal.role }} :</a></h2>
-                                    <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                                    <p>Télephone : {{ personnal.phone }}</p>
-                                    <p>Mail : {{ personnal.email }}</p>
-                                </div>
-                            {% endif %}
-                            {% endfor %}
-                        </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <div class="card text-white bg-primary mb-3">
+                {% for personnal in personnals %}
+                {% if  personnal.role == 'Trésorier' %}
+                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier AMB">
+                    <div class="card-body">
+                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
                     </div>
-                </div>
-
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
