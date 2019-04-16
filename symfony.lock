@@ -502,6 +502,7 @@
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
     },
+<<<<<<< HEAD
     "symfony/webpack-encore-bundle": {
         "version": "1.0",
         "recipe": {
@@ -529,6 +530,8 @@
             "ref": "e18b0c550c3ee79142dc314b3e38193caafe4bb5"
         }
     },
+=======
+>>>>>>> master
     "symfony/yaml": {
         "version": "v4.2.5"
     },

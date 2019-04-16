@@ -4,7 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "5107995c635abb0596fac0f6b7f0f683",
+=======
+
+  
+    "content-hash": "bafc1010af3628d6eb9b32d600fcd01c"
+  
+>>>>>>> master
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5211,6 +5218,7 @@
             "time": "2019-01-16T20:31:39+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/webpack-encore-bundle",
             "version": "v1.5.0",
             "source": {
@@ -5296,6 +5304,8 @@
             "time": "2018-07-16T10:15:28+00:00"
         },
         {
+=======
+>>>>>>> master
             "name": "symfony/yaml",
             "version": "v4.2.5",
             "source": {

@@ -1,99 +1,41 @@
 
-#myFooter {
-    background-color: #182c39;
+/**
+    CLUB PAGE
+ */
+.club_role, .club_h2 {
+     text-decoration: underline;
+ }
+.club_description {
+    height:100vh;
+    border: 2px;
+}
+/**
+    END CLUB PAGE
+*/
+
+
+/**
+    INSTRUCTORS PAGE
+ */
+.instructors_jumbotron {
+    background-image: url('../img/timothy-eberly-515801-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 40%;
+}
+
+.instructors_jumbotron h1 {
     color: white;
-    padding-top: 10px;
+    text-align: left;
 }
 
-#myFooter .row{
-    text-align: center;
+.instructors_jumbotron .div_h1 {
+    content: '';
+    border-top: 1px solid red;
+    width: 375px;
 }
 
-#myFooter .footer-copyright {
-    background-color: #10222e;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    text-align: center;
-}
+/**
+    END INSTRUCTORS PAGE
+*/
 
-#myFooter .container {
-    width: auto;
-}
-
-#myFooter a {
-    color: #d2d1d1;
-
-    text-decoration: none;
-}
-
-
-#myFooter a:hover,
-#myFooter a:focus {
-    text-decoration: none;
-    color: yellow;
-}
-
-
-#myFooter .fa {
-    font-size: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
-    background-color: white;
-    color: #182c39;
-    border-radius: 51%;
-    padding: 10px;
-    text-align: center;
-    line-height: 10px;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-#myFooter .fa-facebook:hover .fa-user:hover{
-    color: #2b55ff;
-
-}
-
-#myFooter .fa-facebook:focus .fa-user:focus {
-    color: #2b55ff;
-}
-#myFooter #menu,
-.card-text {
-    font-size: 15px;
-}
-footer .card {
-    background-color: #10222e;
-    color: #F5F6CE;
-}
-
-
-@media screen and (max-width: 767px) {
-    #myFooter {
-        text-align: center;
-    }
-    #myFooter .row {
-        margin: 0;
-    }
-}
-
-html{
-    height: auto;
-}
-
-body{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    -webkit-flex-direction: column;
-    height: 100%;
-}
-
-.content{
-   flex: 1 0 auto;
-   -webkit-flex: 1 0 auto;
-   min-height: 200px;
-}
-
-#myFooter{
-   flex: 0 0 auto;
-   -webkit-flex: 0 0 auto;
-}
