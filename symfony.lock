@@ -114,8 +114,35 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "firebase/php-jwt": {
+        "version": "v3.0.0"
+    },
     "fzaninotto/faker": {
         "version": "v1.8.0"
+    },
+    "google/apiclient": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "49c5d7a66d863d28513979bf0666dc77599100c0"
+        }
+    },
+    "google/apiclient-services": {
+        "version": "v0.94"
+    },
+    "google/auth": {
+        "version": "v0.8"
+    },
+    "guzzlehttp/guzzle": {
+        "version": "6.2.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.2.3"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -138,11 +165,17 @@
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
     },
+    "phpseclib/phpseclib": {
+        "version": "2.0.15"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
     "psr/container": {
         "version": "1.0.0"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
     },
     "psr/link": {
         "version": "1.0.0"
@@ -502,7 +535,6 @@
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
     },
-<<<<<<< HEAD
     "symfony/webpack-encore-bundle": {
         "version": "1.0",
         "recipe": {
@@ -530,8 +562,6 @@
             "ref": "e18b0c550c3ee79142dc314b3e38193caafe4bb5"
         }
     },
-=======
->>>>>>> master
     "symfony/yaml": {
         "version": "v4.2.5"
     },
