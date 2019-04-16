@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Personnal;
+use App\Repository\FilesRepository;
 use App\Repository\PersonnalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,14 +14,20 @@ class ClubController extends AbstractController
     /**
      * @Route("/club", name="club")
      * @param PersonnalRepository $personnalRepository
+     * @param FilesRepository $filesRepository
      * @return Response
      */
-    public function show(PersonnalRepository $personnalRepository)
-    {
+    public function show(
+        PersonnalRepository $personnalRepository,
+        FilesRepository $filesRepository
+    ){
         $personnal = $personnalRepository->findAll();
+        $files = $filesRepository->findAll();
         return $this->render('club/club.html.twig', [
             'pagetitle' => 'Arts Martiaux Basséens',
-            'personnals' => $personnal
+            'personnals' => $personnal,
+            'files' => $files
         ]);
     }
+
 }
