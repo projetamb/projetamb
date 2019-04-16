@@ -10,7 +10,7 @@
             <a class="dropdown-item" href="{{ path('home') }}">Accueil</a>
             <a class="dropdown-item" href="{{ path('club') }}">Le club</a>
             <a class="dropdown-item" href="{{ path('instructors') }}">Les instructeurs</a>
-            <a class="dropdown-item" href="#">Les évènements</a>
+            <a class="dropdown-item" href="{{ path('event') }}">Les évènements</a>
         </div>
 
     </div>
@@ -18,11 +18,11 @@
         {% if not app.user %}
 
 
-            <a href="{{ path('security_login') }}" class="nav-link">Connexion</a>
+            <a href="{{ path('security_login') }}" class="nav-link" style="color: white;">Connexion</a>
 
         {% else %}
 
-            <a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>
+            <a href="{{ path('security_logout') }}" class="nav-link" style="color: white;">Déconnexion</a>
 
         {% endif %}
 
