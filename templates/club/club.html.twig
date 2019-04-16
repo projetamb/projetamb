@@ -32,7 +32,9 @@
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mb-5">
             <div class="card text-white bg-primary mb-3">
+
                 {% for personnal in personnals %}
+                    {% if not app.user %}
                 {% if  personnal.role == 'Président' %}
                     <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
                     <div class="card-body">
@@ -42,6 +44,24 @@
                         <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
                     </div>
                 {% endif %}
+                {% else %}
+                    {% if  personnal.role == 'Président' %}
+                        <span class="badge badge-danger">mode administrateur</span>
+                        <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
+                        <div class="card-body">
+                            <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                            <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                            <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                            <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                            <a href="#" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <a href="#" class="btn btn-sm btn-primary">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
