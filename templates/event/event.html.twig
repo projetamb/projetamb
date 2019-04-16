@@ -3,13 +3,40 @@
 {% block title %}Hello EventController!{% endblock %}
 
 {% block body %}
-<h1>Les évenements</h1>
+ <span class="badge badge-pill badge-info">Info Les évènements</span>
     <div class="container">
-        <div class="row">
-            
 
-        </div>
+                    <table class="tabEvent">
+                        <colgroup span="4" class="columns"></colgroup>
+                        <tr><strong>
+                            Titre
+                            </strong>
+                        </tr>
+                        <tr><strong>
+                            description </strong>
+                        </tr>
+                        <tr><strong>
+                            Date </strong>
+                        </tr>
+                        <tr><strong>
+                            Organisateur </strong>
+                        </tr>
+                    </table>
 
+                {% for evenement in event %}
+                    <table class="tabEvent">
+                        <tbody>
+                        <tr>
+                            <td>
+                                {{ evenement.title }}
+                                {{ evenement.description }}
+                                {{ evenement.date | date("d/m/Y") }}
+                                {{ evenement.organisator }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            {% endfor %}
     </div>
 
 
