@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
         <title>{% block title %}AMB{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
         {% block stylesheets %}
@@ -11,13 +12,18 @@
             <link rel="stylesheet" href="{{ asset('css/club.css') }}">
             <link rel="stylesheet" href="{{ asset('css/home.css') }}">
             <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-            {% endblock %}
+
+
+        {% endblock %}
+
     </head>
 
     <body>
         {{ include('_navbar.html.twig') }}
 
         {% block body %}{% endblock %}
+
+        {{ include('_footer.html.twig') }}
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

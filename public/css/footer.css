@@ -1,0 +1,97 @@
+#myFooter {
+    color: white;
+    padding-top: 10px;
+}
+
+#myFooter .row{
+    text-align: center;
+}
+
+#myFooter .footer-copyright {
+    
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+#myFooter .container {
+    width: auto;
+}
+
+#myFooter a {
+    color: #d2d1d1;
+
+    text-decoration: none;
+}
+
+
+#myFooter a:hover,
+#myFooter a:focus {
+    text-decoration: none;
+    color: yellow;
+}
+
+
+#myFooter .fa {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: white;
+    color: #182c39;
+    border-radius: 51%;
+    padding: 10px;
+    text-align: center;
+    line-height: 10px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#myFooter .fa-facebook:hover .fa-user:hover{
+    color: #2b55ff;
+
+}
+
+#myFooter .fa-facebook:focus .fa-user:focus {
+    color: #2b55ff;
+}
+#myFooter #menu,
+.card-text {
+    font-size: 15px;
+}
+footer .card {
+
+    color: #F5F6CE;
+}
+
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+    #myFooter .row {
+        margin: 0;
+    }
+}
+
+html{
+    height: auto;
+}
+
+body{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.content{
+   flex: 1 0 auto;
+   -webkit-flex: 1 0 auto;
+   min-height: 200px;
+}
+
+#myFooter{
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}
