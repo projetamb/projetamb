@@ -8,26 +8,26 @@
     <section class="text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ pagetitle }}</h1>
-            <p>45 Rue Gabriel Péri 59480 La Bassée</p>
+            <p><i class="fa fa-home"></i> 45 Rue Gabriel Péri 59480 La Bassée</p>
             <p><i class="fa fa-envelope mr-2"></i>artsmartiauxbasseens@gmail.com</p>
             <p class="lead text-muted mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus.</p>
         </div>
     </section>
 </div>
-
-<h2 class="text-center club_h2">Disciplines :</h2>
-<div class="row my-5 py-5">
-    <div class="col-6 py-3 px-5">
-        <h3 class="text-center">Taekwondo</h3>
-        <p>Quisquam pharetra, dignissimos minus corrupti ullamco, praesent illum occaecat, aperiam, feugiat molestiae, tempore aliquid. Mauris nec torquent, autem, id, consequat.</p>
-    </div>
-    <div class="col-6 py-3 px-5">
-        <h3 class="text-center">Krav maga</h3>
-        <p>Lorem do culpa. Scelerisque conubia minima integer rem molestie exercitation? Necessitatibus, tincidunt? Conubia pariatur occaecati! Diamlorem tempora accusamus eius suscipit.</p>
+<div class="club_disciplines">
+    <h2 class="text-center club_h2">Disciplines :</h2>
+    <div class="row my-5 py-5">
+        <div class="col-6 py-3 px-5">
+            <h3 class="text-center">Taekwondo</h3>
+            <p>Quisquam pharetra, dignissimos minus corrupti ullamco, praesent illum occaecat, aperiam, feugiat molestiae, tempore aliquid. Mauris nec torquent, autem, id, consequat.</p>
+        </div>
+        <div class="col-6 py-3 px-5">
+            <h3 class="text-center">Krav maga</h3>
+            <p>Lorem do culpa. Scelerisque conubia minima integer rem molestie exercitation? Necessitatibus, tincidunt? Conubia pariatur occaecati! Diamlorem tempora accusamus eius suscipit.</p>
+        </div>
     </div>
 </div>
-
-<div class="container">
+<div class="container club_membres">
     <h2 class="text-center club_h2">Membres du bureau</h2>
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mb-5">
@@ -77,5 +77,12 @@
         </div>
     </div>
 </div>
+<div class="club_docs">
+    <h2 class="text-center club_h2">Documents</h2>
 
+    {% for file in files %}
+        <li class="text-center"><a href="./docs/{{ file.link }}" target="_blank">{{ file.link }}</a></li>
+    {% endfor %}
+
+</div>
 {% endblock %}
