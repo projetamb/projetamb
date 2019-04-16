@@ -35,6 +35,7 @@ class HomeController extends AbstractController
             $mailer->send($message);
 
             $this->addFlash('success', 'Votre Message a bien été envoyé !');
+
         }
 
 

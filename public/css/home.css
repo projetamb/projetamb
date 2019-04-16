@@ -1,3 +1,9 @@
+/* ##### RESET ##### **/
+*{
+    padding: 0;
+    margin: 0;
+}
+
 /* ##### Home ##### */
 
 /* carousel */
@@ -15,4 +21,17 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
     background-color: #F5F5F5;
+}
+
+/* map */
+.ifram{
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+}
+
+ifram{
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
