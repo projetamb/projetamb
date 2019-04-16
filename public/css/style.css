@@ -1,5 +1,14 @@
 /**
+    NAVBAR
+ */
 
+.menu.dropdown-toggle::after {
+    visibility: hidden;
+}
+
+/**
+    END NAVBAR
+ */
 
 
 /**
