@@ -1,0 +1,15 @@
+/* ##### Home ##### */
+
+/* carousel */
+.carousel-inner{
+    max-height: 800px;
+}
+
+/* formulaire de contact */
+#form{
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    background-color: #F5F5F5;
+
+}
