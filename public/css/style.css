@@ -1,5 +1,6 @@
 
 /**
+
     CLUB PAGE
  */
 .club_role, .club_h2 {
@@ -13,6 +14,18 @@
     END CLUB PAGE
 */
 
+    NAVBAR
+ */
+
+.menu.dropdown-toggle::after {
+    visibility: hidden;
+}
+
+/**
+    END NAVBAR
+ */
+
+
 
 /**
     INSTRUCTORS PAGE
@@ -21,7 +34,8 @@
     background-image: url('../img/timothy-eberly-515801-unsplash.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 40%;
+    background-position-y: 50%;
+
 }
 
 .instructors_jumbotron h1 {

@@ -1,8 +1,26 @@
+
 /* ##### Home ##### */
 
 /* carousel */
 .carousel-inner{
     max-height: 400px;
+
+/* ##### RESET ##### **/
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* ##### Home ##### */
+
+/* carousel */
+
+@media screen and (max-width: 868px) {
+    #carousel {
+        visibility: hidden;
+        max-height: 0px;
+    }
+
 }
 
 /* formulaire de contact */
@@ -11,5 +29,19 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
     background-color: #F5F5F5;
+
+}
+
+/* map */
+.ifram{
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+}
+
+ifram{
+    height: 100%;
+    width: 100%;
+    position: absolute;
 
 }

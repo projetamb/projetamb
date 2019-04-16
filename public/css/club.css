@@ -1,0 +1,20 @@
+/**
+CLUB PAGE
+*/
+.club_role, .club_h2 {
+    text-decoration: underline;
+}
+.club_description {
+    height:90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.club_description, .club_disciplines, .club_docs, .club_membres {
+    border:solid 2px red;
+
+}
+/**
+    END CLUB PAGE
+*/
