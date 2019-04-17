@@ -23,3 +23,10 @@ CLUB PAGE
 /**
     END CLUB PAGE
 */
+
+.doc_file {
+    color: deepskyblue;
+}
+.doc_file:hover {
+    color: mediumvioletred;
+}
