@@ -8,6 +8,6 @@
 <h5>Vous pouvez télécharger les documents en cliquant sur les liens ci-dessous</h5>
 <br>
 {% for file in files %}
-    <p>---->   <a href="./docs/{{ file.link }}" target="_blank">{{ file.link }}</a> ({{ file.size }})</p>
+    <p>---->   <a class="doc_file" href="./docs/{{ file.link }}" target="_blank">{{ file.link }}</a> ({{ file.size }})</p>
 {% endfor %}
 {% endblock %}
