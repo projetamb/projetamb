@@ -21,7 +21,6 @@ class ClubController extends AbstractController
     {
         $personnal = $personnalRepository->findAll();
         return $this->render('club/club.html.twig', [
-            'pagetitle' => 'Arts Martiaux Basséens',
             'personnals' => $personnal
 
         ]);
