@@ -6,9 +6,19 @@ CLUB PAGE
 }
 .club_description {
     height:90vh;
-    display: flex; /* contexte sur le parent */
-    flex-direction: column; /* direction d'affichage verticale */
-    justify-content: center; /* alignement vertical */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.club_description {
+    background-image: url('../img/logo_forClub.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.club_description, .club_disciplines, .club_docs, .club_membres {
+    border:solid 2px red;
 }
 /**
     END CLUB PAGE

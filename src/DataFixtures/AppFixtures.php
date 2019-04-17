@@ -3,6 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Events;
+
+use App\Entity\Files;
+
 use App\Entity\Personnal;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -19,7 +22,10 @@ class AppFixtures extends Fixture
         $personnal = [];
         $utilisators=[];
         $event=[];
+        $files=[];
 
+
+        // table Personnal fixe
         $personnal = new Personnal();
         $personnal->setLastName("Robin");
         $personnal->setFirstName("Vincent");
@@ -59,6 +65,62 @@ class AppFixtures extends Fixture
         $personnal->setPhoto("geoffrey.jpg");
         $manager->persist($personnal);
 
+        // table Files
+        $files = new Files();
+        $files->setTitle("Cahier technique");
+        $files->setLink("cahier technique.pdf" );
+        $files->setSize("974 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Passage grade enfant");
+        $files->setLink("passage grade enfant.pdf" );
+        $files->setSize("540 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Stats sur les agressions nationales");
+        $files->setLink("stats sur les agressions nationales.pdf" );
+        $files->setSize("151 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Formulaire d'inscription");
+        $files->setLink("formulaire d'inscription.pdf" );
+        $files->setSize("338 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Ceinture bleue");
+        $files->setLink("ceinture bleue.pdf" );
+        $files->setSize("118 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Ceinture jaune");
+        $files->setLink("ceinture jaune.pdf" );
+        $files->setSize("115 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Ceinture marron");
+        $files->setLink("ceinture marron.pdf" );
+        $files->setSize("103 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Ceinture orange");
+        $files->setLink("ceinture orange.pdf" );
+        $files->setSize("119 Ko");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Ceinture verte");
+        $files->setLink("ceinture verte.pdf" );
+        $files->setSize("133 Ko");
+        $manager->persist($files);
+
+        // table Personnal aléatoire
         for ($i = 1; $i <= 10; $i++) {
             $personnal = new Personnal();
             $personnal->setLastName($faker->lastName);
@@ -76,7 +138,11 @@ class AppFixtures extends Fixture
             $personnal->setLink($faker->url);
             $personnal->setPhoto($faker->imageUrl('260', '260', 'people'));
             $manager->persist($personnal);
-            // table utilisateur
+
+
+
+
+            // table utilisators
             $utilisators =new User();
             $utilisators->setEmail($faker->email);
             $utilisators->setUsername($faker->userName);
@@ -85,6 +151,10 @@ class AppFixtures extends Fixture
                 "ROLE_ADMIN","ROLE_USER","ANONYMOUS"
             ]));
             $manager->persist($utilisators);
+
+
+            // table Events
+
             $event = new Events();
             $event->setTitle($faker->title);
             $event->setPlace($faker->address);

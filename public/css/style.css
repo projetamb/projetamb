@@ -1,5 +1,19 @@
 
 /**
+
+    CLUB PAGE
+ */
+.club_role, .club_h2 {
+     text-decoration: underline;
+ }
+.club_description {
+    height:100vh;
+    border: 2px;
+}
+/**
+    END CLUB PAGE
+*/
+
     NAVBAR
  */
 
@@ -12,6 +26,7 @@
  */
 
 
+
 /**
     INSTRUCTORS PAGE
  */
@@ -20,6 +35,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 50%;
+
 }
 
 .instructors_jumbotron h1 {
