@@ -10,7 +10,7 @@
             <div class="row">
 
                 {% for evenement in event %}
-
+                {% if not app.user %}
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
 
                     <div class="card" style="width: 18rem;">
@@ -25,6 +25,34 @@
                     </div>
 
                 </div>
+                    {% else %}
+                        <div class="col-12 col-md-6 col-lg-4 mb-5">
+
+                            <div class="card" style="width: 18rem;">
+                                <span class="badge badge-pill badge-warning"> Mode Admin</span>
+                                <img src="{{ evenement.photo }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ evenement.title }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
+                                    <p class="card-text">{{ evenement.description }}</p>
+
+                                       <a href="#" class="btn btn-sm btn-danger">
+                                           <i class="fa fa-trash"></i>
+                                       </a>
+                                       <a href="#" class="btn btn-sm btn-danger">
+                                           <i class="fa fa-pencil"></i>
+                                       </a>
+                                       <a href="#" class="btn btn-sm btn-danger">
+                                           <i class="fa fa-plus"></i>
+                                       </a>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endif %}
                                  
                 {% endfor %}
             </div>
