@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    <H1>Ajout d'un évenement</H1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                {{ form_start(formEvent) }}
+                {{ form_row(formEvent.title) }}
+                {{ form_row(formEvent.place) }}
+                {{ form_row(formEvent.organisator) }}
+                {{ form_row(formEvent.description) }}
+                {{ form_row(formEvent.date) }}
+                {{ form_row(formEvent.email_contact) }}
+                {{ form_row(formEvent.phone_contact) }}
+                {{ form_row(formEvent.photo) }}
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+                {{ form_end(formEvent) }}
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
