@@ -24,6 +24,7 @@ class HomeController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
 
+
             // Envoi d'un email
             $message = (new \Swift_Message('Mail'))
                 ->setFrom($form['email'])

@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "fzaninotto/faker": "^1.8",
+        "google/apiclient": "2.0",
         "sensio/framework-extra-bundle": "^5.3",
         "swiftmailer/swiftmailer": "^6.0",
         "symfony/asset": "4.2.*",
@@ -25,11 +26,8 @@
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
-<<<<<<< HEAD
         "symfony/webpack-encore-bundle": "^1.5",
         "symfony/webpack-encore-pack": "^1.0",
-=======
->>>>>>> master
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {

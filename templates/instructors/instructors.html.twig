@@ -29,6 +29,7 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
                 {% else %}
                     <div class="col-12 col-md-6 col-lg-4 mb-5">
                         <div class="card" style="width: 18rem;">
@@ -49,6 +50,27 @@
                             </div>
                         </div>
                     </div>
+=======
+            {% else %}
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
+
+                    <div class="card" style="width: 18rem;">
+                        <span class="badge badge-danger">mode administrateur</span>
+                        <img src="{{ instructor.photo }}" class="card-img-top" alt="photo instructeur">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
+                            <p class="card-text">{{ instructor.description }}</p>
+                            <p class="card-text"><a href="{{ instructor.link }}">Site personnel</a></p>
+                            <a href="#" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            <a href="#" class="btn btn-sm btn-primary">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 639887491849dfb36121b2c82877af1b272ce3b0
                 {% endif %}
             {% endfor %}
         </div>
