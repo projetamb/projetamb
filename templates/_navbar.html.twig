@@ -22,7 +22,7 @@
             <a href="{{ path('security_login') }}" class="nav-link" style="color: white;">Connexion</a>
 
         {% else %}
-
+            <span class="badge badge-pill badge-danger">mode administrateur</span>
             <a href="{{ path('security_logout') }}" class="nav-link" style="color: white;">Déconnexion</a>
 
         {% endif %}
