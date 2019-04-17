@@ -22,8 +22,11 @@ CLUB PAGE
 }
 
 .club_disciplines {
-    height: 93vh;
+    height: 84vh;
+    display: flex;
+    justify-content: center;
 }
+
 
 /**
 ARROW 1
