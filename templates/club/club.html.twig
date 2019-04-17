@@ -19,57 +19,57 @@
 
 
 <div class="container">
-<div class="club_disciplines">
-    <h2 class="text-center club_h2">Disciplines :</h2>
-    <div class="row my-5 py-5">
-        <div class="col-6 py-3 px-5">
-            <h3 class="text-center">Taekwondo</h3>
-            <p>Quisquam pharetra, dignissimos minus corrupti ullamco, praesent illum occaecat, aperiam, feugiat molestiae, tempore aliquid. Mauris nec torquent, autem, id, consequat.</p>
-        </div>
-        <div class="col-6 py-3 px-5">
-            <h3 class="text-center">Krav maga</h3>
-            <p>Lorem do culpa. Scelerisque conubia minima integer rem molestie exercitation? Necessitatibus, tincidunt? Conubia pariatur occaecati! Diamlorem tempora accusamus eius suscipit.</p>
+    <div class="club_disciplines">
+        <h2 class="text-center club_h2">Disciplines :</h2>
+        <div class="row my-5 py-5">
+            <div class="col-6 py-3 px-5">
+                <h3 class="text-center">Taekwondo</h3>
+                <p>Quisquam pharetra, dignissimos minus corrupti ullamco, praesent illum occaecat, aperiam, feugiat molestiae, tempore aliquid. Mauris nec torquent, autem, id, consequat.</p>
+            </div>
+            <div class="col-6 py-3 px-5">
+                <h3 class="text-center">Krav maga</h3>
+                <p>Lorem do culpa. Scelerisque conubia minima integer rem molestie exercitation? Necessitatibus, tincidunt? Conubia pariatur occaecati! Diamlorem tempora accusamus eius suscipit.</p>
+            </div>
         </div>
     </div>
-</div>
-<div class="container club_membres">
-    <h2 class="text-center club_h2">Membres du bureau</h2>
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 mb-5">
-            <div class="card text-white bg-primary mb-3">
+    <div class="container club_membres">
+        <h2 class="text-center club_h2">Membres du bureau</h2>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-5">
+                <div class="card text-white bg-primary mb-3">
 
-                {% for personnal in personnals %}
-                    {% if not app.user %}
-                {% if  personnal.role == 'Président' %}
-                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
-                    <div class="card-body">
-                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
-                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
-                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                    </div>
-                {% endif %}
-                {% else %}
+                    {% for personnal in personnals %}
+                        {% if not app.user %}
                     {% if  personnal.role == 'Président' %}
-                        <span class="badge badge-danger">mode administrateur</span>
                         <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
                         <div class="card-body">
                             <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                             <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
                             <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
                             <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                            <a href="#" class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-primary">
-                                <i class="fa fa-pencil"></i>
-                            </a>
                         </div>
                     {% endif %}
-                    {% endif %}
-                {% endfor %}
+                    {% else %}
+                        {% if  personnal.role == 'Président' %}
+                            <span class="badge badge-danger">mode administrateur</span>
+                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
+                            <div class="card-body">
+                                <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                                <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                                <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                                <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                <a href="#" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
         <div class="col-12 col-md-6 col-lg-4 mb-5">
             <div class="card text-white bg-primary mb-3">
                 {% for personnal in personnals %}
@@ -100,8 +100,10 @@
                 {% endfor %}
             </div>
         </div>
+        </div>
     </div>
 </div>
+
 <div class="club_docs">
     <h2 class="text-center club_h2">Documents</h2>
 
