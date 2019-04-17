@@ -17,16 +17,13 @@ class ClubController extends AbstractController
      * @param FilesRepository $filesRepository
      * @return Response
      */
-    public function show(
-        PersonnalRepository $personnalRepository,
-        FilesRepository $filesRepository
-    ){
+    public function show(PersonnalRepository $personnalRepository)
+    {
         $personnal = $personnalRepository->findAll();
-        $files = $filesRepository->findAll();
         return $this->render('club/club.html.twig', [
             'pagetitle' => 'Arts Martiaux Basséens',
-            'personnals' => $personnal,
-            'files' => $files
+            'personnals' => $personnal
+
         ]);
     }
 
