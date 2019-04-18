@@ -9,13 +9,13 @@ CLUB PAGE
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.club_description {
     background-image: url('../img/logo_forClub.png');
+    background-size: 45%;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+
 
 .club_description, .club_disciplines, .club_docs, .club_membres {
     border:solid 2px red;
