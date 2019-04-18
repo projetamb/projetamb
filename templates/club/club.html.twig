@@ -67,9 +67,10 @@
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
                                 <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
                                 <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
                                 <a href="#" class="btn btn-sm btn-primary">
                                     <i class="fa fa-pencil"></i>
                                 </a>
@@ -101,9 +102,10 @@
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
                                 <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
                                 <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
                                 <a href="#" class="btn btn-sm btn-primary">
                                     <i class="fa fa-pencil"></i>
                                 </a>
@@ -135,9 +137,10 @@
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
                                 <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
                                 <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
                                 <a href="#" class="btn btn-sm btn-primary">
                                     <i class="fa fa-pencil"></i>
                                 </a>

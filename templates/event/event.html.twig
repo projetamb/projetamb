@@ -3,6 +3,13 @@
 
 
 {% block body %}
+    <div class="instructors_jumbotron jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4" style="text-align: left;">Nos évènements</h1>
+            <div class="div_h1"></div>
+        </div>
+    </div>
+    <!-- Photo by Timothy Eberly on Unsplash -->
         <div class="container">
             <div class="row">
                 {% for evenement in event %}
@@ -21,7 +28,7 @@
                     {% else %}
                         <div class="col-12 col-md-6 col-lg-4 mb-5">
                             <div class="card" style="width: 18rem;">
-                               <img src="{{ evenement.photo }}" class="card-img-top" alt="...">
+                               <img src="{{ "/img/"~ evenement.photo }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ evenement.title }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>

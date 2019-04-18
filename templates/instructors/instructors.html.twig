@@ -35,9 +35,10 @@
                                 <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
                                 <p class="card-text">{{ instructor.description }}</p>
                                 <p class="card-text"><a href="{{ instructor.link }}">Site personnel</a></p>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                <form class="d-inline" method="post"  action="{{ path('instructors_delete', {'id': instructor.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{instructor.role }},{{ instructor.lastname }} ?')">
+                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
                                 <a href="#" class="btn btn-sm btn-danger">
                                     <i class="fa fa-pencil"></i>
                                 </a>
