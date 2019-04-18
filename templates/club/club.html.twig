@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-6 py-3 px-5">
                 <h3 class="text-center">Taekwondo</h3>
-                <p>Le taekwendo est un art martial d'origine sud-coréenne, dont le nom peut se traduire par La voie du pied et du poing. <br>
+                <p>Le taekwondo est un art martial d'origine sud-coréenne, dont le nom peut se traduire par La voie du pied et du poing. <br>
                     Le taekwondo se distingue des autres arts martiaux, surtout dans sa forme, par le haut degré de spécialisation de ses pratiquants
                     en techniques de coups de pieds bien plus que dans d'autres techniques, par les nombreuses protections utilisées lors des compétitions
                     de combat ainsi que par le fait que, depuis qu'il a été inclus au programme des Jeux olympiques d'été en 2000.
@@ -42,9 +42,9 @@
 </div>
     <div class="container club_membres">
         <h2 class="text-center club_h2">Membres du bureau</h2>
-        <div class="row">
+        <div class="row my-5">
             <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card text-white bg-primary mb-5">
+                <div class="card mb-5">
                     {% for personnal in personnals %}
                         {% if not app.user %}
                     {% if  personnal.role == 'Président' %}
@@ -78,7 +78,7 @@
                 </div>
             </div>
         <div class="col-12 col-md-6 col-lg-4 mb-5">
-            <div class="card text-white bg-primary mb-5">
+            <div class="card mb-5">
                 {% for personnal in personnals %}
                     {% if not app.user %}
                 {% if  personnal.role == 'Secrétaire' %}
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mb-5">
-            <div class="card text-white bg-primary mb-5">
+            <div class="card mb-5">
                 {% for personnal in personnals %}
                     {% if not app.user %}
                 {% if  personnal.role == 'Trésorier' %}

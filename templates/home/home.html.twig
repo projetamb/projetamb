@@ -5,13 +5,13 @@
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" style="margin: auto;" >
             <div class="carousel-item active">
-                <img src="{{ asset('img/carousel1.jpg') }}" class="d-block w-100" alt="..." style="height: 450px;">
+                <img src="{{ asset('img/carousel1.jpg') }}" class="d-block w-100" alt="carousel1" style="height: 450px;">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('img/carousel2.jpg') }}" class="d-block w-100" alt="..." style="height: 450px;">
+                <img src="{{ asset('img/carousel2.jpg') }}" class="d-block w-100" alt="carousel2" style="height: 450px;">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('img/carousel3.jpg') }}" class="d-block w-100" alt="..." style="height: 450px;">
+                <img src="{{ asset('img/carousel3.jpg') }}" class="d-block w-100" alt="carousel3" style="height: 450px;">
             </div>
             <!-- Photo by Justin Ng on Unsplash -->
         </div>
@@ -24,11 +24,13 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-        <div class="text-center">
-            <button id="playBtn" class="mx-2 my-2 py-1 px-2">
+        <div id="carouselButtons" class="text-center">
+            <button id="playBtn" type="button" class="btn btn-default btn-xs">
+             <span class="glyphicon glyphicon-play"></span>
                 <i class="fa fa-play"></i>
             </button>
-            <button id="pauseBtn" class="mx-2 my-2 py-1 px-2">
+            <button id="pauseBtn" type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-pause"></span>
                 <i class="fa fa-pause"></i>
             </button>
         </div>
