@@ -11,6 +11,7 @@
             <a class="dropdown-item" href="{{ path('club') }}">Le club</a>
             <a class="dropdown-item" href="{{ path('instructors') }}">Les instructeurs</a>
             <a class="dropdown-item" href="{{ path('event') }}">Les évènements</a>
+            <a class="dropdown-item" href="{{ path('document') }}">Les documents</a>
         </div>
 
     </div>
@@ -21,7 +22,7 @@
             <a href="{{ path('security_login') }}" class="nav-link" style="color: white;">Connexion</a>
 
         {% else %}
-
+            <span class="badge badge-pill badge-danger">mode administrateur</span>
             <a href="{{ path('security_logout') }}" class="nav-link" style="color: white;">Déconnexion</a>
 
         {% endif %}

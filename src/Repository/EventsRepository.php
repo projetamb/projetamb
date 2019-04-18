@@ -20,6 +20,17 @@ class EventsRepository extends ServiceEntityRepository
     }
 
 
+    public function findByDate()
+    {
+        $queryBuilder = $this->createQueryBuilder('d')
+            ->orderBy('d.date', 'DESC')
+            ->getQuery()
+        ;
+
+        return $queryBuilder->execute();
+
+    }
+
     // /**
     //  * @return Events[] Returns an array of Events objects
     //  */

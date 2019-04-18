@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<h2 class="text-center club_h2">Documents à télécharger</h2>
+<br>
+<h5>Vous pouvez télécharger les documents en cliquant sur les liens ci-dessous</h5>
+<br>
+{% for file in files %}
+    <p>---->   <a class="doc_file" href="./docs/{{ file.link }}" target="_blank">{{ file.link }}</a> ({{ file.size }})</p>
+{% endfor %}
+{% endblock %}

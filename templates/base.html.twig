@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>{% block title %}AMB{% endblock %}</title>
+        <title>{% block title %}{{ sitename }}{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -28,6 +28,7 @@
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <script src="{{ asset('carousel_a11y.js') }}"></script>
         {% endblock %}
     </body>
 </html>
