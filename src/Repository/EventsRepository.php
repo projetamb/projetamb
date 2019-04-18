@@ -19,6 +19,7 @@ class EventsRepository extends ServiceEntityRepository
         parent::__construct($registry, Events::class);
     }
 
+
     public function findByDate()
     {
         $queryBuilder = $this->createQueryBuilder('d')
@@ -29,6 +30,7 @@ class EventsRepository extends ServiceEntityRepository
         return $queryBuilder->execute();
 
     }
+
     // /**
     //  * @return Events[] Returns an array of Events objects
     //  */
