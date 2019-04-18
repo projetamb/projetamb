@@ -5,6 +5,7 @@ CLUB PAGE
     text-decoration: underline;
 }
 .club_description {
+    font-weight:bold;
     height: 93vh;
     display: flex;
     flex-direction: column;
@@ -17,13 +18,12 @@ CLUB PAGE
     background-position: center;
 }
 
-.club_description, .club_disciplines, .club_docs, .club_membres {
-    border:solid 2px red;
-}
+
 
 .club_disciplines {
     height: 84vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -75,7 +75,7 @@ END ARROW 1
 */
 
 .doc_file {
-    color: deepskyblue;
+    color: dodgerblue;
 }
 .doc_file:hover {
     color: mediumvioletred;

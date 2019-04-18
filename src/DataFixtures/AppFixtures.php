@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
 
         $personnal = new Personnal();
         $personnal->setLastName("Baratte");
-        $personnal->setFirstName("Melisande");
+        $personnal->setFirstName("Mélisande");
         $personnal->setEmail("melisande@gmail.com");
         $personnal->setPhone("0707070707");
         $personnal->setAddress("76 rue de la poupée qui tousse 59000 La Bassée");
