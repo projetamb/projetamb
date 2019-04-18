@@ -70,8 +70,11 @@ END ARROW 1
 /**
     END CLUB PAGE
 */
+.doc_download {
+    margin-left : 20px;
+}
 
-.fa {
+.fa-file-pdf-o {
     margin-left : 20px;
     color: red;
 }
