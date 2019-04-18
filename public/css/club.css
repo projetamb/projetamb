@@ -71,9 +71,7 @@ END ARROW 1
     END CLUB PAGE
 */
 
-.doc_file {
-    color: dodgerblue;
-}
-.doc_file:hover {
-    color: mediumvioletred;
+.fa {
+    margin-left : 20px;
+    color: red;
 }

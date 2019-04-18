@@ -8,6 +8,8 @@
 <h5 class = "my-5 mb-5">Vous pouvez télécharger les documents en cliquant sur les liens ci-dessous</h5>
 
 {% for file in files %}
-    <h5>  <i class="fa fa-file mr-2"></i> <a class="doc_file" href="./docs/{{ file.link }}" target="_blank">{{ file.link }}</a> ({{ file.size }})</h5>
+    <h5>  <i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a> ({{ file.size }})   
+    <a class="btn btn-dark view-pdf" href="./docs/{{ file.link }}">Aperçu PDF</a></h5>
+    
 {% endfor %}
 {% endblock %}
