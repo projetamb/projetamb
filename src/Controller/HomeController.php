@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,18 +19,17 @@ class HomeController extends AbstractController
      */
     public function index(Request $request, \Swift_Mailer $mailer)
     {
+        $contact = new Contact;
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
 
-
-
             // Envoi d'un email
             $message = (new \Swift_Message('Mail'))
-                ->setFrom($form['email'])
+                ->setFrom($contact->getEmail())
                 ->setTo('baratte.melisande@gmail.com')
-                ->setBody($form['content'],
+                ->setBody($contact->getMessage(),
                     'text/plain');
 
             $mailer->send($message);
