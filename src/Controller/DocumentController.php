@@ -15,7 +15,6 @@ class DocumentController extends AbstractController
     {
         $files = $filesRepository->findAll();
         return $this->render('document/doc.html.twig', [
-            'pagetitle' => 'Arts Martiaux Basséens',
             'files' => $files
         ]);
     }
