@@ -27,7 +27,7 @@ class EventsRepository extends ServiceEntityRepository
         ;
 
         return $queryBuilder->execute();
-        dump('d');
+
     }
     // /**
     //  * @return Events[] Returns an array of Events objects

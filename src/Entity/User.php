@@ -33,12 +33,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull()
      * @Assert\Length(min="4")<,message="votre username doit etre de 8 caracteres mini")
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      *@Assert\Length(min="8",minMessage="Votre mot de passe doit faire 8 caractères minimum")
      *
      */
