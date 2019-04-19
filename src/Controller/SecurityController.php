@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Form\RegistrationType;
+use App\Repository\DisciplinesRepository;
+use App\Repository\EntityRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,11 +21,21 @@ class SecurityController extends AbstractController
      * @param Request $request
      * @param ObjectManager $manager
      * @param UserPasswordEncoderInterface $encoder
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * USerPasswordInterface permet d'encoder les MDP
+     * @return Response
      */
-   public function registration(Request $request,ObjectManager $manager,UserPasswordEncoderInterface $encoder)
-   {
+   public function registration(
+       Request $request,
+       ObjectManager $manager,
+       UserPasswordEncoderInterface $encoder,
+       EntityRepository $entityRepository,
+       DisciplinesRepository $disciplinesRepository
+   ){
+       $disciplines = $disciplinesRepository->findAll();
+       $entity = $entityRepository->findAll();
        $user = new User(); // utilisateur vide
        //on relie les champs de l'utilisateurs au formulaire
         $form= $this->createForm(RegistrationType::class,$user);
@@ -42,7 +54,9 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('security_login');
         }
             return $this->render('security/registration.html.twig',[
-                'form'=> $form->createView()
+                'form'=> $form->createView(),
+                'entitys' => $entity,
+                'discipliness' => $disciplines
             ]);
    }
 
@@ -52,8 +66,13 @@ class SecurityController extends AbstractController
      * @Route("/login",name="security_login")
      *
      */
-   public function loginAction(AuthenticationUtils $authenticationUtils)
-   {
+   public function loginAction(
+       AuthenticationUtils $authenticationUtils,
+       EntityRepository $entityRepository,
+       DisciplinesRepository $disciplinesRepository
+){
+       $disciplines = $disciplinesRepository->findAll();
+       $entity = $entityRepository->findAll();
        // get the login error if there is one
        $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -66,6 +85,8 @@ class SecurityController extends AbstractController
        return $this->render('security/login.html.twig', [
            'last_username' => $lastUsername,
            'error'         => $error,
+           'entitys' => $entity,
+           'discipliness' => $disciplines
        ]);
 
    }
