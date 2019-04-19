@@ -11,7 +11,15 @@
         <div class="row">
             <div class="col-6">
                 {{ form_start(formEvent) }}
-                {{ form_widget(formEvent) }}
+                {{ form_row(formEvent.title,{'attr': {'placeholder':"Titre de l'évenement "}}) }}
+                {{ form_row(formEvent.place,{'attr': {'placeholder':"Lieu de l'évenement "}}) }}
+                {{ form_row(formEvent.organisator,{'attr': {'placeholder':"Organisateur de l'évenement "}}) }}
+                {{ form_row(formEvent.description,{'attr': {'placeholder':"description de l'évenement "}}) }}
+                {{ form_row(formEvent.date) }}
+                {{ form_row(formEvent.email_contact,{'attr': {'placeholder':"Email de contact "}}) }}
+                {{ form_row(formEvent.phone_contact,{'attr': {'placeholder':"téléphone du contact "}}) }}
+                {{ form_row(formEvent.photo,{'attr': {'placeholder':"affiche de l'évenement "}}) }}
+              {# {{ form_widget(formEvent) }}#}
                 <button type="submit" class="btn btn-success">Enregistrer</button>
                 {{ form_end(formEvent) }}
 

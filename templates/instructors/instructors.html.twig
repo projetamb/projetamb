@@ -14,12 +14,17 @@
     <!-- Photo by Timothy Eberly on Unsplash -->
     <!-- Cards Instructeurs-->
     <div class="container">
+        {% if app.user %}
+        <a href="{{ path('security_FormInstructor') }}" class="badge badge-pill badge-primary">
+            <i class="fa fa-plus"> Ajouter</i>
+        </a>
+        {% endif %}
         <div class="row my-5">
             {% for instructor in instructeur %}
                 {% if not app.user %}
             <div class="col-12 col-md-6 col-lg-4 mb-5">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ instructor.photo }}" class="card-img-top" alt="photo instructeur">
+                    <img src="{{ "/img/"~ instructor.photo }}" class="card-img-top" alt="photo instructeur">
                     <div class="card-body">
                         <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
                         <p class="card-text">{{ instructor.description }}</p>
@@ -30,9 +35,10 @@
                 </div>
             </div>
                 {% else %}
+
                     <div class="col-12 col-md-6 col-lg-4 mb-5">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{ instructor.photo }}" class="card-img-top" alt="photo instructeur">
+                            <img src="{{ "/img/"~ instructor.photo }}" class="card-img-top" alt="photo instructeur">
                             <div class="card-body">
                                 <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
                                 <p class="card-text">{{ instructor.description }}</p>
@@ -46,9 +52,7 @@
                                 <a href="#" class="btn btn-sm btn-danger">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="fa fa-plus"></i>
-                                </a>
+
                             </div>
                         </div>
                     </div>
