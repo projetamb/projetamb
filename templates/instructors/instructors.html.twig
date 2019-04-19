@@ -23,7 +23,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
                         <p class="card-text">{{ instructor.description }}</p>
-                        <p class="card-text"><a href="{{ instructor.link }}">Site personnel</a></p>
+                        {% if instructor.link != "" %}
+                            <p class="card-text"><a class="instructor_link" target="_blank" href="{{ instructor.link }}">Site personnel</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -34,7 +36,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
                                 <p class="card-text">{{ instructor.description }}</p>
-                                <p class="card-text"><a href="{{ instructor.link }}">Site personnel</a></p>
+                                {% if instructor.link != "" %}
+                                    <p class="card-text"><a class="instructor_link" target="_blank" href="{{ instructor.link }}">Site personnel</a></p>
+                                {% endif %}
                                 <form class="d-inline" method="post"  action="{{ path('instructors_delete', {'id': instructor.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{instructor.role }},{{ instructor.lastname }} ?')">
                                     <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                     <button class="btn btn-danger"><i class="fa fa-trash"></i></button>

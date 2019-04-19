@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\Events;
+use App\Entity\Entity;
+use App\Entity\Disciplines;
 
 use App\Entity\Files;
 
@@ -23,6 +25,43 @@ class AppFixtures extends Fixture
         $utilisators=[];
         $event=[];
         $files=[];
+        $entity=[];
+        $disciplines=[];
+
+        // table Entity
+        $entity = new Entity();
+        $entity->setName("Arts Martiaux Basséens");
+        $entity->setType("Association sportive");
+        $entity->setAdress("45 Rue Gabriel Péri");
+        $entity->setPostalcity("59480 La Bassée");
+        $entity->setEmail("artsmartiauxbasseens@gmail.com");
+        $entity->setDirectorname("Vincent Robin");
+        $entity->setDirectorphone("06 13 82 29 87");
+        $entity->setDirectoremail("v.robin59@gmail.com");
+        $entity->setLogo("logo.png");
+        $entity->setDescriptive("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. ");
+        $entity->setColor("#d7d7d7");
+        $entity->setLinkmap("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2536.089131130008!2d2.812029415158197!3d50.53251288933042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd2f6e367cfde1%3A0x9f8d2c62c0babb6e!2s45+Rue+Gabriel+P%C3%A9ri%2C+59480+La+Bass%C3%A9e!5e0!3m2!1sfr!2sfr!4v1555422888757!5m2!1sfr!2sfr");
+        $entity->setFacebook("https://www.facebook.com/artsmartiauxbasseens/");
+        $manager->persist($entity);
+
+        // table Disciplines
+        $disciplines = new Disciplines();
+        $disciplines->setName("Taekwondo");
+        $disciplines->setDescription("Le taekwondo est un art martial d'origine sud-coréenne, dont le nom peut se traduire par La voie du pied et du poing.
+                    Le taekwondo se distingue des autres arts martiaux, surtout dans sa forme, par le haut degré de spécialisation de ses pratiquants
+                    en techniques de coups de pieds bien plus que dans d'autres techniques, par les nombreuses protections utilisées lors des compétitions
+                    de combat ainsi que par le fait que, depuis qu'il a été inclus au programme des Jeux olympiques d'été en 2000.");
+        $manager->persist($disciplines);
+
+        // table Disciplines
+        $disciplines = new Disciplines();
+        $disciplines->setName("Krav maga");
+        $disciplines->setDescription("Le krav-maga est à l'origine une méthode d'autodéfense d'origine israélo-tchécoslovaque hongroise combinant des techniques provenant de la boxe,
+                    du muay-thaï, du judo, du ju-jitsu et de la lutte. Cette méthode, créée par Imi Lichtenfeld, est maintenant une base de l'armée israélienne et
+                    des services spéciaux israéliens pour se défendre au corps à corps face aux assaillants. La méthode est utilisée par de nombreux services de police
+                    et forces militaires dans le monde tels qu'aux États-Unis le FBI, la DEA, les marines, en France le GIGN, le RAID, la Légion étrangère et au Royaume-Uni les SAS.");
+        $manager->persist($disciplines);
 
 
         // table Personnal fixe

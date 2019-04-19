@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-
-        <title>{% block title %}{{ sitename }}{% endblock %}</title>
-        <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
+        {% for entity in entitys %}
+             <title>{% block title %}{{ entity.name }}{% endblock %}</title>
+             <link rel="icon" type="image/png" href="{{ asset('img/') }}{{ entity.logo }}" />
+        {% endfor %}
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,11 +20,11 @@
     </head>
 
     <body>
-        {{ include('_navbar.html.twig') }}
+        {{ include('navbar/_navbar.html.twig') }}
 
         {% block body %}{% endblock %}
 
-        {{ include('_footer.html.twig') }}
+        {{ include('footer/_footer.html.twig') }}
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
