@@ -42,10 +42,8 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /******************************************************************************
-     * Création du formulaire pour les instructeurs
-     *******************************************************************************
-    **
+    /**
+     *
      * @Route("/admin/event", name="security_FormEvent")
      * creation de la route pour les evenements et du formulaire d'ajout d'évenement
      * @param Request $request
@@ -84,10 +82,7 @@ class AdminController extends AbstractController
             'formEvent'=>$form->createView()
         ]);
     }
-    /******************************************************************************
-     * Création du formulaire pour les instructeurs
-     *******************************************************************************
-    **
+    /**
      * @Route("/admin/instructor", name="security_FormInstructor")
      * @param Request $request
      * @param ObjectManager $manager
@@ -97,6 +92,7 @@ class AdminController extends AbstractController
     public function createFormInstructor(Request $request,ObjectManager $manager,FileUpLoader $fileUpLoader)
     {
         $instructor= new Personnal();
+        //je relie mon formulaire ç la class instructeur => me permet de récuperer les champs de la table personnal
         $form=$this->createForm(InstructorType::class,$instructor);
         $form->handleRequest($request);
         dump($form);
@@ -125,7 +121,7 @@ class AdminController extends AbstractController
     {
         $form = $this->createForm(EventType::class, $events,FileUpLoader::class);
 
-        //analyse de la requete
+        //analyse de la requete reçu avec les différents champs du formulaires
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -145,7 +141,8 @@ class AdminController extends AbstractController
     }
     /******************************************************************************
      * Effecement d'un évenement
-     *******************************************************************************
+     *******************************************************************************/
+    /**
     *
      * @Route("/admin/event/{id}",name="event_delete", methods={"POST"})
      * @param Request $request
