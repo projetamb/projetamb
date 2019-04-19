@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+{% for entity in entitys %}
 <div class="example-wrapper club_description">
     <section class="text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">{{ sitename }}</h1>
+            <h1 class="jumbotron-heading">{{ entity.name }}</h1>
 
-            <p><i class="fa fa-home"></i> 45 Rue Gabriel Péri 59480 La Bassée</p>
+            <p><i class="fa fa-home"></i> {{ entity.adress }} {{ entity.postalcity }}</p>
 
-            <p><i class="fa fa-envelope mr-2"></i>artsmartiauxbasseens@gmail.com</p>
-            <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro commodi aliquam veniam fuga suscipit itaque labore natus accusamus numquam, perferendis in? Incidunt libero dignissimos unde fuga voluptatem omnis accusamus delectus.</p>
+            <p><i class="fa fa-envelope mr-2"></i>{{ entity.email }}</p>
+            <p class="mb-0">{{ entity.descriptive }}</p>
         </div>
     </section>
 </div>
@@ -21,24 +21,12 @@
     <div class="club_disciplines my-5">
 
         <div class="row">
-
+        {% for disciplines in discipliness %}
             <div class="col-6 py-3 px-5">
-                <h3 class="text-center">Taekwondo</h3>
-                <p>Le taekwondo est un art martial d'origine sud-coréenne, dont le nom peut se traduire par La voie du pied et du poing. <br>
-                    Le taekwondo se distingue des autres arts martiaux, surtout dans sa forme, par le haut degré de spécialisation de ses pratiquants
-                    en techniques de coups de pieds bien plus que dans d'autres techniques, par les nombreuses protections utilisées lors des compétitions
-                    de combat ainsi que par le fait que, depuis qu'il a été inclus au programme des Jeux olympiques d'été en 2000.
-                </p>
+                <h3 class="text-center">{{ disciplines.name }}</h3>
+                <p>{{ disciplines.description }}</p>
             </div>
-            <div class="col-6 py-3 px-5">
-                <h3 class="text-center">Krav maga</h3>
-                <p>Le krav-maga est à l'origine une méthode d'autodéfense d'origine israélo-tchécoslovaque hongroise combinant des techniques provenant de la boxe,
-                    du muay-thaï, du judo, du ju-jitsu et de la lutte. Cette méthode, créée par Imi Lichtenfeld, est maintenant une base de l'armée israélienne et
-                    des services spéciaux israéliens pour se défendre au corps à corps face aux assaillants. La méthode est utilisée par de nombreux services de police
-                    et forces militaires dans le monde tels qu'aux États-Unis le FBI, la DEA, les marines, en France le GIGN, le RAID, la Légion étrangère et au Royaume-Uni les SAS.
-                </p>
-            </div>
-
+        {% endfor %}
         </div>
     </div>
 </div>
@@ -153,6 +141,6 @@
         </div>
         </div>
     </div>
-
+{% endfor %}
 {% endblock %}
 

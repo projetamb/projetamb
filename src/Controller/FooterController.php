@@ -3,26 +3,27 @@
 namespace App\Controller;
 
 use App\Repository\EntityRepository;
-use App\Repository\FilesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DocumentController extends AbstractController
+class FooterController extends AbstractController
 {
+
+
     /**
-     * @Route("/document", name="document")
+     * @Route("/footer", name="footer")
      * @param EntityRepository $entityRepository
      * @return Response
      */
-    public function show(
-        FilesRepository $filesRepository,
+    public function index(
         EntityRepository $entityRepository
-){
-        $files = $filesRepository->findAll();
+    ){
         $entity = $entityRepository->findAll();
-        return $this->render('document/doc.html.twig', [
-            'files' => $files,
-            'entitys' => $entity,
+        return $this->render('footer/_footer.html.twig', [
+            'controller_name' => 'FooterController',
+            'entitys' => $entity
+
         ]);
     }
 }
