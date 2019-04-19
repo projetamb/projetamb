@@ -121,6 +121,7 @@ class AdminController extends AbstractController
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
         $instructor= new Personnal();
+        //je relie mon formulaire ç la class instructeur => me permet de récuperer les champs de la table personnal
         $form=$this->createForm(InstructorType::class,$instructor);
         $form->handleRequest($request);
         dump($form);
@@ -161,7 +162,7 @@ class AdminController extends AbstractController
         $entity = $entityRepository->findAll();
         $form = $this->createForm(EventType::class, $events,FileUpLoader::class);
 
-        //analyse de la requete
+        //analyse de la requete reçu avec les différents champs du formulaires
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -181,6 +182,7 @@ class AdminController extends AbstractController
             'discipliness' => $disciplines
         ]);
     }
+
     /**
      * @Route("/admin/event/{id}",name="event_delete", methods={"POST"})
      * @param Request $request
