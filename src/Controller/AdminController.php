@@ -6,9 +6,12 @@ use App\Entity\Events;
 use App\Entity\Personnal;
 use App\Entity\Product;
 use App\Form\EventType;
+use App\Form\InstructorType;
 use App\Form\ProductType;
 use App\Service\FileUpLoader;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -39,14 +42,18 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
+    /******************************************************************************
+     * Création du formulaire pour les instructeurs
+     *******************************************************************************
+    **
      * @Route("/admin/event", name="security_FormEvent")
-     *
+     * creation de la route pour les evenements et du formulaire d'ajout d'évenement
      * @param Request $request
      * @param ObjectManager $manager
      * @return Response
      */
-    public function create(Request $request, ObjectManager $manager,FileUploader $fileUploader)
+
+    public function create(Request $request, ObjectManager $manager,FileUpLoader $fileUpLoader)
     {
         $evenement = new Events();
       //  $form=$this->createForm(EventType::class,$evenement);
@@ -57,7 +64,7 @@ class AdminController extends AbstractController
                     ->add('organisator')
                     ->add('description')
                     ->add('date',DateType::class)
-                    ->add('email_contact')
+                    ->add('email_contact',EmailType::class)
                     ->add('phone_contact')
                     ->add('photo',FileType::class)
                     ->getForm();
@@ -67,12 +74,7 @@ class AdminController extends AbstractController
             if($form->isSubmitted() && $form->isValid())
             {
                 $file=$evenement->getPhoto();
-
-                $fileName = $fileUploader->upload($file);
-                // Move the file to the directory where brochures are stored
-
-                // updates the 'brochure' property to store the PDF file name
-                // instead of its contents
+                $fileName = $fileUpLoader->upload($file);
                 $evenement->setPhoto($fileName);
                 $manager->persist($evenement);
                 $manager->flush();
@@ -80,6 +82,35 @@ class AdminController extends AbstractController
             }
         return $this->render('admin/formEvent.html.twig',[
             'formEvent'=>$form->createView()
+        ]);
+    }
+    /******************************************************************************
+     * Création du formulaire pour les instructeurs
+     *******************************************************************************
+    **
+     * @Route("/admin/instructor", name="security_FormInstructor")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param FileUpLoader $fileUpLoader
+     * @return Response
+     */
+    public function createFormInstructor(Request $request,ObjectManager $manager,FileUpLoader $fileUpLoader)
+    {
+        $instructor= new Personnal();
+        $form=$this->createForm(InstructorType::class,$instructor);
+        $form->handleRequest($request);
+        dump($form);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $file=$instructor->getPhoto();
+            $fileName = $fileUpLoader->upload($file);
+            $instructor->setPhoto($fileName);
+            $manager->persist($instructor);
+            $manager->flush();
+
+        }
+        return $this->render('admin/formInstructor.html.twig',[
+            'formInstructor'=>$form->createView()
         ]);
     }
 
@@ -90,9 +121,9 @@ class AdminController extends AbstractController
      *
      * @return RedirectResponse|Response
      */
-    public function edit(Request $request, Events $events)
+    public function edit(Request $request, Events $events,FileUpLoader$fileUpLoader)
     {
-        $form = $this->createForm(EventType::class, $events);
+        $form = $this->createForm(EventType::class, $events,FileUpLoader::class);
 
         //analyse de la requete
         $form->handleRequest($request);
@@ -112,8 +143,10 @@ class AdminController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-    /**
+    /******************************************************************************
+     * Effecement d'un évenement
+     *******************************************************************************
+    *
      * @Route("/admin/event/{id}",name="event_delete", methods={"POST"})
      * @param Request $request
      * @param Events $events
@@ -133,9 +166,11 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
-/**********************************************************************************/
-    /**
-     * @Route("/admin/club/{id}",name="club_delete", methods={"POST"})
+    /******************************************************************************
+     * Effecement d'un membre du bureau
+     *******************************************************************************
+    *
+     * @Route("/admin/club/{id}", name="club_delete", methods={"POST"})
      * @param Request $request
      * @param Personnal $personnal
      * @return RedirectResponse

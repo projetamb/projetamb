@@ -4,7 +4,7 @@
 namespace App\Service;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
+//Class qui permet de gerer l'upload
 class FileUpLoader
 {
     private $targetDirectory;
@@ -17,7 +17,7 @@ class FileUpLoader
     public function upload(UploadedFile $file)
     {
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
+        //$fileName =$file->guessExtension();
             $file->move($this->getTargetDirectory(), $fileName);
 
 

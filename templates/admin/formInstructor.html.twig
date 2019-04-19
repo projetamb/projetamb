@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1> Ajout d'un Instructeur</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                {{ form_start(formInstructor) }}
+                {{ form_row(formInstructor.lastname) }}
+                {{ form_row(formInstructor.firstname)
+                {{ form_row(formInstructor.adresse) }}
+                {{ form_row(formInstructor.email) }}
+                {{ form_row(formInstructor.role) }}
+                {{ form_row(formInstructor.phone) }}
+                {{ form_row(formInstructor.photo) }}
+                {{ form_row(formInstructor.description) }}
+                {{ form_row(formInstructor.grade) }}
+                {{ form_row(formInstructor.link) }}
+
+
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+                {{ form_end(formInstructor) }}
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
