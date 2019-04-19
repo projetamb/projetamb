@@ -5,11 +5,12 @@
 {% block body %}
 <h3 class="text-center club_h2">Documents à télécharger</h3>
 
-<h5 class="doc_download my-5 mb-5">Vous pouvez télécharger les documents en cliquant sur les liens ci-dessous</h5>
+<h5 class="doc_download my-5 mb-5">Vous pouvez télécharger les documents en cliquant sur les boutons "Aperçu pdf"
+ :</h5>
 
 {% for file in files %}
-    <h5>  <i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a> ({{ file.size }})   
-    <a class="btn btn-dark view-pdf" href="./docs/{{ file.link }}">Aperçu PDF</a></h5>
+    <h6>  <i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a></br>
+    <a class="doc_file2">taille fichier : ({{ file.size }})</a>   <a class="btn btn-dark view-pdf" href="./docs/{{ file.link }}">Aperçu pdf</a></h6>
     
 {% endfor %}
 {% endblock %}

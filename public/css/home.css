@@ -1,3 +1,9 @@
+#myNavbar a:hover{
+    background-color: #343a40;
+    color: #fff !important;
+    opacity:1 !important;
+}
+
 /* ##### RESET ##### **/
 *{
     padding: 0;
