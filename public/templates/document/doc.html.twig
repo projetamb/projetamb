@@ -10,7 +10,7 @@
 
 {% for file in files %}
     <h6>  <i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a></br>
-    <a class="doc_file2">taille fichier : ({{ file.size }})</a>   <a class="btn btn-dark view-pdf" id="buttonPdf" href="./docs/{{ file.link }}">Aperçu pdf</a></h6>
+    <a class="doc_file2">taille fichier : ({{ file.size }})</a>   <a class="btn btn-dark view-pdf" href="./docs/{{ file.link }}">Aperçu pdf</a></h6>
     
 {% endfor %}
 {% endblock %}

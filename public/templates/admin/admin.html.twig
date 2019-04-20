@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<h1 class="admin text-center">DashBoard Administrateur </h1>
+    {% if not is_granted("ROLE_ADMIN") %}
+        <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+        {% else %}
+            <div class="container">
+                <h1> <a href="{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
+                        <i class="fa fa-plus"></i>
+                    </a>Ajouter un évenement</h1>
+                <h1> <a href="" class="btn btn-sm btn-primary">
+                        <i class="fa fa-plus"></i>
+                    </a>Ajouter un instructeur</h1>
+                <h1> <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fa fa-plus"></i>
+                    </a>Ajouter un membre du bureau</h1>
+                <h1> <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fa fa-plus"></i>
+                    </a>Ajouter un document</h1>
+            </div>
+
+
+{% endif %}
+
+
+
+
+   {#
+    {% for message in app.flashes('information') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+   #}
+
+
+
+{% endblock %}

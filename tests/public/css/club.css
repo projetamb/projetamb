@@ -1,0 +1,83 @@
+/**
+CLUB PAGE
+*/
+.club_role, .club_h2 {
+    text-decoration: underline;
+}
+.club_description {
+    font-weight:bold;
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('../img/logo_forClub.png');
+    background-size: 45%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.club_disciplines {
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/**
+ARROW 1
+ */
+.arrow1{
+    position: absolute;
+    top: 85%;
+    left: 95%;
+    transform: translate(-50%,-50%);
+}
+.arrow1 span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid #06A8FF;
+    border-right: 5px solid #06A8FF;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+.arrow1 span:nth-child(2){
+    animation-delay: -0.2s;
+}
+.arrow1 span:nth-child(3){
+    animation-delay: -0.4s;
+}
+@keyframes animate {
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px,-20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px,20px);
+    }
+}
+/**
+END ARROW 1
+ */
+
+/**
+    END CLUB PAGE
+*/
+.doc_download {
+    margin-left : 20px;
+}
+
+.fa-file-pdf-o {
+    margin-left : 20px;
+    color: #c4120d;
+}
+.doc_file2 {
+    margin-left : 50px;
+}
