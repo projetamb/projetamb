@@ -50,7 +50,20 @@
         </div>
     </div>
 </div>
-
+    <!--
+    On teste si le mode admin est selectionné et on affiche le bouton ajouter
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 col-mb5">
+                {% if app.user %}
+                    <a href="{{ path('securityFormMember') }}" class="badge badge-pill badge-primary">
+                        <i class="fa fa-plus"> Ajouter</i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     <div class="container club_membres">
         <h2 class="text-center club_h2">Membres du bureau</h2>
         <div class="row my-5">

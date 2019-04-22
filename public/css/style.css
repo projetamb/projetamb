@@ -36,6 +36,7 @@
     content: '';
     border-top: 1px solid red;
     width: 375px;
+    color:  #46ddc9;
 }
 
 .instructor_link, .instructor_link:hover {
