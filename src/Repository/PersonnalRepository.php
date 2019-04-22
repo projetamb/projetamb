@@ -19,14 +19,15 @@ class PersonnalRepository extends ServiceEntityRepository
         parent::__construct($registry, Personnal::class);
     }
 
-    public function findInstructors($instructors)
+    public function findInstructors()
     {
         return $this->createQueryBuilder('i')
-            ->where('i.role = :Instructeur')
-            ->setParameter('role', $instructors)
+           // ->where('i.role = :'.$instructors)
+           // ->setParameter('role', $instructors)
+            ->orderBy('i.id','DESC')
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     // /**
