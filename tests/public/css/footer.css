@@ -1,0 +1,14 @@
+a{
+    color: white;
+}
+
+a:hover{
+    color: white;
+}
+
+.linkedin{
+    background-color: rgba(0, 123, 182);
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+}
