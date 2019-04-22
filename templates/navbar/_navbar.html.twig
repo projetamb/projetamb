@@ -1,6 +1,9 @@
 {# templates/_navbar.html.twig #}
 
+
     <section class="pt-0 pb-0 bg-dark" id="myTitle">
+      {% for entity in entitys %}
+
       <div class="container" style="color: white;">
         <div class="row">
           <div class="col-md-12 text-center" style="font-size: 25px;">
@@ -9,7 +12,7 @@
           </div>
         </div>
       </div>
-      {% endfor %}#}
+      {% endfor %}
     </section>
 
 <nav class="navbar sticky-top" id="myNavbar">
