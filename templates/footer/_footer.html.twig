@@ -84,7 +84,7 @@
         </div>
     </div>
     <!-- Copyright, mentions légales -->
-   {# {% for entity in entitys %}
+   {% for entity in entitys %}
     <div class="container">
         <div class="text-center my-2">
             <a href="/#contactForm" class="px-3">Contactez-nous</a> | <a href={{ entity.facebook }} target="_blank" class="px-3">Suivez-nous sur facebook</a> | <a href="http://localhost:8000/legal_notice" class="px-3">Mentions légales</a>
@@ -93,5 +93,5 @@
             Copyright &copy; 2019 <img src="{{ asset('img/') }}{{ entity.logo }}" style="height: 30px; width: 30px;" class="mx-2"> {{ entity.name }}
         </div>
     </div>
-    {% endfor %}#}
+    {% endfor %}
 </footer>

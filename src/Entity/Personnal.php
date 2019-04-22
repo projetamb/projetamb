@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PersonnalRepository")
@@ -33,6 +34,8 @@ class Personnal
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\Length(min = 8, max = 20, minMessage = "min_lenght", maxMessage = "max_lenght")
+     * @Assert\Regex(pattern="/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/")
      */
     private $phone;
 
@@ -63,6 +66,10 @@ class Personnal
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(maxSize="3M",
+     *      maxSizeMessage="Le fichier excède 3Mo.",
+     *      mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/svg+xml", "image/gif"},
+     *      mimeTypesMessage= "formats autorisés: png, jpeg, jpg, svg, gif")
      */
     private $photo;
 

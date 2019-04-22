@@ -22,9 +22,10 @@ class InstructorsController extends AbstractController
         EntityRepository $entityRepository
     ) {
         $repo = $this->getDoctrine()->getRepository(Personnal::class);
+        $instructors = $repo->findInstructors();
 
-        $instructors = $repo->findByRole('Instructeur');
         $entity = $entityRepository->findAll();
+
         return $this->render('instructors/instructors.html.twig', [
             'controller_name' => 'InstructorsController',
             'instructeur' => $instructors,

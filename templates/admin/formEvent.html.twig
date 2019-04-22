@@ -6,6 +6,7 @@
 
 {% endblock %}
 {% block body %}
+
     <H1>Ajout d'un évenement</H1>
     <div class="container">
         <div class="row">
@@ -20,7 +21,14 @@
                 {{ form_row(formEvent.phone_contact,{'attr': {'placeholder':"téléphone du contact "}}) }}
                 {{ form_row(formEvent.photo,{'attr': {'placeholder':"affiche de l'évenement "}}) }}
               {# {{ form_widget(formEvent) }}#}
-                <button type="submit" class="btn btn-success">Enregistrer</button>
+                <button type="submit" class="btn btn-success">
+                   {#{% if editMode %}
+                        Enregistrer les modifications
+                        {% else %}
+                        Ajouter l'évenement
+                    {% endif %} #}
+                    Ajouter
+                   </button>
                 {{ form_end(formEvent) }}
 
             </div>

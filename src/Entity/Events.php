@@ -51,7 +51,10 @@ class Events
 
     /**
      * @ORM\Column(type="string", length=255)
-     *@Assert\File( maxSize = "5M")
+     *@Assert\File(maxSize="5M",
+     *      maxSizeMessage="Le fichier excède 5Mo.",
+     *      mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/svg+xml", "image/gif"},
+     *      mimeTypesMessage= "formats autorisés: png, jpeg, jpg, svg, gif")
      */
     private $photo;
 
@@ -69,7 +72,7 @@ class Events
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Regex(pattern="/^\(0\)[0-9]*$", message="numéro de téléphone")
+     *@Assert\NotBlank()
      */
     private $phone_contact;
 
