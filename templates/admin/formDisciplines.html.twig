@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    <H1>Ajout d'une discipline</H1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                {{ form_start(formDisciplines,{'attr': {'novalidate': 'novalidate'}}) }}
+                {{ form_row(formDisciplines.name,{'attr': {'placeholder':"Nom de la discipline "}}) }}
+                {{ form_row(formDisciplines.description,{'attr': {'placeholder':"description de la discipline "}}) }}
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+                {{ form_end(formDisciplines) }}
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

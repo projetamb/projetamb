@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-       {#  {% for entity in entitys %}
+         {% for entity in entitys %}
              <title>{% block title %}{{ entity.name }}{% endblock %}</title>
-             <link rel="icon" type="image/png" href="{{ asset('img/') }}{{ entity.logo }}" />
+             <link rel="icon" type="image/png/jpg" href="{{ asset('img/') }}{{ entity.logo }}" />
         {% endfor %}
-        #}
+
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,8 +19,9 @@
         {% endblock %}
 
     </head>
-
-    <body>
+    {% for entity in entitys %}
+    <body style="background-color:{{ entity.color }};">
+    {% endfor %}
         {{ include('navbar/_navbar.html.twig') }}
 
         {% block body %}{% endblock %}

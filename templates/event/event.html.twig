@@ -3,12 +3,14 @@
 
 
 {% block body %}
-    <div class="instructors_jumbotron jumbotron jumbotron-fluid">
+    {% for entity in entitys %}
+    <div class="instructors_jumbotron jumbotron jumbotron-fluid" style="background-image: url(../img/{{ entity.photobandeau }});">
         <div class="container">
             <h1 class="display-4" style="text-align: left;">Nos évènements</h1>
             <div class="div_h1"></div>
         </div>
     </div>
+    {% endfor %}
     <!-- Photo by Timothy Eberly on Unsplash -->
 
     <div class="container">

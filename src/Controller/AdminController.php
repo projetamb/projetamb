@@ -2,15 +2,22 @@
 
 namespace App\Controller;
 
+use App\Entity\Entity;
+use App\Entity\Disciplines;
 use App\Entity\Events;
+use App\Entity\Files;
 use App\Entity\Personnal;
 use App\Entity\Product;
+use App\Form\DisciplinesType;
+use App\Form\EntityType;
 use App\Form\EventType;
 use App\Form\InstructorType;
 use App\Form\MemberType;
 use App\Form\ProductType;
+use App\Form\FilesType;
 use App\Repository\DisciplinesRepository;
 use App\Repository\EntityRepository;
+use App\Repository\FilesRepository;
 use App\Service\FileUpLoader;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -197,7 +204,215 @@ class AdminController extends AbstractController
         ]);
     }
 
-     /**
+
+
+    /**
+     * @Route("/admin/entity", name="security_FormEntity")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param FileUpLoader $fileUpLoader
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
+     * @return Response
+     */
+    public function createFormEntity(
+        Request $request,
+        ObjectManager $manager,
+        FileUpLoader $fileUpLoader,
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
+    ){
+        $disciplines = $disciplinesRepository->findAll();
+        $entity = $entityRepository->findAll();
+        $entityy= new Entity();
+        //je relie mon formulaire ç la class entity => me permet de récuperer les champs de la table entity
+        $form=$this->createForm(EntityType::class,$entityy);
+        $form->handleRequest($request);
+        dump($form);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $file=$entityy->getLogo();
+            $fileName = $fileUpLoader->upload($file);
+            $entityy->setLogo($fileName);
+            $file=$entityy->getLogopage();
+            $fileName = $fileUpLoader->upload($file);
+            $entityy->setLogopage($fileName);
+            $file=$entityy->getPhotobandeau();
+            $fileName = $fileUpLoader->upload($file);
+            $entityy->setPhotobandeau($fileName);
+            $manager->persist($entityy);
+            $manager->flush();
+            return $this->redirectToRoute('home');
+
+        }
+        return $this->render('admin/formEntity.html.twig',[
+            'formEntity'=>$form->createView(),
+            'entitys' => $entity,
+            'discipliness' => $disciplines
+
+        ]);
+    }
+
+    /**
+     * @Route("/admin/disciplines", name="security_FormDisciplines")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param FileUpLoader $fileUpLoader
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
+     * @return Response
+     */
+    public function createFormDisciplines(
+        Request $request,
+        ObjectManager $manager,
+        FileUpLoader $fileUpLoader,
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
+    ){
+        $disciplines = $disciplinesRepository->findAll();
+        $entity = $entityRepository->findAll();
+        $discipliness= new Disciplines();
+        //je relie mon formulaire ç la class disciplines => me permet de récuperer les champs de la table disciplines
+        $form=$this->createForm(DisciplinesType::class,$discipliness);
+        $form->handleRequest($request);
+        dump($form);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $manager->persist($discipliness);
+            $manager->flush();
+            return $this->redirectToRoute('club');
+
+        }
+        return $this->render('admin/formDisciplines.html.twig',[
+            'formDisciplines'=>$form->createView(),
+            'entitys' => $entity,
+            'discipliness' => $disciplines
+
+        ]);
+    }
+
+    /**
+     * @Route("/admin/files", name="security_FormFiles")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param FileUpLoader $fileUpLoader
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
+     * @return Response
+     */
+    public function createFormFiles(
+        Request $request,
+        ObjectManager $manager,
+        FileUpLoader $fileUpLoader,
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
+    ){
+        $disciplines = $disciplinesRepository->findAll();
+        $entity = $entityRepository->findAll();
+        $files= new Files();
+        //je relie mon formulaire à la class files => me permet de récuperer les champs de la table files
+        $form=$this->createForm(FilesType::class,$files);
+        $form->handleRequest($request);
+        dump($form);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $file=$files->getLink();
+            $fileName = $fileUpLoader->upload($file);
+            $files->setLink($fileName);
+            //$fileSize = $files->getSize();
+            $manager->persist($files);
+            $manager->flush();
+            return $this->redirectToRoute('document');
+
+        }
+        return $this->render('admin/formFiles.html.twig',[
+            'formFiles'=>$form->createView(),
+            'entitys' => $entity,
+            'discipliness' => $disciplines
+
+        ]);
+    }
+
+    /**
+     * @Route("/admin/event/edit/{$id}",name="event_edit")
+     * @param Request $request
+     * @param Events $events
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
+     * @return Response
+     * @return RedirectResponse|Response
+     */
+    public function edit(
+        Request $request,
+        Events $events,
+        FileUpLoader$fileUpLoader,
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
+){
+        $disciplines = $disciplinesRepository->findAll();
+        $entity = $entityRepository->findAll();
+        $form = $this->createForm(EventType::class, $events,FileUpLoader::class);
+
+        //analyse de la requete reçu avec les différents champs du formulaires
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+          // $events->setTitle($events);
+
+            // Le persist est optionnel
+           // $this->getDoctrine()->getManager()->flush();
+           // $this->addFlash('success', 'Evenement '.$events->getId().' a bien été modifié.');
+
+            return $this->redirectToRoute('/');
+        }
+
+        return $this->render('admin/formEvent.html.twig', [
+            'event' => $events,
+            'form' => $form->createView(),
+            'entitys' => $entity,
+            'discipliness' => $disciplines
+        ]);
+    }
+
+    /**
+     * @Route("/admin/disciplines/{id}",name="disciplines_delete", methods={"POST"})
+     * @param Request $request
+     * @param Disciplines $discipliness
+     * @return RedirectResponse
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
+     * @return Response
+     */
+    public function deleteDisciplines(
+        Request $request,
+        Disciplines $discipliness,
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
+    ){
+        $disciplines = $disciplinesRepository->findAll();
+        $entity = $entityRepository->findAll();
+        if (!$this->isCsrfTokenValid('delete', $request->get('token'))) {
+            return $this->redirectToRoute('/',[
+                'entitys' => $entity,
+                'discipliness' => $disciplines
+            ]);
+        }
+        // $em = $entityManager
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($discipliness);
+        $em->flush();
+        $this->addFlash('success', 'Discipline '.$discipliness->getName().' a bien été supprimée');
+
+        return $this->redirectToRoute('home',[
+            'entitys' => $entity,
+            'discipliness' => $disciplines
+        ]);
+
+
+
+    }
+
+    /**
      * @Route("/admin/event/{id}",name="event_delete", methods={"POST"})
      * @param Request $request
      * @param Events $events

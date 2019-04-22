@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EntityRepository")
@@ -18,68 +19,94 @@ class Entity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Adress;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email()
      */
     private $Email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Directorname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex(pattern="/^\(0\)[0-9]*$", message="numéro de téléphone")
      */
     private $Directorphone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email()
      */
     private $Directoremail;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\File( maxSize = "5M")
      */
     private $Logo;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min="10",minMessage="Description mini 10 caractères")
+     * @Assert\NotBlank()
      */
     private $Descriptive;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Color;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $Linkmap;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Postalcity;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $Facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\File( maxSize = "5M")
+     */
+    private $Logopage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\File( maxSize = "5M")
+     */
+    private $Photobandeau;
 
     public function getId(): ?int
     {
@@ -170,12 +197,12 @@ class Entity
         return $this;
     }
 
-    public function getLogo(): ?string
+    public function getLogo()
     {
         return $this->Logo;
     }
 
-    public function setLogo(string $Logo): self
+    public function setLogo($Logo): self
     {
         $this->Logo = $Logo;
 
@@ -238,6 +265,30 @@ class Entity
     public function setFacebook(string $Facebook): self
     {
         $this->Facebook = $Facebook;
+
+        return $this;
+    }
+
+    public function getLogopage()
+    {
+        return $this->Logopage;
+    }
+
+    public function setLogopage($Logopage): self
+    {
+        $this->Logopage = $Logopage;
+
+        return $this;
+    }
+
+    public function getPhotobandeau()
+    {
+        return $this->Photobandeau;
+    }
+
+    public function setPhotobandeau($Photobandeau): self
+    {
+        $this->Photobandeau = $Photobandeau;
 
         return $this;
     }
