@@ -1,7 +1,19 @@
 body {
     background-color: #d7d7d7;
 }
+/**
 
+    CLUB PAGE
+ */
+.club_role, .club_h2 {
+     text-decoration: underline;
+ }
+.club_description {
+    height:100vh;
+    border: 2px;
+}
+/**
+    END CLUB PAGE
 */
 /**
     NAVBAR
@@ -40,9 +52,6 @@ body {
     color:  #46ddc9;
 }
 
-.instructor_link, .instructor_link:hover {
-    color: black;
-}
 /**
     END INSTRUCTORS PAGE
 */
