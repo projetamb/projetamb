@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DisciplinesRepository")
@@ -18,11 +19,14 @@ class Disciplines
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min="10",minMessage="Description mini 10 caractères")
+     * @Assert\NotBlank()
      */
     private $description;
 

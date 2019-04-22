@@ -43,6 +43,8 @@ class AppFixtures extends Fixture
         $entity->setColor("#d7d7d7");
         $entity->setLinkmap("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2536.089131130008!2d2.812029415158197!3d50.53251288933042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd2f6e367cfde1%3A0x9f8d2c62c0babb6e!2s45+Rue+Gabriel+P%C3%A9ri%2C+59480+La+Bass%C3%A9e!5e0!3m2!1sfr!2sfr!4v1555422888757!5m2!1sfr!2sfr");
         $entity->setFacebook("https://www.facebook.com/artsmartiauxbasseens/");
+        $entity->setLogopage("logo_forClub.png");
+        $entity->setPhotobandeau("timothy-eberly-515801-unsplash.jpg");
         $manager->persist($entity);
 
         // table Disciplines

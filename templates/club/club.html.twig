@@ -2,7 +2,7 @@
 
 {% block body %}
 {% for entity in entitys %}
-<div class="example-wrapper club_description">
+<div class="example-wrapper club_description" style="background-image: url(../img/{{ entity.logopage }});">
     <section class="text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ entity.name }}</h1>
@@ -18,14 +18,34 @@
 
 <div class="container">
     <h2 class="text-center my-5 club_h2">Disciplines :</h2>
-    <div class="club_disciplines my-5">
+        {% if app.user %}
+        <a href="{{ path('security_FormDisciplines') }}" class="badge badge-pill badge-primary">
+            <i class="fa fa-plus"> Ajouter</i>
+        </a>
+        {% endif %}
 
+    <div class="club_disciplines my-5">
         <div class="row">
         {% for disciplines in discipliness %}
-            <div class="col-6 py-3 px-5">
-                <h3 class="text-center">{{ disciplines.name }}</h3>
-                <p>{{ disciplines.description }}</p>
-            </div>
+            {% if not app.user %}
+                <div class="col-6 py-3 px-5">
+                    <h3 class="text-center">{{ disciplines.name|upper }}</h3>
+                    <p>{{ disciplines.description }}</p>
+                </div>
+            {% else %}
+                <div class="col-6 py-3 px-5">
+                    <h3 class="text-center">{{ disciplines.name|upper }}
+                    <form class="d-inline" method="post" action="{{ path('disciplines_delete', {'id': disciplines.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ disciplines.name }} ?')">
+                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </form>
+                    <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    </h3>
+                    <p>{{ disciplines.description }}</p>
+                </div>
+            {% endif %}
         {% endfor %}
         </div>
     </div>
@@ -39,7 +59,7 @@
                     {% for personnal in personnals %}
                         {% if not app.user %}
                     {% if  personnal.role == 'Président' %}
-                        <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
+                        <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
                         <div class="card-body">
                             <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                             <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
@@ -50,7 +70,7 @@
                     {% else %}
                         {% if  personnal.role == 'Président' %}
 
-                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président AMB">
+                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
                             <div class="card-body">
                                 <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
@@ -74,7 +94,7 @@
                 {% for personnal in personnals %}
                     {% if not app.user %}
                 {% if  personnal.role == 'Secrétaire' %}
-                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire AMB">
+                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire>
                     <div class="card-body">
                         <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                         <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
@@ -85,7 +105,7 @@
                     {% else %}
                         {% if  personnal.role == 'Secrétaire' %}
 
-                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire AMB">
+                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire">
                             <div class="card-body">
                                 <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
@@ -109,7 +129,7 @@
                 {% for personnal in personnals %}
                     {% if not app.user %}
                 {% if  personnal.role == 'Trésorier' %}
-                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier AMB">
+                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier">
                     <div class="card-body">
                         <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                         <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
@@ -120,7 +140,7 @@
                     {% else %}
                         {% if  personnal.role == 'Trésorier' %}
 
-                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier AMB">
+                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier">
                             <div class="card-body">
                                 <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>

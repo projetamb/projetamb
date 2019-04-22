@@ -11,6 +11,7 @@ class DocumentController extends AbstractController
 {
     /**
      * @Route("/document", name="document")
+     * @param FilesRepository $filesRepository
      * @param EntityRepository $entityRepository
      * @return Response
      */
