@@ -3,22 +3,23 @@
 
 
 {% block body %}
+    {% for entity in entitys %}
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h2 class="display-4">Mentions légales du site<br> {{ sitename }}</h2>
+            <h2 class="display-4">Mentions légales du site<br> {{ entity.name }}</h2>
         </div>
     </div>
     <div class="container">
         <div class="row">
             <div class="py-2 my-3">
-                <h2>{{ sitename }}</h2>
-                45 Rue Gabriel Péri 59480 La Bassée <br>
+                <h2>{{ entity.name }}</h2>
+                {{ entity.adress }} {{ entity.postalcity }} <br>
 
 
                 <h2>Directeur/trice de publication</h2>
-                Vincent Robin <br>
-                06 13 82 29 87<br>
-                v.robin59@gmail.com<br>
+                {{ entity.directorname }} <br>
+                {{ entity.directorphone }}<br>
+                {{ entity.directoremail }}<br>
 
                 <h2>Hébergeur</h2>
                 [coordonnées de l'hébergeur du site]<br>
@@ -32,4 +33,5 @@
             </div>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}

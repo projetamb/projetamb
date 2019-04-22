@@ -3,52 +3,53 @@
 
 
 {% block body %}
-
-
- <span class="badge badge-pill badge-info">Info Les évènements</span>
-    <div class="container">
-
-
+    <div class="instructors_jumbotron jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4" style="text-align: left;">Nos évènements</h1>
+            <div class="div_h1"></div>
+        </div>
+    </div>
+    <!-- Photo by Timothy Eberly on Unsplash -->
         <div class="container">
             <div class="row">
-
                 {% for evenement in event %}
                     {% if not app.user %}
-                <div class="col-12 col-md-6 col-lg-4 mb-5">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ evenement.photo }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ evenement.title }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
-                            <p class="card-text">{{ evenement.description }}</p>
-                        </div>
-                    </div>
-
-                </div>
-                    {% else %}
-
-                        <div class="col-12 col-md-6 col-lg-4 mb-5">
+                     <div class="col-12 col-md-6 col-lg-4 mb-5">
                             <div class="card" style="width: 18rem;">
-                               <img src="{{ evenement.photo }}" class="card-img-top" alt="...">
+                                <span class="badge badge-pill badge-info"> Evènements</span>
+                                <img src="{{ evenement.photo }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ evenement.title }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
                                     <p class="card-text">{{ evenement.description }}</p>
-                                    <a href="{{ path('event_edit', {'id': evenement.id}) }}" class="btn btn-info">
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-12 col-md-6 col-lg-4 mb-5">
+                            <div class="card" style="width: 18rem;">
+                               <img src="{{ "/img/"~ evenement.photo }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ evenement.title }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
+                                    <p class="card-text">{{ evenement.description }}</p>
+                                     <a href="{{ path('event_edit', {'id': evenement.id}) }}" class="btn btn-info">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <form class="d-inline" method="post" action="{{ path('event_delete', {'id': evenement.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ evenement.title }} ?')">
                                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                         <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
+
                                 </div>
                             </div>
+
                         </div>
                     {% endif %}
-                {% endfor %}
+                  {% endfor %}
             </div>
         </div>
-    </div>
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventsRepository")
@@ -13,16 +14,21 @@ class Events
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $place;
 
@@ -33,6 +39,8 @@ class Events
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min="10",minMessage="Description mini 10 caractères")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -43,21 +51,25 @@ class Events
 
     /**
      * @ORM\Column(type="string", length=255)
+     *@Assert\File( maxSize = "5M")
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $organisator;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email()
      */
     private $email_contact;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex(pattern="/^\(0\)[0-9]*$", message="numéro de téléphone")
      */
     private $phone_contact;
 
@@ -126,12 +138,12 @@ class Events
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPhoto()
     {
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto( $photo): self
     {
         $this->photo = $photo;
 

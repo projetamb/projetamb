@@ -1,0 +1,107 @@
+<footer class="py-4 text-white" id="myFooter">
+    <!-- Dev du site -->
+    <div class="container" id="footerContainer">
+        <div class="card" id="footerCard-body">
+            <div class="card-body text-center">
+                <h6 class="card-text">
+                    <a class="dropdown-toggle" href="#menu" data-toggle="collapse">Un site développé par </a>
+                </h6>
+            </div>
+            <div id="menu" class="collapse text-center">
+                <div class="row offset-2">
+                    <!-- 1 - VINCENT ROBIN -->
+                    <div class="col-lg-2">
+                        <!-- photo dev -->
+                        </br>
+                        <img src="{{ asset('img/vincent.jpg') }}" width="50" height="50" class="rounded-circle"
+                             alt="vincent-robin">
+                        <!-- informations dev -->
+                        <div class="py-2">
+                            <!-- Nom/prénom -->
+                            <a>Vincent</a></br>
+                            <a>Robin</a></br>
+                            <!-- Lien(s) -->
+                            <a href="https://www.linkedin.com/in/vincent-robin/" class="linkedin"
+                               target="_blank"><span class="fa fa-linkedin linkedin px-2 py-2" alt="vers profil linkedin"></span></a>
+                        </div>
+                    </div>
+                    <!-- 2 - LAURENT GAGNEUR -->
+                    <div class="col-lg-2">
+                        <!-- photo dev -->
+                        </br>
+                        <img src="{{ asset('img/laurent.jpg') }}" width="50" height="50" class="rounded-circle"
+                             alt="laurent-gagneur">
+                        <!-- informations dev -->
+                        <div class="py-2">
+                            <!-- Nom/prénom -->
+                            <a>Laurent</a></br>
+                            <a>Gagneur</a></br>
+                            <!-- Lien(s) -->
+                            <a href="https://www.linkedin.com/in/laurent-gagneur/" class="linkedin"
+                               target="_blank"><span class="fa fa-linkedin linkedin px-2 py-2" alt="vers profil linkedin"></span></a>
+                        </div>
+                    </div>
+                    <!-- 3 - JEAN PERRAULT -->
+                    <div class="col-lg-2">
+                        <!-- photo dev -->
+                        </br>
+                        <img src="{{ asset('img/jean.jpg') }}" width="50" height="50" class="rounded-circle"
+                             alt="jean-perrault">
+                        <!-- informations dev -->
+                        <div class="py-2">
+                            <!-- Nom/prénom -->
+                            <a>Jean</a></br> 
+                            <a>Perrault</a></br>
+                            <!-- Lien(s) -->
+                            <a href="https://www.linkedin.com/in/jean-perrault/" class="linkedin"
+                               target="_blank"><span class="fa fa-linkedin linkedin px-2 py-2" alt="vers profil linkedin"></span></a>
+                        </div>
+                    </div>
+                    <!-- 4 - GEOFFREY MONIEZ -->
+                    <div class="col-lg-2">
+                        <!-- photo dev -->
+                        </br>
+                        <img src="{{ asset('img/geoffrey.jpg') }}" width="50" height="50" class="rounded-circle"
+                             alt="geoffrey-moniez">
+                        <!-- informations dev -->
+                        <div class="py-2">
+                            <!-- Nom/prénom -->
+                            <a>Geoffrey</a></br>
+                            <a>Moniez</a></br>
+                            <!-- Lien(s) -->
+                            <a href="https://www.linkedin.com/in/geoffrey-moniez/" class="linkedin"
+                               target="_blank"><span class="fa fa-linkedin linkedin px-2 py-2" alt="vers profil linkedin"></span></a>
+                        </div>
+                    </div>
+                    <!-- 5 - MELISANDE BARATTE -->
+                    <div class="col-lg-2">
+                        <!-- photo dev -->
+                        </br>
+                        <img src="{{ asset('img/melisande.jpg') }}" width="50" height="50" class="rounded-circle"
+                             alt="melisande-baratte">
+                        <!-- informations dev -->
+                        <div class="py-2">
+                            <!-- Nom/prénom -->
+                            <a>Mélisande</a></br>
+                            <a>Baratte</a></br>
+                            <!-- Lien(s) -->
+                            <a href="https://www.linkedin.com/in/melisande-baratte/" class="linkedin"
+                               target="_blank"><span class="fa fa-linkedin linkedin px-2 py-2" alt="vers profil linkedin"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright, mentions légales -->
+   {# {% for entity in entitys %}
+    <div class="container">
+        <div class="text-center my-2">
+            <a href="/#contactForm" class="px-3">Contactez-nous</a> | <a href={{ entity.facebook }} target="_blank" class="px-3">Suivez-nous sur facebook</a> | <a href="http://localhost:8000/legal_notice" class="px-3">Mentions légales</a>
+        </div>
+        <div class="col-12 py-2 text-center">
+            Copyright &copy; 2019 <img src="{{ asset('img/') }}{{ entity.logo }}" style="height: 30px; width: 30px;" class="mx-2"> {{ entity.name }}
+        </div>
+    </div>
+    {% endfor %}#}
+</footer>

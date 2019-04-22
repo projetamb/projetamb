@@ -34,24 +34,21 @@
             </button>
         </div>
     </div>
-
+{% for entity in entitys %}
     <div class="container my-5">
 
-        <h2 class="text-center">Association sportive</h2>
+        <h2 class="text-center">{{ entity.type }}</h2>
 
-        <h1 class="text-center">{{ sitename }}</h1>
+        <h1 class="text-center">{{ entity.name }}</h1>
 
         <!-- Présentation -->
         <div class="row my-5 py-5">
+            {% for disciplines in discipliness  %}
             <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
-                <h3 class="text-center">Taekwondo</h3>
-                <p>Quisquam pharetra, dignissimos minus corrupti ullamco, praesent illum occaecat, aperiam, feugiat molestiae, tempore aliquid. Mauris nec torquent, autem, id, consequat.</p>
+                <h3 class="text-center">{{ disciplines.name }}</h3>
+                <p>{{ disciplines.description }}</p>
             </div>
-
-            <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
-                <h3 class="text-center">Krav maga</h3>
-                <p>Lorem do culpa. Scelerisque conubia minima integer rem molestie exercitation? Necessitatibus, tincidunt? Conubia pariatur occaecati! Diamlorem tempora accusamus eius suscipit.</p>
-            </div>
+           {% endfor %}
         </div>
 
         <!--  -->
@@ -67,11 +64,11 @@
             <div class="col-xl-6 col-sm-12 col-12 py-3">
                 <h3 class="text-uppercase text-center">Où nous trouver ?</h3>
 
-                <p class="py-3 text-center">Arts Martiaux Basséens<br>
-                    45 Rue Gabriel Péri<br>
-                    59480 La Bassée</p>
+                <p class="py-3 text-center">{{ entity.name }}<br>
+                    {{ entity.adress }}<br>
+                    {{ entity.postalcity }}</p>
                 <div class="ifram text-center">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2536.089131130008!2d2.812029415158197!3d50.53251288933042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd2f6e367cfde1%3A0x9f8d2c62c0babb6e!2s45+Rue+Gabriel+P%C3%A9ri%2C+59480+La+Bass%C3%A9e!5e0!3m2!1sfr!2sfr!4v1555422888757!5m2!1sfr!2sfr" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe src={{ entity.linkmap }} width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -96,5 +93,6 @@
             </div>
         </div>
     </div>
+{% endfor %}
 {% endblock %}
 
