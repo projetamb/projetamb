@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhotosRepository")
@@ -28,6 +29,10 @@ class Photos
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(maxSize="3M",
+     *      maxSizeMessage="Le fichier excède 3Mo.",
+     *      mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/svg+xml", "image/gif"},
+     *      mimeTypesMessage= "formats autorisés: png, jpeg, jpg, svg, gif")
      */
     private $photo;
 
@@ -60,12 +65,12 @@ class Photos
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPhoto()
     {
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto( $photo): self
     {
         $this->photo = $photo;
 

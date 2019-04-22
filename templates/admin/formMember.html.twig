@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <H1>Ajout d'un Membre du bureau</H1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                {{ form_start(FormMember) }}
+
+                {{ form_row(FormMember.lastname,{'attr': {'placeholder':"Nom "}}) }}
+                {{ form_row(FormMember.firstname,{'attr': {'placeholder':"Prénom "}}) }}
+                {{ form_row(FormMember.email) }}
+                {{ form_row(FormMember.phone) }}
+                {{ form_row(FormMember.role) }}
+                {{ form_row(FormMember.address) }}
+                {{ form_row(FormMember.grade) }}
+                {{ form_row(FormMember.link) }}
+                {{ form_row(FormMember.description) }}
+                {{ form_row((FormMember.photo)) }}
+
+                <button type="submit" class="btn btn-success">
+                    {#{% if editMode %}
+                         Enregistrer les modifications
+                         {% else %}
+                         Ajouter l'évenement
+                     {% endif %} #}
+                    Ajouter
+                </button>
+                {{ form_end(FormMember) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
