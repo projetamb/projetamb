@@ -59,9 +59,15 @@ class AdminController extends AbstractController
             'discipliness' => $disciplines
         ]);
     }
+    /*************************************************************************
+     *  Creation et modification d'un membre via le même form
+     * On utilise 2 routes une pour la creation et une pour la modif
+     *
+     *************************************************************************/
 
     /**
      * @Route("/admin/member",name="securityFormMember")
+     * @Route("/admin/member/{id}/edit", name="security_FormMemberEd")
      * @param Personnal $personnal
      * @param Request $request
      * @param ObjectManager $manager
@@ -71,17 +77,21 @@ class AdminController extends AbstractController
      * @return Response
      */
         public function formMember(
-
                                            Request $request,
                                            ObjectManager $manager,
                                            FileUpLoader $fileUpLoader,
                                            EntityRepository $entityRepository,
-                                           DisciplinesRepository $disciplinesRepository
-        )
+                                           DisciplinesRepository $disciplinesRepository,
+                                           Personnal $personnal=null
+                                 )
         {
             $disciplines = $disciplinesRepository->findAll();
             $entity = $entityRepository->findAll();
-            $personnal=new Personnal();
+            if(!$personnal)
+            {
+                $personnal=new Personnal();
+            }
+
             $form  =$this->createForm(MemberType::class,$personnal);
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid())
@@ -106,7 +116,6 @@ class AdminController extends AbstractController
      *
      * @Route("/admin/event", name="security_FormEvent")
      * @Route("/admin/event/{id}/edit", name="security_formEventEdit")
-     *
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -116,20 +125,21 @@ class AdminController extends AbstractController
      */
 
     public function formEvent(
-       // Events $events ,
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
-){
+        DisciplinesRepository $disciplinesRepository,
+        Events $events = NULL
+        )
+        {
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
 
        // si j'ai pas d'evenemnt, j'en crée un
-        //if( !$events){
+        if( !$events){
             $events = new Events();
-        //}
+        }
 
         dump($events);
 
@@ -161,7 +171,7 @@ class AdminController extends AbstractController
             'formEvent'=>$form->createView(),
             'entitys' => $entity,
             'discipliness' => $disciplines,
-          //  'editMode'=>$evenement->getId()!==null,// permet de savoir si je suis en edit ou en new.
+           'editMode'=>$events->getId()!==null,// permet de savoir si je suis en edit ou en new.
         ]);
     }
     /**
