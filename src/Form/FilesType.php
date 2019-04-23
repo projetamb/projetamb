@@ -13,6 +13,7 @@ class FilesType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('discipline')
             ->add('link')
             ->add('size')
         ;

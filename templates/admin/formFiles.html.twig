@@ -10,6 +10,7 @@
             <div class="col-6">
                 {{ form_start(formFiles,{'attr': {'novalidate': 'novalidate'}}) }}
                 {{ form_row(formFiles.title,{'attr': {'placeholder':"Nom du document "}}) }}
+                {{ form_row(formFiles.discipline,{'attr': {'placeholder':"Discipline du document "}}) }}
                 {{ form_row(formFiles.link,{'attr': {'placeholder':"lien du document "}}) }}
                 {{ form_row(formFiles.size,{'attr': {'placeholder':"taille du document (ex: 974 Ko) "}}) }}
                 <button type="submit" class="btn btn-success">Enregistrer</button>

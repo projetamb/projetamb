@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\DisciplinesRepository;
 use App\Repository\EntityRepository;
 use App\Repository\FilesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,13 +18,16 @@ class DocumentController extends AbstractController
      */
     public function show(
         FilesRepository $filesRepository,
-        EntityRepository $entityRepository
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
 ){
         $files = $filesRepository->findAll();
         $entity = $entityRepository->findAll();
+        $disciplines = $disciplinesRepository->findAll();
         return $this->render('document/doc.html.twig', [
             'files' => $files,
             'entitys' => $entity,
+            'discipliness' => $disciplines,
         ]);
     }
 }
