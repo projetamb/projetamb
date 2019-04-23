@@ -12,6 +12,7 @@
         </div>
     </div>
     {% endfor %}
+
     <!-- Photo by Timothy Eberly on Unsplash -->
     <!-- Cards Instructeurs-->
     <div class="container">
@@ -29,6 +30,7 @@
                     <img src="{{ "/img/"~ instructor.photo }}" class="card-img-top" alt="photo instructeur">
                     <div class="card-body">
                         <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
+                        <p class="card-text">{{ instructor.grade }}</p>
                         <p class="card-text">{{ instructor.description }}</p>
                         {% if instructor.link != "" %}
                             <p class="card-text"><a class="instructor_link" target="_blank" href="{{ instructor.link }}">Site personnel</a></p>
@@ -43,6 +45,7 @@
                             <img src="{{ "/img/"~ instructor.photo }}" class="card-img-top" alt="photo instructeur">
                             <div class="card-body">
                                 <h5 class="card-title">{{ instructor.lastname }} {{ instructor.firstname }}</h5>
+                                <p class="card-text">{{ instructor.grade }}</p>
                                 <p class="card-text">{{ instructor.description }}</p>
                                 {% if instructor.link != "" %}
                                     <p class="card-text"><a class="instructor_link" target="_blank" href="{{ instructor.link }}">Site personnel</a></p>
@@ -51,7 +54,7 @@
                                     <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                     <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
-                                <a href="#" class="btn btn-sm btn-danger">
+                                <a href="{{ path('security_FormInstructeurEdit',{'id':instructor.id}) }}" class="btn btn-sm btn-danger">
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
