@@ -11,11 +11,21 @@
             <p class="mb-0">{{ entity.descriptive }}</p>
         </div>
     </section>
+
+    <!-- Arrow1 -->
+    <div class="arrow1">
+        <a href="#" id="button1">
+            <img class="arrow1" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
+        </a>
+    </div>
+    <!-- /Arrow1 -->
+
 </div>
 
 
+
 <div class="container">
-    <h2 class="text-center my-5 club_h2">Disciplines :</h2>
+    <h2 class="text-center my-5 club_h2" id="club_disciplines">Disciplines :</h2>
         {% if app.user %}
         <a href="{{ path('security_FormDisciplines') }}" class="badge badge-pill badge-primary">
             <i class="fa fa-plus"> Ajouter</i>
@@ -26,18 +36,18 @@
         <div class="row">
         {% for disciplines in discipliness %}
             {% if not app.user %}
-                <div class="col-6 py-3 px-5">
+                <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
                     <h3 class="text-center">{{ disciplines.name|upper }}</h3>
                     <p>{{ disciplines.description }}</p>
                 </div>
             {% else %}
-                <div class="col-6 py-3 px-5">
+                <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
                     <h3 class="text-center">{{ disciplines.name|upper }}
                     <form class="d-inline" method="post" action="{{ path('disciplines_delete', {'id': disciplines.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ disciplines.name }} ?')">
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                         <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                     </form>
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <a href="{{ path('security_formDisciplinesEdit', {'id': disciplines.id}) }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-pencil"></i>
                     </a>
                     </h3>
@@ -45,12 +55,24 @@
                 </div>
             {% endif %}
         {% endfor %}
+
+
+
+                <!-- Arrow2 -->
+                <div class="divArrow2">
+                    <a href="#" id="button2">
+                        <img class="arrow2" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
+                    </a>
+                </div>
+                <!-- /Arrow2 -->
+
         </div>
     </div>
 </div>
     <!--
     On teste si le mode admin est selectionné et on affiche le bouton ajouter
     -->
+
 
     <div class="container club_membres">
         <h2 class="text-center club_h2">Membres du bureau</h2>
@@ -96,10 +118,14 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
                             </div>
+                </div>
                         {% endif %}
                         {% endif %}
                     {% endfor %}
-                </div>
+
+
+
+
             </div>
         <div class="col-12 col-md-6 col-lg-4 mb-5">
             <div class="card mb-5">
@@ -172,6 +198,15 @@
                 {% endfor %}
             </div>
         </div>
+
+            <!-- Arrow3 -->
+            <div class="divArrow3">
+                <a href="#" id="button3">
+                    <img class="arrow3" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_up_48px-128.png" />
+                </a>
+            </div>
+            <!-- /Arrow3 -->
+            
         </div>
     </div>
 {% endfor %}
