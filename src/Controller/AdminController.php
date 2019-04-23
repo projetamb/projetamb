@@ -61,6 +61,8 @@ class AdminController extends AbstractController
             'entitys' => $entity,
             'discipliness' => $disciplines,
             'editMode'=>$entityy->getId()!==null,// permet de savoir si je suis en edit ou en new.
+
+
         ]);
     }
     /*************************************************************************
@@ -247,7 +249,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/entity", name="security_FormEntity")
-     * @Route("/admin/entity/{id}/edit", name="security_formEntityEdit")
+     * @Route("/admin/entity/{id}/edit", name="security_FormEntityEdit")
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
