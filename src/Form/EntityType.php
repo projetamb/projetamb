@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Entity;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,9 +24,13 @@ class EntityType extends AbstractType
             ->add('Directorphone')
             ->add('Directoremail')
             ->add('Logo')
-            ->add('Logopage')
-            ->add('Photobandeau')
-            ->add('Color')
+            //->add('Logopage')
+            //->add('Photobandeau')
+            ->add('Color', ChoiceType::class,[
+                'choices' => [
+                    'gris' => 'grey',
+                ]
+            ])
             ->add('Linkmap')
 
 
