@@ -107,7 +107,7 @@
                 {% for personnal in personnals %}
                     {% if not app.user %}
                 {% if  personnal.role == 'Secrétaire' %}
-                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire>
+                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire">
                     <div class="card-body">
                         <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                         <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>

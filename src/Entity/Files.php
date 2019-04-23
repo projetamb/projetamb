@@ -36,6 +36,12 @@ class Files
      */
     private $size;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $Discipline;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +79,18 @@ class Files
     public function setSize(string $size): self
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getDiscipline(): ?string
+    {
+        return $this->Discipline;
+    }
+
+    public function setDiscipline(string $Discipline): self
+    {
+        $this->Discipline = $Discipline;
 
         return $this;
     }
