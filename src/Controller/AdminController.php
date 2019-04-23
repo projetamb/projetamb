@@ -345,7 +345,7 @@ class AdminController extends AbstractController
     public function edit(
         Request $request,
         Events $events,
-        FileUpLoader$fileUpLoader,
+        FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
         DisciplinesRepository $disciplinesRepository
 ){
@@ -392,7 +392,7 @@ class AdminController extends AbstractController
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
         if (!$this->isCsrfTokenValid('delete', $request->get('token'))) {
-            return $this->redirectToRoute('/',[
+            return $this->redirectToRoute('home',[
                 'entitys' => $entity,
                 'discipliness' => $disciplines
             ]);
