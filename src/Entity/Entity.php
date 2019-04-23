@@ -49,7 +49,9 @@ class Entity
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+
      * @Assert\Regex(pattern="/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/")
+
      */
     private $Directorphone;
 

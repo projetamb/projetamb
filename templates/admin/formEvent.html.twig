@@ -22,13 +22,12 @@
                 {{ form_row(formEvent.photo,{'attr': {'placeholder':"affiche de l'évenement "}}) }}
               {# {{ form_widget(formEvent) }}#}
                 <button type="submit" class="btn btn-success">
-                   {#{% if editMode %}
+                   {% if editMode %}
                         Enregistrer les modifications
                         {% else %}
                         Ajouter l'évenement
-                    {% endif %} #}
-                    Ajouter
-                   </button>
+                    {% endif %}
+                     </button>
                 {{ form_end(formEvent) }}
 
             </div>
