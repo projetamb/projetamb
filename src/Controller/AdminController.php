@@ -48,15 +48,19 @@ class AdminController extends AbstractController
      */
     public function admin(
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
+        DisciplinesRepository $disciplinesRepository,
+        Entity $entityy = NULL
     ){
-
+        if( !$entityy){
+            $entityy= new Entity();
+        }
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
         return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',
             'entitys' => $entity,
-            'discipliness' => $disciplines
+            'discipliness' => $disciplines,
+            'editMode'=>$entityy->getId()!==null,// permet de savoir si je suis en edit ou en new.
         ]);
     }
     /*************************************************************************
@@ -216,8 +220,10 @@ class AdminController extends AbstractController
 
 
 
+
     /**
      * @Route("/admin/entity", name="security_FormEntity")
+     * @Route("/admin/entity/{id}/edit", name="security_formEntityEdit")
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -225,16 +231,21 @@ class AdminController extends AbstractController
      * @param DisciplinesRepository $disciplinesRepository
      * @return Response
      */
-    public function createFormEntity(
+    public function formEntity(
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
+        DisciplinesRepository $disciplinesRepository,
+        Entity $entityy = NULL
     ){
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
-        $entityy= new Entity();
+        // si j'ai pas d'Entity, j'en crée une
+        if( !$entityy){
+            $entityy= new Entity();
+        }
+
         //je relie mon formulaire ç la class entity => me permet de récuperer les champs de la table entity
         $form=$this->createForm(EntityType::class,$entityy);
         $form->handleRequest($request);
@@ -258,13 +269,15 @@ class AdminController extends AbstractController
         return $this->render('admin/formEntity.html.twig',[
             'formEntity'=>$form->createView(),
             'entitys' => $entity,
-            'discipliness' => $disciplines
+            'discipliness' => $disciplines,
+            'editMode'=>$entityy->getId()!==null,// permet de savoir si je suis en edit ou en new.
 
         ]);
     }
 
     /**
      * @Route("/admin/disciplines", name="security_FormDisciplines")
+     * @Route("/admin/disciplines/{id}/edit", name="security_formDisciplinesEdit")
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -272,16 +285,21 @@ class AdminController extends AbstractController
      * @param DisciplinesRepository $disciplinesRepository
      * @return Response
      */
-    public function createFormDisciplines(
+    public function formDisciplines(
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
+        DisciplinesRepository $disciplinesRepository,
+        Disciplines $discipliness = NULL
     ){
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
-        $discipliness= new Disciplines();
+        // si j'ai pas de discipline, j'en crée une
+        if( !$discipliness){
+            $discipliness= new Disciplines();
+        }
+
         //je relie mon formulaire ç la class disciplines => me permet de récuperer les champs de la table disciplines
         $form=$this->createForm(DisciplinesType::class,$discipliness);
         $form->handleRequest($request);
@@ -296,8 +314,8 @@ class AdminController extends AbstractController
         return $this->render('admin/formDisciplines.html.twig',[
             'formDisciplines'=>$form->createView(),
             'entitys' => $entity,
-            'discipliness' => $disciplines
-
+            'discipliness' => $disciplines,
+            'editMode'=>$discipliness->getId()!==null,// permet de savoir si je suis en edit ou en new.
         ]);
     }
 
