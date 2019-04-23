@@ -268,12 +268,12 @@ class AdminController extends AbstractController
             $file=$entityy->getLogo();
             $fileName = $fileUpLoader->upload($file);
             $entityy->setLogo($fileName);
-            $file=$entityy->getLogopage();
+            /*$file=$entityy->getLogopage();
             $fileName = $fileUpLoader->upload($file);
             $entityy->setLogopage($fileName);
             $file=$entityy->getPhotobandeau();
             $fileName = $fileUpLoader->upload($file);
-            $entityy->setPhotobandeau($fileName);
+            $entityy->setPhotobandeau($fileName);*/
             $manager->persist($entityy);
             $manager->flush();
             return $this->redirectToRoute('home');
@@ -397,6 +397,41 @@ class AdminController extends AbstractController
         $em->remove($discipliness);
         $em->flush();
         $this->addFlash('success', 'Discipline '.$discipliness->getName().' a bien été supprimée');
+
+        return $this->redirectToRoute('home',[
+            'entitys' => $entity,
+            'discipliness' => $disciplines
+        ]);
+    }
+
+    /**
+     * @Route("/admin/document/{id}",name="document_delete", methods={"POST"})
+     * @param Request $request
+     * @param Files $document
+     * @return RedirectResponse
+     * @param EntityRepository $entityRepository
+     * @param DisciplinesRepository $disciplinesRepository
+     * @return Response
+     */
+    public function deleteDocument(
+        Request $request,
+        Files $document,
+        EntityRepository $entityRepository,
+        DisciplinesRepository $disciplinesRepository
+    ){
+        $disciplines = $disciplinesRepository->findAll();
+        $entity = $entityRepository->findAll();
+        if (!$this->isCsrfTokenValid('delete', $request->get('token'))) {
+            return $this->redirectToRoute('/',[
+                'entitys' => $entity,
+                'discipliness' => $disciplines
+            ]);
+        }
+        // $em = $entityManager
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($document);
+        $em->flush();
+        $this->addFlash('success', 'Document '.$document->getTitle().' a bien été supprimé');
 
         return $this->redirectToRoute('home',[
             'entitys' => $entity,
