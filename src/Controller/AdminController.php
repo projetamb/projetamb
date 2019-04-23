@@ -244,12 +244,12 @@ class AdminController extends AbstractController
             $file=$entityy->getLogo();
             $fileName = $fileUpLoader->upload($file);
             $entityy->setLogo($fileName);
-            /*$file=$entityy->getLogopage();
+            $file=$entityy->getLogopage();
             $fileName = $fileUpLoader->upload($file);
             $entityy->setLogopage($fileName);
             $file=$entityy->getPhotobandeau();
             $fileName = $fileUpLoader->upload($file);
-            $entityy->setPhotobandeau($fileName);*/
+            $entityy->setPhotobandeau($fileName);
             $manager->persist($entityy);
             $manager->flush();
             return $this->redirectToRoute('home');
