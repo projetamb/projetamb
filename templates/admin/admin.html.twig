@@ -15,13 +15,14 @@
                 <h1> <a href="{{ path('security_FormInstructor') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un instructeur</h1>
-                <h1> <a href="#" class="btn btn-sm btn-primary">
+                <h1> <a href="{{ path('securityFormMember') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un membre du bureau</h1>
                 <h1> <a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un document</h1>
                 {% if editMode %}
+                    dump(editMode);
                     <h1> <a href="{{ path('security_FormEntityEdit') }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-plus"></i>
                         </a>Modifier l'entité</h1>
