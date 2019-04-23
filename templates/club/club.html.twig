@@ -91,7 +91,7 @@
                                     <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                     <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
-                                <a href="#" class="btn btn-sm btn-primary">
+                                <a href="{{ path('security_FormMemberEdit',{'id':personnal.id}) }}" class="btn btn-sm btn-primary">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                             </div>

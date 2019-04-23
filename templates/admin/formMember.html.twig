@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <H1>Ajout d'un Membre du bureau</H1>
+    {% if editMode %}
+        <H1>
+            Modification d'un Membre du bureau</H1>
+    {% else %}
+        <H1>Ajout d'un Membre du bureau</H1>
+    {% endif %}
+
     <div class="container">
         <div class="row">
             <div class="col-6">
@@ -19,11 +25,11 @@
                 {{ form_row((FormMember.photo)) }}
 
                 <button type="submit" class="btn btn-success">
-                    {#{% if editMode %}
+                    {% if editMode %}
                          Enregistrer les modifications
                          {% else %}
-                         Ajouter l'évenement
-                     {% endif %} #}
+                         Ajouter le membre
+                     {% endif %}
                     Ajouter
                 </button>
                 {{ form_end(FormMember) }}
