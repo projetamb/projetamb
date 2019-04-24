@@ -12,6 +12,7 @@
                 </div>
             </section>
 
+
             <!-- Arrow1 -->
             <div class="arrow1">
                 <a href="#" id="button1">
@@ -91,12 +92,14 @@
             </div>
 
 
+
             <div class="row my-5">
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
                     <div class="card mb-5">
 
                         {% for personnal in personnals %}
                             {% if  personnal.role == 'Président' %}
+
                             <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
                             <div class="card-body">
                                 <h2 class="card-title club_role">{{ personnal.role }} :</h2>
@@ -104,6 +107,7 @@
                                 <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
                                 <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
                             </div>
+
                             {% endif %}
 
                             {% if app.user %}
@@ -125,6 +129,26 @@
                      </div><!-- /.card mb-5 -->
                 </div>
 
+
+                        <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
+                        <div class="card-body">
+                            <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                            <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                            <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                            <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                            <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            </form>
+                            <a href="{{ path('security_FormMemberEdit',{'id':personnal.id}) }}" class="btn btn-sm btn-primary">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
 
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
                     <div class="card mb-5">
@@ -159,7 +183,6 @@
                     </div><!-- /.card mb-5 -->
                 </div>
 
-
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
                     <div class="card mb-5">
 
@@ -177,10 +200,12 @@
                             {% if app.user %}
                                 {% if personnal.role == 'Trésorier' %}
                                     <span>
+
                                         <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
                                             <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                             <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </form>
+
                                         <a href="{{ path('security_FormMemberEdit',{'id':personnal.id}) }}" class="btn btn-sm btn-primary">
                                             <i class="fa fa-pencil"></i>
                                         </a>
@@ -202,9 +227,6 @@
             </div><!-- /.card mb-5 -->
         </div>
     </div>
-
-
-
 
 
 

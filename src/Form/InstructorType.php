@@ -61,6 +61,7 @@ class InstructorType extends AbstractType
                 'data_class' => null,
                  'label' => 'Photo de l\'instructeur',
              ])
+
         ;
     }
 
