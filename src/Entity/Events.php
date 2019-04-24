@@ -68,13 +68,13 @@ class Events
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Email()
      */
-    private $email_contact;
+    private $emailcontact;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *@Assert\NotBlank()
      */
-    private $phone_contact;
+    private $phonecontact;
 
     public function getId(): ?int
     {
@@ -167,24 +167,24 @@ class Events
 
     public function getEmailContact(): ?string
     {
-        return $this->email_contact;
+        return $this->emailcontact;
     }
 
-    public function setEmailContact(?string $email_contact): self
+    public function setEmailContact(?string $emailcontact): self
     {
-        $this->email_contact = $email_contact;
+        $this->emailcontact = $emailcontact;
 
         return $this;
     }
 
     public function getPhoneContact(): ?string
     {
-        return $this->phone_contact;
+        return $this->phonecontact;
     }
 
-    public function setPhoneContact(?string $phone_contact): self
+    public function setPhoneContact(?string $phonecontact): self
     {
-        $this->phone_contact = $phone_contact;
+        $this->phonecontact = $phonecontact;
 
         return $this;
     }

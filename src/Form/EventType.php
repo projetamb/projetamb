@@ -34,10 +34,10 @@ public function buildForm(FormBuilderInterface $builder, array $options)
         ->add('date',DateType::class, [
             'label' => 'Date de l\'évènement',
              ])
-        ->add('email_contact',EmailType::class, [
+        ->add('emailcontact',EmailType::class, [
             'label' => 'Email de contact',
              ])
-        ->add('phone_contact', TextType::class, [
+        ->add('phonecontact', TextType::class, [
             'label' => 'Téléphone de contact',
               ])
         ->add('photo',FileType::class, [
