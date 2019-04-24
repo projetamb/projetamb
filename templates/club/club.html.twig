@@ -11,17 +11,10 @@
                     <p class="mb-0">{{ entity.descriptive }}</p>
                 </div>
             </section>
-
-            <!-- Arrow1 -->
-            <div class="arrow1">
-                <a href="#" id="button1">
-                    <img class="arrow1" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
-                </a>
-            </div>
-            <!-- /Arrow1 -->
         </div>
 
         <div class="container">
+
             <h2 class="text-center my-5 club_h2" id="club_disciplines">Disciplines :</h2>
             {% if app.user %}
                 <a href="{{ path('security_FormDisciplines') }}" class="badge badge-pill badge-primary">
@@ -52,26 +45,17 @@
                             </div>
                         {% endif %}
                     {% endfor %}
-
-
-
-                    <!-- Arrow2 -->
-                    <div class="divArrow2">
-                        <a href="#" id="button2">
-                            <img class="arrow2" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
-                        </a>
-                    </div>
-                    <!-- /Arrow2 -->
-
                 </div>
             </div>
+
         </div>
+
         <!--
         On teste si le mode admin est selectionné et on affiche le bouton ajouter
         -->
-
-
+        
         <div class="container club_membres" id="club_bureau">
+
             <h2 class="text-center club_h2">Membres du bureau</h2>
             <div class="container">
                 <div class="row">
@@ -84,7 +68,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="row my-5">
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
@@ -119,7 +102,6 @@
 
                     </div><!-- /.card mb-5 -->
                 </div>
-
 
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
                     <div class="card mb-5">
@@ -186,30 +168,8 @@
 
                     </div><!-- /.card mb-5 -->
                 </div>
-
-
-
-
-
             </div><!-- /card-body -->
         </div><!-- /.card mb-5 -->
-        </div>
-        </div>
 
-
-
-
-
-
-        <!-- Arrow3 -->
-        <div class="divArrow3">
-            <a href="#" id="button3">
-                <img class="arrow3" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_up_48px-128.png" />
-            </a>
-        </div>
-        <!-- /Arrow3 -->
-
-        </div>
-        </div>
     {% endfor %}
 {% endblock %}
