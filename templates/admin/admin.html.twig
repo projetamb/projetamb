@@ -2,15 +2,22 @@
 
 
 {% block body %}
+
 </br>
 <h1 class="admin text-center">DashBoard Administrateur </h1></br>
+
     {% if not is_granted("ROLE_ADMIN") %}
         <div class="alert alert-danger">
             {{ error.messageKey|trans(error.messageData, 'security') }}
         </div>
         {% else %}
-            <div class="container">
-                <h2><a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
+
+            <div class="container my-3">
+                <a href="{{ path('oauth') }}" class="btn btn-sm btn-danger">
+                    <i class="fa fa-google"> Se connecter à Google</i>
+                </a>
+                <h1> <a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
+
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un évènement</h2>
                 <h2><a href="{{ path('security_FormInstructor') }}" class="btn btn-sm btn-primary">
@@ -37,6 +44,7 @@
                         <i class="fa fa-plus"></i>
                     </a>Ajouter une discipline</h2>
             </div>
+
             </br>
 
 
