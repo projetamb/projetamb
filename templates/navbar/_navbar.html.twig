@@ -1,9 +1,5 @@
-{# templates/_navbar.html.twig #}
-
-
-    <section class="pt-0 pb-0 bg-dark" id="myTitle">
-      {% for entity in entitys %}
-
+<section class="pt-0 pb-0 bg-dark" id="myTitle">
+  {% for entity in entitys %}
       <div class="container" style="color: white;">
         <div class="row">
           <div class="col-md-12 text-center" style="font-size: 25px;">
@@ -12,10 +8,8 @@
           </div>
         </div>
       </div>
-
-        {% endfor %}
-
-    </section>
+  {% endfor %}
+</section>
 
 <nav class="navbar sticky-top" id="myNavbar">
     <div class="menu dropdown-toggle ml-5">
@@ -30,7 +24,6 @@
             <a class="dropdown-item" href="{{ path('event') }}">Les évènements</a>
             <a class="dropdown-item" href="{{ path('document') }}">Les documents</a>
         </div>
-
     </div>
     <form class="form-inline my-2 my-lg-0">
         {% if not app.user %}
@@ -38,10 +31,6 @@
         {% else %}
             <span class="badge badge-pill badge-danger">mode administrateur</span>
             <a href="{{ path('security_logout') }}" class="nav-link" style="color: white;">Déconnexion</a>
-
         {% endif %}
-
-
     </form>
-
 </nav>

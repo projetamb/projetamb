@@ -15,27 +15,21 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/club.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/viewpdf.css') }}">
         
     {% endblock %}
 
 </head> 
     {% for entity in entitys %}
+    <body style="background-color:{{ entity.color }};">
+    {% endfor %}
 
-        <body style="background-color:{{ entity.color }};">
+    {{ include('navbar/_navbar.html.twig') }}
 
-        {% endfor %}
-
-            {{ include('navbar/_navbar.html.twig') }}
-
-        {% block body %}
+    {% block body %}
 
     {% endblock %}
 
-            {{ include('footer/_footer.html.twig') }}
+    {{ include('footer/_footer.html.twig') }}
 
     {% block javascripts %}
 
@@ -45,19 +39,15 @@
         <script src="{{ asset('js/carousel_a11y.js') }}"></script>
         <script src="{{ asset('js/viewpdf.js') }}"></script>
         <script src="{{ asset('js/club.js') }}"></script>
+
         <script src="{{ asset('js/html5kellycolorpicker.min.js') }}"></script>
         <script>
-                
             new KellyColorPicker({
                 place : 'picker', 
                 input : 'color'
             });
-            
         </script>
 
-
-        
     {% endblock %}
-
-        </body>
+    </body>
 </html>

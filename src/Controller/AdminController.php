@@ -20,6 +20,9 @@ use App\Repository\EntityRepository;
 use App\Repository\FilesRepository;
 use App\Service\FileUpLoader;
 use Doctrine\Common\Persistence\ObjectManager;
+use Google_Service_Calendar;
+use Google_Service_Calendar_Event;
+use GuzzleHttp\Client;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Form;
@@ -28,6 +31,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -174,6 +178,10 @@ class AdminController extends AbstractController
                 $events->setPhoto($fileName);
                 $manager->persist($events);
                 $manager->flush();
+
+
+
+
                 return $this->redirectToRoute('event');
             }
         return $this->render('admin/formEvent.html.twig',[
@@ -183,6 +191,7 @@ class AdminController extends AbstractController
            'editMode'=>$events->getId()!==null,// permet de savoir si je suis en edit ou en new.
         ]);
     }
+
 
     /*************************************************************************
      *  Creation et modification d'un instructeur via le même form
