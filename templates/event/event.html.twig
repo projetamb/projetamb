@@ -37,6 +37,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ evenement.title }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
+                                    <p class="card-text">{{ evenement.place }}</p>
                                     <p class="card-text">{{ evenement.description }}</p>
                         {% if  app.user %}
                                     <form class="d-inline" method="post" action="{{ path('event_delete', {'id': evenement.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ evenement.title }} ?')">
