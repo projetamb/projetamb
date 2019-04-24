@@ -13,37 +13,38 @@
         {% else %}
 
             <div class="container my-3">
-                <a href="{{ path('oauth') }}" class="btn btn-sm btn-danger">
-                    <i class="fa fa-google"> Se connecter à Google</i>
+                <a href="{{ path('oauth') }}" target="_blank" class="btn btn-xs btn-social btn-google">
+                    <i class="fa fa-google"></i> Se connecter avec Google
                 </a>
-                <h2> <a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
 
+                <h4><a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
-                    </a>Ajouter un évènement</h2>
-                <h2><a href="{{ path('security_FormInstructor') }}" class="btn btn-sm btn-primary">
+                    </a> Ajouter un évènement</h4>
+                <h4><a href="{{ path('security_FormInstructor') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
-                    </a>Ajouter un instructeur</h2>
-                <h2> <a href="{{ path('securityFormMember') }}" class="btn btn-sm btn-primary">
+                    </a> Ajouter un instructeur</h4>
+                <h4><a href="{{ path('securityFormMember') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
-                    </a>Ajouter un membre du bureau</h2>
-                <h2> <a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
+                    </a> Ajouter un membre du bureau</h4>
+                <h4><a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
-                    </a>Ajouter un document</h2>
+                    </a> Ajouter un document</h4>
                 {% if entitys is not empty %}
                     {% for entity in entitys %}
-                        <h2> <a href="{{ path('security_FormEntityEdit', {'id': entity.id}) }}" class="btn btn-sm btn-primary">
+                        <h4><a href="{{ path('security_FormEntityEdit', {'id': entity.id}) }}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-plus"></i>
-                            </a>Modifier la structure</h2>
+                            </a> Modifier la structure</h4>
                     {% endfor %}
                 {% else %}
-                    <h2> <a href="{{ path('security_FormEntity') }}" class="btn btn-sm btn-primary">
+                    <h4><a href="{{ path('security_FormEntity') }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-plus"></i>
-                        </a>Ajouter une structure</h2>
+                        </a> Ajouter une structure</h4>
                 {% endif %}
-                <h2> <a href="{{ path('security_FormDisciplines') }}" class="btn btn-sm btn-primary">
+                <h4><a href="{{ path('security_FormDisciplines') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
-                    </a>Ajouter une discipline</h2>
+                    </a> Ajouter une discipline</h4>
             </div>
+            </br>
 
            
 
