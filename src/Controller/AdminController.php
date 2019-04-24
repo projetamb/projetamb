@@ -48,21 +48,16 @@ class AdminController extends AbstractController
      */
     public function admin(
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository,
-        Entity $entityy = NULL
+        DisciplinesRepository $disciplinesRepository
+
     ){
-        if( !$entityy){
-            $entityy= new Entity();
-        }
+
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
         return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',
             'entitys' => $entity,
             'discipliness' => $disciplines,
-            'editMode'=>$entityy->getId()!==null,// permet de savoir si je suis en edit ou en new.
-
-
         ]);
     }
     /*************************************************************************
@@ -263,7 +258,7 @@ class AdminController extends AbstractController
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
         DisciplinesRepository $disciplinesRepository,
-        Entity $entityy = NULL
+        Entity $entityy=null
     ){
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
@@ -299,6 +294,7 @@ class AdminController extends AbstractController
             'editMode'=>$entityy->getId()!==null,// permet de savoir si je suis en edit ou en new.
 
         ]);
+
     }
 
     /**

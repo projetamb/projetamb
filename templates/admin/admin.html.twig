@@ -21,14 +21,13 @@
                 <h1> <a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un document</h1>
-                {% if editMode == false %}
+                {% if entitys is not empty %}
                     {% for entity in entitys %}
                         <h1> <a href="{{ path('security_FormEntityEdit', {'id': entity.id}) }}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-plus"></i>
                             </a>Modifier la structure</h1>
                     {% endfor %}
-                 {% endif %}
-               {% if editMode != true %}
+                {% else %}
                     <h1> <a href="{{ path('security_FormEntity') }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-plus"></i>
                         </a>Ajouter une structure</h1>
