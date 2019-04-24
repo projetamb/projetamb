@@ -2,8 +2,8 @@
 
 {% block body %}
     {% if editMode %}
-        <H1>
-            <h1> Modification d'un Instructeur</h1>
+        </br>
+        <h1 style="text-align: center"> Modification d'un Instructeur</h1>
     {% else %}
         </br>
         <h1 style="text-align: center"> Ajout d'un Instructeur</h1></br>
@@ -11,7 +11,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 {{ form_start(formInstructor) }}
                 {{ form_row(formInstructor.lastname,{'attr':{'placeholder':"Nom "}}) }}
                 {{ form_row(formInstructor.firstname,{'attr': {'placeholder':"Prénom"}})}}
@@ -23,6 +23,7 @@
                 {{ form_row(formInstructor.description,{'attr': {'placeholder':"Description "}}) }}
                 {{ form_row(formInstructor.grade) }}
                 {{ form_row(formInstructor.link,{'attr': {'placeholder':"Lien vers "}}) }}
+                </br>
                 <button type="submit" class="btn btn-success">
                 {% if editMode %}
                     Enregistrer les modifications
@@ -30,9 +31,7 @@
                     Ajouter l'instructeur
                 {% endif %}
                 </button>
-
                 {{ form_end(formInstructor) }}
-
             </div>
         </div>
     </div>
