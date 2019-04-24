@@ -5,9 +5,10 @@
 {% endblock %}
 {% block body %}
     {% if editMode %}
-        <H1>Modification d'une discipline</H1>
+        <h1>Modification d'une discipline</h1>
     {% else %}
-        <H1>Ajout d'une discipline</H1>
+        </br>
+        <h1 style="text-align: center">Ajout d'une discipline</h1></br>
     {% endif %}
 
     <div class="container">
@@ -16,6 +17,7 @@
                 {{ form_start(formDisciplines,{'attr': {'novalidate': 'novalidate'}}) }}
                 {{ form_row(formDisciplines.name,{'attr': {'placeholder':"Nom de la discipline "}}) }}
                 {{ form_row(formDisciplines.description,{'attr': {'placeholder':"description de la discipline "}}) }}
+                </br>
                 <button type="submit" class="btn btn-success">
                     {% if editMode %}
                         Enregistrer les modifications
@@ -28,7 +30,6 @@
             </div>
         </div>
     </div>
-
-
+    </br>
 
 {% endblock %}

@@ -4,22 +4,23 @@
 
 {% endblock %}
 {% block body %}
-    <H1>Ajout d'un document</H1>
+    </br>
+    <h1 style="text-align: center">Ajout d'un document</h1></br>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 {{ form_start(formFiles,{'attr': {'novalidate': 'novalidate'}}) }}
                 {{ form_row(formFiles.title,{'attr': {'placeholder':"Nom du document "}}) }}
                 {{ form_row(formFiles.discipline,{'attr': {'placeholder':"Discipline du document "}}) }}
-                {{ form_row(formFiles.link,{'attr': {'placeholder':"lien du document "}}) }}
-                {{ form_row(formFiles.size,{'attr': {'placeholder':"taille du document (ex: 974 Ko) "}}) }}
+                {{ form_row(formFiles.link,{'attr': {'placeholder':"Lien du document "}}) }}
+                {{ form_row(formFiles.size,{'attr': {'placeholder':"Taille du document (ex: 974 Ko) "}}) }}
+                </br>
                 <button type="submit" class="btn btn-success">Enregistrer</button>
                 {{ form_end(formFiles) }}
 
             </div>
         </div>
     </div>
-
-
+    </br>
 
 {% endblock %}
