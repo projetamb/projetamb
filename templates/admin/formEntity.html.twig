@@ -6,32 +6,43 @@
 
 {% endblock %}
 {% block body %}
-    <H1>Ajout d'une entité</H1>
+    {% if editMode %}
+        <H1>Modification de la structure</H1>
+    {% else %}
+        <H1>Ajout d'une structure</H1>
+    {% endif %}
     <div class="container">
         <div class="row">
             <div class="col-6">
                 {{ form_start(formEntity,{'attr': {'novalidate': 'novalidate'}}) }}
-                {{ form_row(formEntity.Name,{'attr': {'placeholder':"Nom de l'entité "}}) }}
-                {{ form_row(formEntity.Type,{'attr': {'placeholder':"type de l'entité "}}) }}
-                {{ form_row(formEntity.Adress,{'attr': {'placeholder':"adresse de l'entité "}}) }}
-                {{ form_row(formEntity.Postalcity,{'attr': {'placeholder':"code postal et ville de l'entité "}}) }}
-                {{ form_row(formEntity.Descriptive,{'attr': {'placeholder':"description de l'entité "}}) }}
-                {{ form_row(formEntity.Email,{'attr': {'placeholder':"Email de l'entité "}}) }}
-                {{ form_row(formEntity.Facebook,{'attr': {'placeholder':"facebook de l'entité "}}) }}
+                {{ form_row(formEntity.Name,{'attr': {'placeholder':"Nom de la structure "}}) }}
+                {{ form_row(formEntity.Type,{'attr': {'placeholder':"type de la structure "}}) }}
+                {{ form_row(formEntity.Adress,{'attr': {'placeholder':"adresse de la structure "}}) }}
+                {{ form_row(formEntity.Postalcity,{'attr': {'placeholder':"code postal et ville de la structure "}}) }}
+                {{ form_row(formEntity.Descriptive,{'attr': {'placeholder':"description de la structure "}}) }}
+                {{ form_row(formEntity.Email,{'attr': {'placeholder':"Email de la structure "}}) }}
+                {{ form_row(formEntity.Facebook,{'attr': {'placeholder':"facebook de la structure "}}) }}
                 {{ form_row(formEntity.Directorname,{'attr': {'placeholder':"prénom et nom du responsable "}}) }}
                 {{ form_row(formEntity.Directorphone,{'attr': {'placeholder':"téléphone du responsable "}}) }}
                 {{ form_row(formEntity.Directoremail,{'attr': {'placeholder':"email du responsable "}}) }}
-                {{ form_row(formEntity.Logo,{'attr': {'placeholder':"logo de l'entité "}}) }}
-                {{ form_row(formEntity.Logopage,{'attr': {'placeholder':"logo pleine page de l'entité "}}) }}
+                {{ form_row(formEntity.Logo,{'attr': {'placeholder':"logo de la structure "}}) }}
+                {{ form_row(formEntity.Logopage,{'attr': {'placeholder':"logo pleine page de la structure "}}) }}
                 {{ form_row(formEntity.Photobandeau,{'attr': {'placeholder':"photo haut de page "}}) }}
+
                 {{ form_row(formEntity.Color,{'attr': {'placeholder':"couleur des pages de l'entité "}}) }}
+                <canvas id="picker"></canvas>
+                    <input id="color" value="#54aedb">
+
                 {{ form_row(formEntity.Linkmap,{'attr': {'placeholder':"lien map de l'entité "}}) }}
-                 <button type="submit" class="btn btn-success">Enregistrer</button>
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+
                 {{ form_end(formEntity) }}
 
             </div>
         </div>
     </div>
+
+
 
 
 
