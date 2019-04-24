@@ -33,11 +33,16 @@
             {% for evenement in event %}
                 <div class="col-12 col-md-6 col-lg-4 mb-5">
                     <div class="card" style="width: 18rem;">
+                        <h5 class="card-title text-center" >{{ evenement.title }}</h5>
                        <img src="{{ "/img/"~ evenement.photo }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ evenement.title }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
-                            <p class="card-text">{{ evenement.description }}</p>
+
+                            <h5 class="card-title"><b> Organisé par : </b> {{ evenement.organisator }}</h5>
+                            <h6 class="card-text"><b> Date : </b>{{ evenement.date | date("d/m/Y") }}</h6>
+
+                            <p class="card-text"><b> Adresse de l'évènement : </b> {{ evenement.place }}</p>
+                            <p class="card-text"><b> Email : </b>{{ evenement.emailcontact }}</p>
+                            <p class="card-text"><b> Téléphone : </b> {{ evenement.phonecontact}}</p>
                             {% if  app.user %}
                                 <form class="d-inline" method="post" action="{{ path('event_delete', {'id': evenement.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ evenement.title }} ?')">
                                     <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
