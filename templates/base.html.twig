@@ -20,18 +20,16 @@
 
 </head> 
     {% for entity in entitys %}
+    <body style="background-color:{{ entity.color }};">
+    {% endfor %}
 
-        <body style="background-color:{{ entity.color }};">
+    {{ include('navbar/_navbar.html.twig') }}
 
-        {% endfor %}
-
-            {{ include('navbar/_navbar.html.twig') }}
-
-        {% block body %}
+    {% block body %}
 
     {% endblock %}
 
-            {{ include('footer/_footer.html.twig') }}
+    {{ include('footer/_footer.html.twig') }}
 
     {% block javascripts %}
 
@@ -41,8 +39,15 @@
         <script src="{{ asset('js/carousel_a11y.js') }}"></script>
         <script src="{{ asset('js/viewpdf.js') }}"></script>
         <script src="{{ asset('js/club.js') }}"></script>
-        
-    {% endblock %}
 
-        </body>
+        <script src="{{ asset('js/html5kellycolorpicker.min.js') }}"></script>
+        <script>
+            new KellyColorPicker({
+                place : 'picker', 
+                input : 'color'
+            });
+        </script>
+
+    {% endblock %}
+    </body>
 </html>
