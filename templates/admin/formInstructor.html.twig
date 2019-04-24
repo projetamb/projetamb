@@ -12,16 +12,16 @@
         <div class="row">
             <div class="col-6">
                 {{ form_start(formInstructor) }}
-                {{ form_row(formInstructor.lastname) }}
-                {{ form_row(formInstructor.firstname)}}
-                {{ form_row(formInstructor.address) }}
-                {{ form_row(formInstructor.email) }}
+                {{ form_row(formInstructor.lastname,{'attr':{'placeholder':"Nom "}}) }}
+                {{ form_row(formInstructor.firstname,{'attr': {'placeholder':"Prénom"}})}}
+                {{ form_row(formInstructor.address,{'attr': {'placeholder':"Adresse "}}) }}
+                {{ form_row(formInstructor.email,{'attr': {'placeholder':"Votre Email "}}) }}
                 {{ form_row(formInstructor.role) }}
-                {{ form_row(formInstructor.phone) }}
-                {{ form_row(formInstructor.photo) }}
-                {{ form_row(formInstructor.description) }}
+                {{ form_row(formInstructor.phone,{'attr': {'placeholder':"Téléphone au format 0606060606"}}) }}
+                {{ form_row(formInstructor.photo,{'attr': {'placeholder':"souriez pour la photo "}}) }}
+                {{ form_row(formInstructor.description,{'attr': {'placeholder':"Description "}}) }}
                 {{ form_row(formInstructor.grade) }}
-                {{ form_row(formInstructor.link) }}
+                {{ form_row(formInstructor.link,{'attr': {'placeholder':"Lien vers "}}) }}
                 <button type="submit" class="btn btn-success">
                 {% if editMode %}
                     Enregistrer les modifications

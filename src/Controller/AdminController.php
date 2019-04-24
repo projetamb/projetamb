@@ -219,13 +219,18 @@ class AdminController extends AbstractController
 
         //je relie mon formulaire à la class instructeur => me permet de récuperer les champs de la table personnal
         $form=$this->createForm(InstructorType::class,$instructor);
+      //  $fileexist=$instructor->getPhoto();
         $form->handleRequest($request);
+       // $file=$instructor->getPhoto();
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $file=$instructor->getPhoto();
-            $fileName = $fileUpLoader->upload($file);
-            $instructor->setPhoto($fileName);
+            //if(!$fileexist || !$file){
+                $file=$instructor->getPhoto();
+                $fileName = $fileUpLoader->upload($file);
+                $instructor->setPhoto($fileName);
+         //  }
+
             $manager->persist($instructor);
             $manager->flush();
             return $this->redirectToRoute('instructors');
