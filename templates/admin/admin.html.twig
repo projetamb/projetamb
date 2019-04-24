@@ -18,15 +18,23 @@
                 <h1> <a href="{{ path('security_FormInstructor') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un instructeur</h1>
-                <h1> <a href="#" class="btn btn-sm btn-primary">
+                <h1> <a href="{{ path('securityFormMember') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un membre du bureau</h1>
                 <h1> <a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un document</h1>
-                <h1> <a href="{{ path('security_FormEntity') }}" class="btn btn-sm btn-primary">
-                        <i class="fa fa-plus"></i>
-                    </a>Ajouter une entité</h1>
+                {% if entitys is not empty %}
+                    {% for entity in entitys %}
+                        <h1> <a href="{{ path('security_FormEntityEdit', {'id': entity.id}) }}" class="btn btn-sm btn-primary">
+                                <i class="fa fa-plus"></i>
+                            </a>Modifier la structure</h1>
+                    {% endfor %}
+                {% else %}
+                    <h1> <a href="{{ path('security_FormEntity') }}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-plus"></i>
+                        </a>Ajouter une structure</h1>
+                {% endif %}
                 <h1> <a href="{{ path('security_FormDisciplines') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter une discipline</h1>

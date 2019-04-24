@@ -16,14 +16,9 @@ class FileUpLoader
 
     public function upload(UploadedFile $file)
     {
-
-       // $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $fileName =$file->getClientOriginalName();
-
-            $file->move($this->getTargetDirectory(), $fileName);
-
-
-        return $fileName;
+        $file->move($this->getTargetDirectory(), $fileName);
+       return $fileName;
     }
 
     public function getTargetDirectory()

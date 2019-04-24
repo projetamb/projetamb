@@ -7,31 +7,32 @@
 <h3 class="text-center club_h2">Documents à télécharger</h3>
     {% if app.user %}
         <a href="{{ path('security_FormFiles') }}" class="badge badge-pill badge-primary">
-            <i class="fa fa-plus"> Ajouter</i>
+            <i class="fa fa-plus"> Ajouter un document</i>
         </a>
     {% endif %}
-<h5 class="doc_download my-5 mb-5">Vous pouvez télécharger les documents en cliquant sur les boutons "Aperçu pdf" :</h5>
+<h5 class="doc_download my-5 mb-5" style="text-align: center">Vous pouvez télécharger les documents en cliquant sur les boutons "Aperçu pdf" :</h5>
 
-<div class="container">
+<div class="container" style="text-align: center" >
         <div class="row">
             {% for disciplines in discipliness %}
                 {% if not app.user %}
-                    <div class="col-6 py-3 px-5">
-                        <h3 class="text-center">{{ disciplines.name|upper }}</h3>
+                    <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
+                        <h3 class="text-center">{{ disciplines.name|upper }}</h3></br>
+
                         {% for file in files %}
                             {% if file.discipline == disciplines.name %}
-                                <h6>  <i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a></br>
-                                <a class="doc_file2">taille fichier : ({{ file.size }})</a>   <a class="btn btn-dark view-pdf" id="buttonPdf" href="./docs/{{ file.link }}">Aperçu pdf</a></h6>
+                                <h6><i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a></br>
+                                <p class="doc_file2" >taille fichier : ({{ file.size }})</p></br> <p class="btn btn-dark view-pdf" id="buttonPdf" href="./docs/{{ file.link }}">Aperçu pdf</p></h6>
                             {% endif %}
                         {% endfor %}
                     </div>
                 {% else %}
-                    <div class="col-6 py-3 px-5">
+                    <div class="col-xl-6 col-sm-12 col-12 py-3 px-12"> 
                         <h3 class="text-center">{{ disciplines.name|upper }}</h3>
                             {% for file in files %}
                                 {% if file.discipline == disciplines.name %}
-                                    <h6>  <i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a></br>
-                                        <a class="doc_file2">taille fichier : ({{ file.size }})</a>   <a class="btn btn-dark view-pdf" id="buttonPdf" href="./docs/{{ file.link }}">Aperçu pdf</a>
+                                    <h6><i class="fa fa-file-pdf-o mr-2"></i> <a class="doc_file" target="_blank">{{ file.link }}</a></br>
+                                        <p class="doc_file2">taille fichier : ({{ file.size }})</p></br> <p class="btn btn-dark view-pdf" id="buttonPdf" href="./docs/{{ file.link }}">Aperçu pdf</p>
                                         <form class="d-inline" method="post" action="{{ path('document_delete', {'id': file.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{file.title }} ?')">
                                             <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                             <button class="btn btn-danger"><i class="fa fa-trash"></i></button>

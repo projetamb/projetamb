@@ -53,6 +53,7 @@ class AdminController extends AbstractController
     public function admin(
         EntityRepository $entityRepository,
         DisciplinesRepository $disciplinesRepository
+
     ){
 
         $disciplines = $disciplinesRepository->findAll();
@@ -60,12 +61,18 @@ class AdminController extends AbstractController
         return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',
             'entitys' => $entity,
-            'discipliness' => $disciplines
+            'discipliness' => $disciplines,
         ]);
     }
+    /*************************************************************************
+     *  Creation et modification d'un membre via le même form
+     * On utilise 2 routes une pour la creation et une pour la modif
+     *
+     *************************************************************************/
 
     /**
      * @Route("/admin/member",name="securityFormMember")
+     * @Route("/admin/member/{id}/edit", name="security_FormMemberEdit")
      * @param Personnal $personnal
      * @param Request $request
      * @param ObjectManager $manager
@@ -75,17 +82,22 @@ class AdminController extends AbstractController
      * @return Response
      */
         public function formMember(
-
                                            Request $request,
                                            ObjectManager $manager,
                                            FileUpLoader $fileUpLoader,
                                            EntityRepository $entityRepository,
-                                           DisciplinesRepository $disciplinesRepository
-        )
+                                           DisciplinesRepository $disciplinesRepository,
+                                           Personnal $personnal=null
+                                 )
         {
             $disciplines = $disciplinesRepository->findAll();
             $entity = $entityRepository->findAll();
-            $personnal=new Personnal();
+            //si je suis pas en mode modif je crée un nouveau membre
+            if(!$personnal)
+            {
+                $personnal=new Personnal();
+            }
+
             $form  =$this->createForm(MemberType::class,$personnal);
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid())
@@ -98,19 +110,25 @@ class AdminController extends AbstractController
                 return $this->redirectToRoute('club');
             }
             return $this->render("admin/formMember.html.twig",[
-                'FormMember'=>$form->createView()
+                'FormMember'=>$form->createView(),
+                'entitys' => $entity,
+                'discipliness' => $disciplines,
+                'editMode'=>$personnal->getId()!==null,// permet de savoir si je suis en edit ou en new.
             ]);
 
 
         }
 
-
+    /*************************************************************************
+     *  Creation et modification d'un evenement via le même form
+     * On utilise 2 routes une pour la creation et une pour la modif
+     *
+     *************************************************************************/
 
     /**
      *
      * @Route("/admin/event", name="security_FormEvent")
      * @Route("/admin/event/{id}/edit", name="security_formEventEdit")
-     *
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -120,20 +138,21 @@ class AdminController extends AbstractController
      */
 
     public function formEvent(
-       // Events $events ,
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
-){
+        DisciplinesRepository $disciplinesRepository,
+        Events $events = NULL
+        )
+        {
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
 
        // si j'ai pas d'evenemnt, j'en crée un
-        //if( !$events){
+        if( !$events){
             $events = new Events();
-        //}
+        }
 
         dump($events);
 
@@ -169,12 +188,20 @@ class AdminController extends AbstractController
             'formEvent'=>$form->createView(),
             'entitys' => $entity,
             'discipliness' => $disciplines,
-          //  'editMode'=>$evenement->getId()!==null,// permet de savoir si je suis en edit ou en new.
+           'editMode'=>$events->getId()!==null,// permet de savoir si je suis en edit ou en new.
         ]);
     }
 
+
+    /*************************************************************************
+     *  Creation et modification d'un instructeur via le même form
+     * On utilise 2 routes une pour la creation et une pour la modif
+     *
+     *************************************************************************/
+
     /**
      * @Route("/admin/instructor", name="security_FormInstructor")
+     * @Route("/admin/instructor/{id}/edit", name="security_FormInstructeurEdit")
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -182,41 +209,56 @@ class AdminController extends AbstractController
      * @param DisciplinesRepository $disciplinesRepository
      * @return Response
      */
-    public function createFormInstructor(
+    public function FormInstructor(
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
-){
+        DisciplinesRepository $disciplinesRepository,
+        Personnal $instructor=null
+        )
+    {
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
-        $instructor= new Personnal();
+        //si j'ai pas d'instructeur j'en crée un
+        if(!$instructor)
+        {
+            $instructor= new Personnal();
+        }
+
         //je relie mon formulaire à la class instructeur => me permet de récuperer les champs de la table personnal
         $form=$this->createForm(InstructorType::class,$instructor);
+      //  $fileexist=$instructor->getPhoto();
         $form->handleRequest($request);
+       // $file=$instructor->getPhoto();
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $file=$instructor->getPhoto();
-            $fileName = $fileUpLoader->upload($file);
-            $instructor->setPhoto($fileName);
+            //if(!$fileexist || !$file){
+                $file=$instructor->getPhoto();
+                $fileName = $fileUpLoader->upload($file);
+                $instructor->setPhoto($fileName);
+         //  }
+
             $manager->persist($instructor);
             $manager->flush();
-
+            return $this->redirectToRoute('instructors');
         }
         return $this->render('admin/formInstructor.html.twig',[
             'formInstructor'=>$form->createView(),
             'entitys' => $entity,
-            'discipliness' => $disciplines
+            'discipliness' => $disciplines,
+            'editMode'=>$instructor->getId()!==null,// permet de savoir si je suis en edit ou en new.
 
         ]);
     }
+
 
 
 
     /**
      * @Route("/admin/entity", name="security_FormEntity")
+     * @Route("/admin/entity/{id}/edit", name="security_FormEntityEdit")
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -224,16 +266,21 @@ class AdminController extends AbstractController
      * @param DisciplinesRepository $disciplinesRepository
      * @return Response
      */
-    public function createFormEntity(
+    public function formEntity(
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
+        DisciplinesRepository $disciplinesRepository,
+        Entity $entityy=null
     ){
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
-        $entityy= new Entity();
+        // si j'ai pas d'Entity, j'en crée une
+        if( !$entityy){
+            $entityy= new Entity();
+        }
+
         //je relie mon formulaire ç la class entity => me permet de récuperer les champs de la table entity
         $form=$this->createForm(EntityType::class,$entityy);
         $form->handleRequest($request);
@@ -243,12 +290,12 @@ class AdminController extends AbstractController
             $file=$entityy->getLogo();
             $fileName = $fileUpLoader->upload($file);
             $entityy->setLogo($fileName);
-            /*$file=$entityy->getLogopage();
+            $file=$entityy->getLogopage();
             $fileName = $fileUpLoader->upload($file);
             $entityy->setLogopage($fileName);
             $file=$entityy->getPhotobandeau();
             $fileName = $fileUpLoader->upload($file);
-            $entityy->setPhotobandeau($fileName);*/
+            $entityy->setPhotobandeau($fileName);
             $manager->persist($entityy);
             $manager->flush();
             return $this->redirectToRoute('home');
@@ -257,13 +304,16 @@ class AdminController extends AbstractController
         return $this->render('admin/formEntity.html.twig',[
             'formEntity'=>$form->createView(),
             'entitys' => $entity,
-            'discipliness' => $disciplines
+            'discipliness' => $disciplines,
+            'editMode'=>$entityy->getId()!==null,// permet de savoir si je suis en edit ou en new.
 
         ]);
+
     }
 
     /**
      * @Route("/admin/disciplines", name="security_FormDisciplines")
+     * @Route("/admin/disciplines/{id}/edit", name="security_formDisciplinesEdit")
      * @param Request $request
      * @param ObjectManager $manager
      * @param FileUpLoader $fileUpLoader
@@ -271,16 +321,21 @@ class AdminController extends AbstractController
      * @param DisciplinesRepository $disciplinesRepository
      * @return Response
      */
-    public function createFormDisciplines(
+    public function formDisciplines(
         Request $request,
         ObjectManager $manager,
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
+        DisciplinesRepository $disciplinesRepository,
+        Disciplines $discipliness = NULL
     ){
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
-        $discipliness= new Disciplines();
+        // si j'ai pas de discipline, j'en crée une
+        if( !$discipliness){
+            $discipliness= new Disciplines();
+        }
+
         //je relie mon formulaire ç la class disciplines => me permet de récuperer les champs de la table disciplines
         $form=$this->createForm(DisciplinesType::class,$discipliness);
         $form->handleRequest($request);
@@ -295,8 +350,8 @@ class AdminController extends AbstractController
         return $this->render('admin/formDisciplines.html.twig',[
             'formDisciplines'=>$form->createView(),
             'entitys' => $entity,
-            'discipliness' => $disciplines
-
+            'discipliness' => $disciplines,
+            'editMode'=>$discipliness->getId()!==null,// permet de savoir si je suis en edit ou en new.
         ]);
     }
 
@@ -342,46 +397,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/event/edit/{$id}",name="event_edit")
-     * @param Request $request
-     * @param Events $events
-     * @param EntityRepository $entityRepository
-     * @param DisciplinesRepository $disciplinesRepository
-     * @return Response
-     * @return RedirectResponse|Response
-     */
-    public function edit(
-        Request $request,
-        Events $events,
-        FileUpLoader$fileUpLoader,
-        EntityRepository $entityRepository,
-        DisciplinesRepository $disciplinesRepository
-){
-        $disciplines = $disciplinesRepository->findAll();
-        $entity = $entityRepository->findAll();
-        $form = $this->createForm(EventType::class, $events,FileUpLoader::class);
 
-        //analyse de la requete reçu avec les différents champs du formulaires
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-          // $events->setTitle($events);
-
-            // Le persist est optionnel
-           // $this->getDoctrine()->getManager()->flush();
-           // $this->addFlash('success', 'Evenement '.$events->getId().' a bien été modifié.');
-
-            return $this->redirectToRoute('/');
-        }
-
-        return $this->render('admin/formEvent.html.twig', [
-            'event' => $events,
-            'form' => $form->createView(),
-            'entitys' => $entity,
-            'discipliness' => $disciplines
-        ]);
-    }
 
     /**
      * @Route("/admin/disciplines/{id}",name="disciplines_delete", methods={"POST"})
@@ -401,7 +417,7 @@ class AdminController extends AbstractController
         $disciplines = $disciplinesRepository->findAll();
         $entity = $entityRepository->findAll();
         if (!$this->isCsrfTokenValid('delete', $request->get('token'))) {
-            return $this->redirectToRoute('/',[
+            return $this->redirectToRoute('home',[
                 'entitys' => $entity,
                 'discipliness' => $disciplines
             ]);
@@ -455,6 +471,11 @@ class AdminController extends AbstractController
 
 
     }
+    /******************************************************************
+     *  methode pour supprimer un evenement
+     *
+     *
+     ******************************************************************/
 
     /**
      * @Route("/admin/event/{id}",name="event_delete", methods={"POST"})
@@ -495,6 +516,12 @@ class AdminController extends AbstractController
 
     }
 
+    /******************************************************************
+     *  methode pour supprimer un club
+     *
+     *
+     ******************************************************************/
+
     /**
      * @Route("/admin/club/{id}", name="club_delete", methods={"POST"})
      * @param Request $request
@@ -529,6 +556,12 @@ class AdminController extends AbstractController
             'discipliness' => $disciplines
         ]);
     }
+    /******************************************************************
+     *  methode pour supprimer un instructeur
+     *
+     *
+     ******************************************************************/
+
 
     /**
      * @Route("/admin/instructors/{id}",name="instructors_delete", methods={"POST"})

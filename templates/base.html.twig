@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-         {% for entity in entitys %}
-             <title>{% block title %}{{ entity.name }}{% endblock %}</title>
-             <link rel="icon" type="image/png/jpg" href="{{ asset('img/') }}{{ entity.logo }}" />
-        {% endfor %}
+<head>
+    <meta charset="UTF-8"> 
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/club.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/viewpdf.css') }}">
+    {% for entity in entitys %}
 
-        {% endblock %}
+        <title> {% block title %}{{entity.name}}{% endblock %}</title>
+        <link rel="icon"type="image/png/jpg"href="{{ asset('img/') }}{{ entity.logo }}"/>
 
-    </head>
+    {% endfor %}
+
+    {% block stylesheets %}
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        
+    {% endblock %}
+
+</head> 
     {% for entity in entitys %}
     <body style="background-color:{{ entity.color }};">
     {% endfor %}
-        {{ include('navbar/_navbar.html.twig') }}
 
-        {% block body %}{% endblock %}
+    {{ include('navbar/_navbar.html.twig') }}
 
-        {{ include('footer/_footer.html.twig') }}
+    {% block body %}
 
-        {% block javascripts %}
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            <script src="{{ asset('js/carousel_a11y.js') }}"></script>
-            <script src="{{ asset('js/viewpdf.js') }}"></script>
-        {% endblock %}
+    {% endblock %}
+
+    {{ include('footer/_footer.html.twig') }}
+
+    {% block javascripts %}
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="{{ asset('js/carousel_a11y.js') }}"></script>
+        <script src="{{ asset('js/viewpdf.js') }}"></script>
+        <script src="{{ asset('js/club.js') }}"></script>
+
+        <script src="{{ asset('js/html5kellycolorpicker.min.js') }}"></script>
+        <script>
+            new KellyColorPicker({
+                place : 'picker', 
+                input : 'color'
+            });
+        </script>
+
+    {% endblock %}
     </body>
 </html>
