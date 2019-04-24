@@ -19,17 +19,14 @@
                 </a>
             </div>
             <!-- /Arrow1 -->
-
         </div>
-
-
 
         <div class="container">
             <h2 class="text-center my-5 club_h2" id="club_disciplines">Disciplines :</h2>
             {% if app.user %}
                 <a href="{{ path('security_FormDisciplines') }}" class="badge badge-pill badge-primary">
                     <i class="fa fa-plus"> Ajouter une discipline</i>
-                </a>
+                </a>                
             {% endif %}
 
             <div class="club_disciplines my-5">
@@ -78,7 +75,7 @@
             <h2 class="text-center club_h2">Membres du bureau</h2>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4 col-mb5">
+                    <div class="col-12 col-md-6 col-lg-4 col-mb-5">
                         {% if app.user %}
                             <a href="{{ path('securityFormMember') }}" class="badge badge-pill badge-primary">
                                 <i class="fa fa-plus"> Ajouter un membre du bureau</i>
