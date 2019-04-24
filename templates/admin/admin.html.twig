@@ -16,7 +16,7 @@
                 <a href="{{ path('oauth') }}" class="btn btn-sm btn-danger">
                     <i class="fa fa-google"> Se connecter à Google</i>
                 </a>
-                <h1> <a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
+                <h2> <a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
 
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un évènement</h2>
@@ -28,7 +28,7 @@
                     </a>Ajouter un membre du bureau</h2>
                 <h2> <a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
-                    </a>Ajouter un document</h1>
+                    </a>Ajouter un document</h2>
                 {% if entitys is not empty %}
                     {% for entity in entitys %}
                         <h2> <a href="{{ path('security_FormEntityEdit', {'id': entity.id}) }}" class="btn btn-sm btn-primary">
@@ -45,7 +45,7 @@
                     </a>Ajouter une discipline</h2>
             </div>
 
-            </br>
+           
 
 
 {% endif %}
