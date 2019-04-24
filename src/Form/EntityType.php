@@ -61,7 +61,14 @@ class EntityType extends AbstractType
                 ])
             ->add('Color', ChoiceType::class,[
                 'choices' => [
-                    'gris' => 'grey',
+                    'gris' => '#d7d7d7',
+                    'rouge' => '#9a9a',
+                    'violet' => '#ce93d8',
+                    'bleu' => '#90caf9',
+                    'bleu clair' => '#e3f2fd',
+                    'vert' => '#a5d6a7',
+                    'jaune' => '#FFF59d',
+                    'orange' => '#ffcc80'
                 ],
                 'label' => 'Couleur des fonds de page',
                 ])

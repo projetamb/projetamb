@@ -41,7 +41,7 @@ $(function () {
         var pdf_link = $(this).attr('href');
         var iframe = '<div class="iframe-container"><iframe src="' + pdf_link + '"></iframe></div>'
         $.createModal({
-            title: '&nbspAperçu pdf',
+            title: '&nbsp Aperçu pdf',
             message: iframe,
             closeButton: true,
             scrollable: false
