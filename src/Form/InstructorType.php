@@ -40,6 +40,7 @@ class InstructorType extends AbstractType
             ->add('link')
           ->add('photo',FileType::class, array(
               'data_class' => null,
+
           ))
         ;
     }
