@@ -13,7 +13,7 @@
         html += '<div class="modal-dialog">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';
-        html += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>';
+        html += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>';
         if (b.title.length > 0) {
             html += '<h4 class="modal-title">' + b.title + "</h4>"
         }
@@ -41,7 +41,7 @@ $(function () {
         var pdf_link = $(this).attr('href');
         var iframe = '<div class="iframe-container"><iframe src="' + pdf_link + '"></iframe></div>'
         $.createModal({
-            title: '&nbspAperçu pdf',
+            title: 'Aperçu Pdf',
             message: iframe,
             closeButton: true,
             scrollable: false
