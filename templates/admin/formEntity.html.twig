@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                {{ form_start(formEntity,{'attr': {'novalidate': 'novalidate'}}) }}
+                {{ form_start(formEntity) }}
                 {{ form_row(formEntity.Name,{'attr': {'placeholder':"Nom de la structure "}}) }}
                 {{ form_row(formEntity.Type,{'attr': {'placeholder':"type de la structure "}}) }}
                 {{ form_row(formEntity.Adress,{'attr': {'placeholder':"adresse de la structure "}}) }}
