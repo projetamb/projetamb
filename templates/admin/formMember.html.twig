@@ -2,15 +2,15 @@
 
 {% block body %}
     {% if editMode %}
-        <H1>
-            Modification d'un Membre du bureau</H1>
+        <h1>Modification d'un Membre du bureau</h1>
     {% else %}
-        <H1>Ajout d'un Membre du bureau</H1>
+        </br>
+        <h1 style="text-align: center">Ajout d'un Membre du bureau</h1></br>
     {% endif %}
 
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 {{ form_start(FormMember) }}
                 {{ form_row(FormMember.lastname,{'attr': {'placeholder':"Nom "}}) }}
                 {{ form_row(FormMember.firstname,{'attr': {'placeholder':"Prénom "}}) }}
@@ -22,20 +22,20 @@
                 {{ form_row(FormMember.link) }}
                 {{ form_row(FormMember.description) }}
                 {{ form_row((FormMember.photo)) }}
-
+                </br>
                 <button type="submit" class="btn btn-success">
                     {% if editMode %}
                          Enregistrer les modifications
                          {% else %}
                          Ajouter le membre
                      {% endif %}
-                    Ajouter
                 </button>
                 {{ form_end(FormMember) }}
 
             </div>
         </div>
     </div>
+    </br>
 {% endblock %}
 
 {% block title %}

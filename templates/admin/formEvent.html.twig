@@ -1,35 +1,36 @@
 {% extends 'base.html.twig' %}
 
 
-
 {% block title %}
 
 {% endblock %}
 {% block body %}
     {% if editMode %}
-        <H1>Modification d'un évenement</H1>
+        <h1>Modification d'un évènement</h1>
     {% else %}
-        <H1>Ajout d'un évenement</H1>
+        </br>
+        <h1 style="text-align: center">Ajout d'un évènement</h1></br>
     {% endif %}
 
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 {{ form_start(formEvent) }}
-                {{ form_row(formEvent.title,{'attr': {'placeholder':"Titre de l'évenement "}}) }}
-                {{ form_row(formEvent.place,{'attr': {'placeholder':"Lieu de l'évenement "}}) }}
-                {{ form_row(formEvent.organisator,{'attr': {'placeholder':"Organisateur de l'évenement "}}) }}
-                {{ form_row(formEvent.description,{'attr': {'placeholder':"description de l'évenement "}}) }}
+                {{ form_row(formEvent.title,{'attr': {'placeholder':"Titre de l'évènement "}}) }}
+                {{ form_row(formEvent.place,{'attr': {'placeholder':"Lieu de l'évènement "}}) }}
+                {{ form_row(formEvent.organisator,{'attr': {'placeholder':"Organisateur de l'évènement "}}) }}
+                {{ form_row(formEvent.description,{'attr': {'placeholder':"Description de l'évènement "}}) }}
                 {{ form_row(formEvent.date) }}
                 {{ form_row(formEvent.email_contact,{'attr': {'placeholder':"Email de contact "}}) }}
-                {{ form_row(formEvent.phone_contact,{'attr': {'placeholder':"téléphone du contact "}}) }}
-                {{ form_row(formEvent.photo,{'attr': {'placeholder':"affiche de l'évenement "}}) }}
+                {{ form_row(formEvent.phone_contact,{'attr': {'placeholder':"Téléphone du contact "}}) }}
+                {{ form_row(formEvent.photo,{'attr': {'placeholder':"Affiche de l'évènement "}}) }}
               {# {{ form_widget(formEvent) }}#}
+                </br>
                 <button type="submit" class="btn btn-success">
                    {% if editMode %}
                         Enregistrer les modifications
                    {% else %}
-                        Ajouter l'évenement
+                        Ajouter l'évènement
                     {% endif %}
                      </button>
                 {{ form_end(formEvent) }}
@@ -37,6 +38,7 @@
             </div>
         </div>
     </div>
+    </br>
 
 
 
