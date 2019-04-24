@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,11 +17,21 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname')
-            ->add('firstname')
-            ->add('email',EmailType::class)
-            ->add('phone')
-            ->add('address')
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom du membre',
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom du membre',
+            ])
+            ->add('email',EmailType::class, [
+                'label' => 'Email du membre',
+            ])
+            ->add('phone', TextType::class, [
+                'label' => 'Téléphone du membre',
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Adresse du membre',
+            ])
             ->add('role',ChoiceType::class, [
                 'choices'  => [
                     'Président' => 'Président',
@@ -28,9 +40,9 @@ class MemberType extends AbstractType
                     'Vice-Secrétaire' => 'Vice-Secrétaire',
                     'Trésorier' => 'Trésorier',
                     'Vice-Trésorier' => 'Vice-Trésorier',
-                    'Chargé de communication' => 'Chargé de communication',
-
-                ]])
+                    'Chargé de communication' => 'Chargé de communication',],
+                'label' => 'Role du membre',
+            ])
             ->add('grade',ChoiceType::class, [
                 'choices'  => [
                     'Non pratiquant' => 'Non pratiquant',
@@ -44,13 +56,19 @@ class MemberType extends AbstractType
                     '7ème Dan' => '7ème Dan',
                     '8ème Dan' => '8ème Dan',
                     '9ème Dan' => '9ème Dan',
-                    'Expert' => 'Expert',
-                    ]])
-            ->add('description')
-            ->add('link')
-            ->add('photo',FileType::class, array(
+                    'Expert' => 'Expert',],
+                'label' => 'Grade du membre',
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description du membre',
+             ])
+            ->add('link', TextType::class, [
+                  'label' => 'Lien Internet du membre',
+              ])
+            ->add('photo',FileType::class, [
                 'data_class' => null,
-            ))
+                'label' => 'Photo du membre',
+            ])
         ;
     }
 
