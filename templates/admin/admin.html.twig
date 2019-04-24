@@ -2,13 +2,16 @@
 
 
 {% block body %}
-<h1 class="admin text-center">DashBoard Administrateur </h1>
+<h1 class="admin text-center my-2">DashBoard Administrateur </h1>
     {% if not is_granted("ROLE_ADMIN") %}
         <div class="alert alert-danger">
             {{ error.messageKey|trans(error.messageData, 'security') }}
         </div>
         {% else %}
-            <div class="container">
+            <div class="container my-3">
+                <a href="{{ path('oauth') }}" class="btn btn-sm btn-danger">
+                    <i class="fa fa-google"> Se connecter à Google</i>
+                </a>
                 <h1> <a href = "{{ path('security_FormEvent') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un évenement</h1>
@@ -36,8 +39,6 @@
                         <i class="fa fa-plus"></i>
                     </a>Ajouter une discipline</h1>
             </div>
-
-
 {% endif %}
 
 
