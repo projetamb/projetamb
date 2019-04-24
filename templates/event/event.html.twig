@@ -18,7 +18,7 @@
             <div class="col-12 col-md-6 col-lg-4 col-mb5">
                 {% if app.user %}
                     <a href="{{ path('security_FormEvent') }}" class="badge badge-pill badge-primary">
-                        <i class="fa fa-plus"> Ajouter</i>
+                        <i class="fa fa-plus"> Ajouter un evenement</i>
                     </a>
                 {% endif %}
             </div>
@@ -28,19 +28,7 @@
         <div class="container">
             <div class="row">
                 {% for evenement in event %}
-                    {% if not app.user %}
-                     <div class="col-12 col-md-6 col-lg-4 mb-5">
-                            <div class="card" style="width: 18rem;">
-                                <span class="badge badge-pill badge-info"> Evènements</span>
-                                <img src="{{ "/img/"~ evenement.photo }}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ evenement.title }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
-                                    <p class="card-text">{{ evenement.description }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
+
                         <div class="col-12 col-md-6 col-lg-4 mb-5">
                             <div class="card" style="width: 18rem;">
                                <img src="{{ "/img/"~ evenement.photo }}" class="card-img-top" alt="...">
@@ -48,19 +36,20 @@
                                     <h5 class="card-title">{{ evenement.title }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ evenement.date | date("d/m/Y") }}</h6>
                                     <p class="card-text">{{ evenement.description }}</p>
-                                     <a href="{{ path('security_formEventEdit', {'id': evenement.id}) }}" class="btn btn-info">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
+                        {% if  app.user %}
                                     <form class="d-inline" method="post" action="{{ path('event_delete', {'id': evenement.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ evenement.title }} ?')">
                                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                         <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
-
+                                    <a href="{{ path('security_formEventEdit', {'id': evenement.id}) }}" class="btn btn-sm btn-info">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                        {% endif %}
                                 </div>
                             </div>
 
                         </div>
-                    {% endif %}
+
                 {% endfor %}
             </div>
         </div>

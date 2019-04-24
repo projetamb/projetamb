@@ -18,7 +18,7 @@
     <div class="container">
         {% if app.user %}
         <a href="{{ path('security_FormInstructor') }}" class="badge badge-pill badge-primary">
-            <i class="fa fa-plus"> Ajouter</i>
+            <i class="fa fa-plus"> Ajouter un instructeur</i>
         </a>
         {% endif %}
         <div class="row my-5">
@@ -54,7 +54,7 @@
                                     <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
                                     <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
-                                <a href="{{ path('security_FormInstructeurEdit',{'id':instructor.id}) }}" class="btn btn-sm btn-danger">
+                                <a href="{{ path('security_FormInstructeurEdit',{'id':instructor.id}) }}" class="btn btn-sm btn-info">
                                     <i class="fa fa-pencil"></i>
                                 </a>
 

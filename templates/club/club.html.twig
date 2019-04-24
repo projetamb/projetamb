@@ -1,214 +1,214 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% for entity in entitys %}
-<div class="example-wrapper club_description" style="background-image: url(../img/{{ entity.logopage }});">
-    <section class="text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">{{ entity.name }}</h1>
-            <p><i class="fa fa-home"></i> {{ entity.adress }} {{ entity.postalcity }}</p>
-            <p><i class="fa fa-envelope mr-2"></i>{{ entity.email }}</p>
-            <p class="mb-0">{{ entity.descriptive }}</p>
+    {% for entity in entitys %}
+        <div class="example-wrapper club_description" style="background-image: url(../img/{{ entity.logopage }});">
+            <section class="text-center">
+                <div class="container">
+                    <h1 class="jumbotron-heading">{{ entity.name }}</h1>
+                    <p><i class="fa fa-home"></i> {{ entity.adress }} {{ entity.postalcity }}</p>
+                    <p><i class="fa fa-envelope mr-2"></i>{{ entity.email }}</p>
+                    <p class="mb-0">{{ entity.descriptive }}</p>
+                </div>
+            </section>
+
+            <!-- Arrow1 -->
+            <div class="arrow1">
+                <a href="#" id="button1">
+                    <img class="arrow1" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
+                </a>
+            </div>
+            <!-- /Arrow1 -->
+
         </div>
-    </section>
-
-    <!-- Arrow1 -->
-    <div class="arrow1">
-        <a href="#" id="button1">
-            <img class="arrow1" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
-        </a>
-    </div>
-    <!-- /Arrow1 -->
-
-</div>
 
 
 
-<div class="container">
-    <h2 class="text-center my-5 club_h2" id="club_disciplines">Disciplines :</h2>
-        {% if app.user %}
-        <a href="{{ path('security_FormDisciplines') }}" class="badge badge-pill badge-primary">
-            <i class="fa fa-plus"> Ajouter une discipline</i>
-        </a>
-        {% endif %}
-
-    <div class="club_disciplines my-5">
-        <div class="row">
-        {% for disciplines in discipliness %}
-            {% if not app.user %}
-                <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
-                    <h3 class="text-center">{{ disciplines.name|upper }}</h3>
-                    <p>{{ disciplines.description }}</p>
-                </div>
-            {% else %}
-                <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
-                    <h3 class="text-center">{{ disciplines.name|upper }}
-                    <form class="d-inline" method="post" action="{{ path('disciplines_delete', {'id': disciplines.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ disciplines.name }} ?')">
-                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                    </form>
-                    <a href="{{ path('security_formDisciplinesEdit', {'id': disciplines.id}) }}" class="btn btn-sm btn-primary">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    </h3>
-                    <p>{{ disciplines.description }}</p>
-                </div>
+        <div class="container">
+            <h2 class="text-center my-5 club_h2" id="club_disciplines">Disciplines :</h2>
+            {% if app.user %}
+                <a href="{{ path('security_FormDisciplines') }}" class="badge badge-pill badge-primary">
+                    <i class="fa fa-plus"> Ajouter une discipline</i>
+                </a>
             {% endif %}
-        {% endfor %}
+
+            <div class="club_disciplines my-5">
+                <div class="row">
+                    {% for disciplines in discipliness %}
+                        {% if not app.user %}
+                            <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
+                                <h3 class="text-center">{{ disciplines.name|upper }}</h3>
+                                <p>{{ disciplines.description }}</p>
+                            </div>
+                        {% else %}
+                            <div class="col-xl-6 col-sm-12 col-12 py-3 px-5">
+                                <h3 class="text-center">{{ disciplines.name|upper }}
+                                    <form class="d-inline" method="post" action="{{ path('disciplines_delete', {'id': disciplines.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{ disciplines.name }} ?')">
+                                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    <a href="{{ path('security_formDisciplinesEdit', {'id': disciplines.id}) }}" class="btn btn-sm btn-primary">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </h3>
+                                <p>{{ disciplines.description }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
 
 
 
-                <!-- Arrow2 -->
-                <div class="divArrow2">
-                    <a href="#" id="button2">
-                        <img class="arrow2" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
-                    </a>
-                </div>
-                <!-- /Arrow2 -->
-
-        </div>
-    </div>
-</div>
-    <!--
-    On teste si le mode admin est selectionné et on affiche le bouton ajouter
-    -->
-
-
-    <div class="container club_membres" id="club_bureau">
-        <h2 class="text-center club_h2">Membres du bureau</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 col-mb5">
-                    {% if app.user %}
-                        <a href="{{ path('securityFormMember') }}" class="badge badge-pill badge-primary">
-                            <i class="fa fa-plus"> Ajouter un membre du bureau</i>
+                    <!-- Arrow2 -->
+                    <div class="divArrow2">
+                        <a href="#" id="button2">
+                            <img class="arrow2" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
                         </a>
-                    {% endif %}
+                    </div>
+                    <!-- /Arrow2 -->
+
                 </div>
             </div>
         </div>
-        <div class="row my-5">
-            <div class="col-12 col-md-6 col-lg-4 mb-5">
-                <div class="card mb-5">
-                    {% for personnal in personnals %}
-                        {% if not app.user %}
-                    {% if  personnal.role == 'Président' %}
-                        <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
-                        <div class="card-body">
-                            <h2 class="card-title club_role">{{ personnal.role }} :</h2>
-                            <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                            <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
-                            <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                        </div>
-                    {% endif %}
-                    {% else %}
-                        {% if  personnal.role == 'Président' %}
+        <!--
+        On teste si le mode admin est selectionné et on affiche le bouton ajouter
+        -->
 
+
+        <div class="container club_membres" id="club_bureau">
+            <h2 class="text-center club_h2">Membres du bureau</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4 col-mb5">
+                        {% if app.user %}
+                            <a href="{{ path('securityFormMember') }}" class="badge badge-pill badge-primary">
+                                <i class="fa fa-plus"> Ajouter un membre du bureau</i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
+                    <div class="card mb-5">
+                        {% for personnal in personnals %}
+                        {% if not app.user %}
+                        {% if  personnal.role == 'Président' %}
                             <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
                             <div class="card-body">
                                 <h2 class="card-title club_role">{{ personnal.role }} :</h2>
                                 <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
                                 <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
                                 <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                                <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
-                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                </form>
-                                <a href="{{ path('security_FormMemberEdit',{'id':personnal.id}) }}" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
                             </div>
-                </div>
                         {% endif %}
-                        {% endif %}
+                        {% else %}
+                        {% if  personnal.role == 'Président' %}
+
+                        <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Président">
+                        <div class="card-body">
+                            <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                            <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                            <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                            <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                            <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            </form>
+                            <a href="{{ path('security_FormMemberEdit',{'id':personnal.id}) }}" class="btn btn-sm btn-primary">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
                     {% endfor %}
+                </div>
 
 
 
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
+                    <div class="card mb-5">
+                        {% for personnal in personnals %}
+                            {% if not app.user %}
+                                {% if  personnal.role == 'Secrétaire' %}
+                                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire">
 
-            </div>
-        <div class="col-12 col-md-6 col-lg-4 mb-5">
-            <div class="card mb-5">
-                {% for personnal in personnals %}
-                    {% if not app.user %}
-                {% if  personnal.role == 'Secrétaire' %}
-                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire">
+                                    <div class="card-body">
+                                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                {% if  personnal.role == 'Secrétaire' %}
 
-                    <div class="card-body">
-                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
-                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
-                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire">
+                                    <div class="card-body">
+                                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                        <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                        <a href="#" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                {% endif %}
-                    {% else %}
-                        {% if  personnal.role == 'Secrétaire' %}
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
+                    <div class="card mb-5">
+                        {% for personnal in personnals %}
+                            {% if not app.user %}
+                                {% if  personnal.role == 'Trésorier' %}
+                                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier">
+                                    <div class="card-body">
+                                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                {% if  personnal.role == 'Trésorier' %}
 
-                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Secrétaire">
-                            <div class="card-body">
-                                <h2 class="card-title club_role">{{ personnal.role }} :</h2>
-                                <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                                <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
-                                <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                                <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
-                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                </form>
-                                <a href="#" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                            </div>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 mb-5">
-            <div class="card mb-5">
-                {% for personnal in personnals %}
-                    {% if not app.user %}
-                {% if  personnal.role == 'Trésorier' %}
-                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier">
-                    <div class="card-body">
-                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
-                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
-                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                    <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier">
+                                    <div class="card-body">
+                                        <h2 class="card-title club_role">{{ personnal.role }} :</h2>
+                                        <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
+                                        <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
+                                        <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
+                                        <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
+                                            <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                        <a href="#" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                {% endif %}
-                    {% else %}
-                        {% if  personnal.role == 'Trésorier' %}
+                </div>
 
-                            <img class="card-img-top" src="./img/{{ personnal.photo }}" alt="Trésorier">
-                            <div class="card-body">
-                                <h2 class="card-title club_role">{{ personnal.role }} :</h2>
-                                <h3 class="card-title"><a title="View Product">{{ personnal.firstname }} {{ personnal.lastname }}</a></h3>
-                                <p><i class="fa fa-phone mr-2"></i> {{ personnal.phone }}</p>
-                                <p><i class="fa fa-envelope mr-2"></i> {{ personnal.email }}</p>
-                                <form class="d-inline" method="post" action="{{ path('club_delete', {'id': personnal.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer {{personnal.role }} ?')">
-                                    <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                </form>
-                                <a href="#" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                            </div>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
+                <!-- Arrow3 -->
+                <div class="divArrow3">
+                    <a href="#" id="button3">
+                        <img class="arrow3" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_up_48px-128.png" />
+                    </a>
+                </div>
+                <!-- /Arrow3 -->
+
             </div>
         </div>
-
-            <!-- Arrow3 -->
-            <div class="divArrow3">
-                <a href="#" id="button3">
-                    <img class="arrow3" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_up_48px-128.png" />
-                </a>
-            </div>
-            <!-- /Arrow3 -->
-            
-        </div>
-    </div>
-{% endfor %}
+    {% endfor %}
 {% endblock %}
 
