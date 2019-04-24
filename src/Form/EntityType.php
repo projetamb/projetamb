@@ -25,9 +25,15 @@ class EntityType extends AbstractType
             ->add('Directorname')
             ->add('Directorphone')
             ->add('Directoremail',EmailType::class)
-            ->add('Logo',FileType::class)
-            ->add('Logopage',FileType::class)
-            ->add('Photobandeau',FileType::class)
+            ->add('Logo',FileType::class, array(
+                'data_class' => null,
+            ))
+            ->add('Logopage',FileType::class, array(
+                'data_class' => null,
+            ))
+            ->add('Photobandeau',FileType::class, array(
+                'data_class' => null,
+            ))
             ->add('Color', ChoiceType::class,[
                 'choices' => [
                     'gris' => 'grey',

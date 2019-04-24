@@ -21,17 +21,17 @@
                 <h1> <a href="{{ path('security_FormFiles') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter un document</h1>
-                {% if editMode %}
-                    dump(editMode);
-                    <h1> <a href="{{ path('security_FormEntityEdit') }}" class="btn btn-sm btn-primary">
-                            <i class="fa fa-plus"></i>
-                        </a>Modifier l'entité</h1>
+                {% if entitys is not empty %}
+                    {% for entity in entitys %}
+                        <h1> <a href="{{ path('security_FormEntityEdit', {'id': entity.id}) }}" class="btn btn-sm btn-primary">
+                                <i class="fa fa-plus"></i>
+                            </a>Modifier la structure</h1>
+                    {% endfor %}
                 {% else %}
                     <h1> <a href="{{ path('security_FormEntity') }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-plus"></i>
-                        </a>Ajouter une entité</h1>
+                        </a>Ajouter une structure</h1>
                 {% endif %}
-
                 <h1> <a href="{{ path('security_FormDisciplines') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-plus"></i>
                     </a>Ajouter une discipline</h1>
