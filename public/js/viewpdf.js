@@ -41,12 +41,10 @@ $(function () {
         var pdf_link = $(this).attr('href');
         var iframe = '<div class="iframe-container"><iframe src="' + pdf_link + '"></iframe></div>'
         $.createModal({
-            refs/remotes/origin/master
-        title: '&nbsp Aperçu pdf',
 
             title: 'Aperçu Pdf',
-     modif responsive
-        message: iframe,
+            message: iframe,
+
             closeButton: true,
             scrollable: false
     });
