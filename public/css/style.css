@@ -214,7 +214,7 @@ CLUB PAGE
 }
 
 .club_disciplines {
-    height: 84vh;
+    /*height: 84vh;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
