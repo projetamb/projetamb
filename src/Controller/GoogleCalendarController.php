@@ -80,7 +80,7 @@ class GoogleCalendarController extends AbstractController
         $client = new \Google_Client();
         $client->setAuthConfigFile('../client_secret.json');
         $client->setRedirectUri($rurl); // redirection
-        $client->addScope(\Google_Service_Calendar::CALENDAR_EVENTS);
+        $client->addScope(\Google_Service_Calendar::CALENDAR);
 
         $guzzleClient = new Client(array('curl' => array(CURLOPT_SSL_VERIFYPEER => false)));
         $client->setHttpClient($guzzleClient);

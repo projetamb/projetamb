@@ -190,7 +190,7 @@ class AdminController extends AbstractController
                  ******************************************************************************* */
                 $client = new \Google_Client();
                 $client->setAuthConfig('../client_secret.json');
-                $client->addScope(\Google_Service_Calendar::CALENDAR_EVENTS);
+                $client->addScope(\Google_Service_Calendar::CALENDAR);
 
                 $guzzleClient = new Client(array('curl' => array(CURLOPT_SSL_VERIFYPEER => false)));
                 $client->setHttpClient($guzzleClient);
@@ -199,23 +199,25 @@ class AdminController extends AbstractController
                     $client->setAccessToken($session->get('access_token'));
                     $service = new Google_Service_Calendar($client);
 
+                    $test = $events->getDate();
+                    dump($test);
                     // modèle
                     $event = new Google_Service_Calendar_Event(array(
                         'summary' => $events->getTitle(),
                         'location' => $events->getPlace(),
                         'description' => $events->getDescription(),
                         'start'=> array(
-                            'date' => $events->getDate(),
-                            'timeZone' => 'Europe/Paris'
+                            'dateTime' => $events->getDate()->format(\DateTime::RFC3339),
+                            'timeZone' => 'Europe/Berlin',
                         ),
                         'end' => array(
-                            'date' => $events->getDate()+1,
-                            'timeZone' => 'Europe/Paris'
+                            'dateTime' => $events->getDate()->add(new \DateInterval("PT2H"))->format(\DateTime::RFC3339), // PT2H = événement +2heures
+                            'timeZone' => 'Europe/Berlin',
                         ),
-                        'endTimeUnspecified' => true,
                         'organizer' => $events->getEmailContact(),
 
                     ));
+                    dump($event);
 
                     // primary = calendrier principal
                     $calendarId = 'primary';
