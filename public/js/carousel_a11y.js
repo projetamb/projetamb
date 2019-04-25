@@ -10,3 +10,6 @@ $(function () {
         $('#carousel').carousel('pause');
     });
 });
+  
+
+
