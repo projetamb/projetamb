@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container text-center">
+
+        <h1 class="my-3 text-center">Ooups.. page introuvable</h1>
+
+        <img src="{{ '/img/404.jpg' }}" style="height: 500px; length: 500px;" class="mb-3"></br>
+        <a class="my-5 display-4" href="{{ path('home') }}" style="color: black;">Revenir à l'accueil</a>
+        <!-- Photo by FuYong Hua on Unsplash -->
+    </div>
+    <br>
+
+{% endblock %}

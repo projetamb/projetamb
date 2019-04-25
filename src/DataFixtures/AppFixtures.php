@@ -107,11 +107,26 @@ class AppFixtures extends Fixture
         $manager->persist($personnal);
 
         // table Files
+
+        $files = new Files();
+        $files->setTitle("Formulaire d'inscription Krav");
+        $files->setLink("formulaire d'inscription Krav.pdf" );
+        $files->setSize("338 Ko");
+        $files->setDiscipline("Krav maga");
+        $manager->persist($files);
+
+        $files = new Files();
+        $files->setTitle("Formulaire d'inscription Taekwondo");
+        $files->setLink("formulaire d'inscription Taekwondo.pdf" );
+        $files->setSize("338 Ko");
+        $files->setDiscipline("Taekwondo");
+        $manager->persist($files);
+
         $files = new Files();
         $files->setTitle("Cahier technique");
         $files->setLink("cahier technique.pdf" );
         $files->setSize("974 Ko");
-        $files->setDiscipline("Taekwondo");
+        $files->setDiscipline("Krav maga");
         $manager->persist($files);
 
         $files = new Files();
@@ -129,17 +144,17 @@ class AppFixtures extends Fixture
         $manager->persist($files);
 
         $files = new Files();
-        $files->setTitle("Formulaire d'inscription");
-        $files->setLink("formulaire d'inscription.pdf" );
-        $files->setSize("338 Ko");
-        $files->setDiscipline("Taekwondo");
+        $files->setTitle("Stats sur les agressions nationales");
+        $files->setLink("stats sur les agressions nationales.pdf" );
+        $files->setSize("151 Ko");
+        $files->setDiscipline("Krav maga");
         $manager->persist($files);
 
         $files = new Files();
         $files->setTitle("Ceinture bleue");
         $files->setLink("ceinture bleue.pdf" );
         $files->setSize("118 Ko");
-        $files->setDiscipline("Taekwondo");
+        $files->setDiscipline("Krav maga");
         $manager->persist($files);
 
         $files = new Files();
@@ -170,57 +185,151 @@ class AppFixtures extends Fixture
         $files->setDiscipline("Krav maga");
         $manager->persist($files);
 
-        // table Personnal aléatoire
-        for ($i = 1; $i <= 10; $i++) {
-            $personnal = new Personnal();
-            $personnal->setLastName($faker->lastName);
-            $personnal->setFirstName($faker->firstName);
-            $personnal->setEmail($faker->safeEmail);
-            $personnal->setPhone($faker->phoneNumber);
-            $personnal->setAddress($faker->address);
-            $personnal->setRole($faker->randomElement([
-                'Instructeur', 'Membre'
-            ]));
-            $personnal->setGrade($faker->randomElement([
-                'Ceinture Noire 5ème dan', 'Ceinture Blanche'
-            ]));
-            $personnal->setDescription($faker->text(75));
-            $personnal->setLink($faker->url);
-            $personnal->setPhoto($faker->imageUrl('260', '260', 'people'));
-            $manager->persist($personnal);
+        // table Events
+        $event = new Events();
+        $event->setTitle("Stage Krav maga");
+        $event->setPlace("45 Rue Gabriel Péri 59480 La Bassée");
+        $event->setDate($faker->dateTime);
+        $event->setDescription("Initiation au Krav maga");
+        $event->setOrganisator("Vincent Robin");
+        $event->setSubscribeNumber("10");
+        $event->setPhoto("stage 1.jpg");
+        $event->setEmailContact("artsmartiauxbasseens@gmail.com");
+        $event->setPhoneContact("0613822987");
+        $manager->persist($event);
+
+        $event = new Events();
+        $event->setTitle("Stage Taekwondo");
+        $event->setPlace("45 Rue Gabriel Péri 59480 La Bassée");
+        $event->setDate($faker->dateTime);
+        $event->setDescription("stage avec Franck Dominé");
+        $event->setOrganisator("Vincent Robin");
+        $event->setSubscribeNumber("10");
+        $event->setPhoto("stage avec franck dominé.jpg");
+        $event->setEmailContact("artsmartiauxbasseens@gmail.com");
+        $event->setPhoneContact("0613822987");
+        $manager->persist($event);
+
+
+        $event = new Events();
+        $event->setTitle("Remise de diplôme");
+        $event->setPlace("45 Rue Gabriel Péri 59480 La Bassée");
+        $event->setDate($faker->dateTime);
+        $event->setDescription("Venez assister à la remise des diplômes ");
+        $event->setOrganisator("Vincent Robin");
+        $event->setSubscribeNumber("10");
+        $event->setPhoto("sabre.jpg");
+        $event->setEmailContact("artsmartiauxbasseens@gmail.com");
+        $event->setPhoneContact("0613822987");
+        $manager->persist($event);
+
+        $event = new Events();
+        $event->setTitle("Stage Krav maga");
+        $event->setPlace("45 Rue Gabriel Péri 59480 La Bassée");
+        $event->setDate($faker->dateTime);
+        $event->setDescription("stage avec Gilles");
+        $event->setOrganisator("Vincent Robin");
+        $event->setSubscribeNumber("10");
+        $event->setPhoto("stage avec gilles.jpg");
+        $event->setEmailContact("artsmartiauxbasseens@gmail.com");
+        $event->setPhoneContact("0613822987");
+        $manager->persist($event);
+
+        $event = new Events();
+        $event->setTitle("Stage de perfectionnement");
+        $event->setPlace("45 Rue Gabriel Péri 59480 La Bassée");
+        $event->setDate($faker->dateTime);
+        $event->setDescription("stage de perfectionnement technique, stratégie de combat et self défense, avec la participation de Mikael Meloul");
+        $event->setOrganisator("Vincent Robin");
+        $event->setSubscribeNumber("10");
+        $event->setPhoto("mickael melloul.jpg");
+        $event->setEmailContact("artsmartiauxbasseens@gmail.com");
+        $event->setPhoneContact("0613822987");
+        $manager->persist($event);
+
+        $event = new Events();
+        $event->setTitle("Stage privé");
+        $event->setPlace("45 Rue Gabriel Péri 59480 La Bassée");
+        $event->setDate($faker->dateTime);
+        $event->setDescription("stage privé avec Vincent Robin");
+        $event->setOrganisator("Vincent Robin");
+        $event->setSubscribeNumber("10");
+        $event->setPhoto("tkdvincent.jpg");
+        $event->setEmailContact("artsmartiauxbasseens@gmail.com");
+        $event->setPhoneContact("0613822987");
+        $manager->persist($event);
+
+        // table Personnal
+        $personnal = new Personnal();
+        $personnal->setLastName("Robin");
+        $personnal->setFirstName("Vincent");
+        $personnal->setEmail("v.robin59@gmail.com");
+        $personnal->setPhone("0613822987");
+        $personnal->setAddress("45 Rue Gabriel Péri 59480 La Bassée");
+        $personnal->setRole('Instructeur');
+        $personnal->setGrade("Ceinture Noire");
+        $personnal->setDescription("Très bon instructeur, serviable");
+        $personnal->setLink($faker->url);
+        $personnal->setPhoto("vincent.jpg");
+        $manager->persist($personnal);
+
+        $personnal = new Personnal();
+        $personnal->setLastName("Moniez");
+        $personnal->setFirstName("Geoffrey");
+        $personnal->setEmail("moniez.geoffrey@yahoo.fr");
+        $personnal->setPhone("0632659980");
+        $personnal->setAddress("45 Rue Gabriel Péri 59480 La Bassée");
+        $personnal->setRole('Instructeur');
+        $personnal->setGrade("Ceinture blanche");
+        $personnal->setDescription("Très bon instructeur, serviable");
+        $personnal->setLink($faker->url);
+        $personnal->setPhoto("geoffrey.jpg");
+        $manager->persist($personnal);
+
+        $personnal = new Personnal();
+        $personnal->setLastName("Gagneur");
+        $personnal->setFirstName("Laurent");
+        $personnal->setEmail("l.gagneur@free.fr");
+        $personnal->setPhone("0783979809");
+        $personnal->setAddress("45 Rue Gabriel Péri 59480 La Bassée");
+        $personnal->setRole('Instructeur');
+        $personnal->setGrade("Ceinture rouge");
+        $personnal->setDescription("Très bon instructeur, serviable");
+        $personnal->setLink($faker->url);
+        $personnal->setPhoto("laurent.jpg");
+        $manager->persist($personnal);
+
+        $personnal = new Personnal();
+        $personnal->setLastName("Baratte");
+        $personnal->setFirstName("Mélisande");
+        $personnal->setEmail("baratte.melisande@gmail.com");
+        $personnal->setPhone("0699288706");
+        $personnal->setAddress("45 Rue Gabriel Péri 59480 La Bassée");
+        $personnal->setRole('Instructeur');
+        $personnal->setGrade("Ceinture verte");
+        $personnal->setDescription("Très bon instructeur, serviable");
+        $personnal->setLink($faker->url);
+        $personnal->setPhoto("melisande.jpg");
+        $manager->persist($personnal);
+
+        $personnal = new Personnal();
+        $personnal->setLastName("Perrault");
+        $personnal->setFirstName("Jean");
+        $personnal->setEmail("perrault.jean66@gmail.com");
+        $personnal->setPhone("0668361441");
+        $personnal->setAddress("45 Rue Gabriel Péri 59480 La Bassée");
+        $personnal->setRole('Instructeur');
+        $personnal->setGrade("Ceinture jaune");
+        $personnal->setDescription("Très bon instructeur, serviable");
+        $personnal->setLink($faker->url);
+        $personnal->setPhoto("jean.jpg");
+        $manager->persist($personnal);
 
 
 
 
-            // table utilisators
-            $utilisators =new User();
-            $utilisators->setEmail($faker->email);
-            $utilisators->setUsername($faker->userName);
-            $utilisators->setPassword($faker->password);
-            $utilisators->setTypeRole($faker->randomElement([
-                "ROLE_ADMIN","ROLE_USER","ANONYMOUS"
-            ]));
-            $manager->persist($utilisators);
 
 
-            // table Events
-
-            $event = new Events();
-            $event->setTitle($faker->title);
-            $event->setPlace($faker->address);
-            $event->setDate($faker->dateTime);
-            $event->setDescription($faker->text(50));
-            $event->setOrganisator($faker->userName);
-            $event->setSubscribeNumber($faker->numberBetween(1,50));
-            $event->setPhoto($faker->imageUrl('260', '260', 'sports'));
-            $event->setEmailContact($faker->email);
-            $event->setPhoneContact($faker->phoneNumber);
-            $manager->persist($event);
-
-        }
-
-
-        // $product = new Product();
 
         $manager->flush();
     }

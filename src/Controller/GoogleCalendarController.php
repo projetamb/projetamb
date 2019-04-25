@@ -17,7 +17,7 @@ class GoogleCalendarController extends AbstractController
      * @Route("/google/calendar", name="google_calendar")
      * @throws \Google_Exception
      */
-    public function getClient( EntityRepository $entityRepository, SessionInterface $session )
+    /*public function getClient( EntityRepository $entityRepository, SessionInterface $session )
     {
         $entity = $entityRepository->findAll();
 
@@ -67,7 +67,7 @@ class GoogleCalendarController extends AbstractController
             'entitys' => $entity,
 
         ]);
-    }
+    }*/
 
     /**
      * @Route("/oauth", name="oauth")
@@ -80,7 +80,7 @@ class GoogleCalendarController extends AbstractController
         $client = new \Google_Client();
         $client->setAuthConfigFile('../client_secret.json');
         $client->setRedirectUri($rurl); // redirection
-        $client->addScope(\Google_Service_Calendar::CALENDAR_EVENTS);
+        $client->addScope(\Google_Service_Calendar::CALENDAR);
 
         $guzzleClient = new Client(array('curl' => array(CURLOPT_SSL_VERIFYPEER => false)));
         $client->setHttpClient($guzzleClient);
@@ -95,7 +95,7 @@ class GoogleCalendarController extends AbstractController
             $client->authenticate($code);
             $session->set('access_token', $client->getAccessToken());
 
-            return $this->redirectToRoute('google_calendar');
+            return $this->redirectToRoute('home');
         }
     }
 }

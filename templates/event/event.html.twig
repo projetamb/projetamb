@@ -36,7 +36,7 @@
                         <h5 class="card-title text-center" >{{ evenement.title }}</h5>
                        <img src="{{ "/img/"~ evenement.photo }}" class="card-img-top" alt="...">
                         <div class="card-body">
-
+                            <h6 class="card-text"><b> Description : </b>{{ evenement.description }}</h6>
                             <h5 class="card-title"><b> Organisé par : </b> {{ evenement.organisator }}</h5>
                             <h6 class="card-text"><b> Date : </b>{{ evenement.date | date("d/m/Y") }}</h6>
 
