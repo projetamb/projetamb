@@ -9,7 +9,9 @@ $(function () {
     $('#pauseBtn').click(function () {
         $('#carousel').carousel('pause');
     });
+    
 });
   
-
+  
+  
 
