@@ -24,7 +24,7 @@ class DocumentController extends AbstractController
         $files = $filesRepository->findAll();
         $entity = $entityRepository->findAll();
         $disciplines = $disciplinesRepository->findAll();
-        return $this->render('document/doc.html.twig', [
+        return $this->render('document/doc.html.twig',[
             'files' => $files,
             'entitys' => $entity,
             'discipliness' => $disciplines,
