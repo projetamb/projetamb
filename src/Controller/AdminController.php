@@ -134,7 +134,10 @@ class AdminController extends AbstractController
      * @param FileUpLoader $fileUpLoader
      * @param EntityRepository $entityRepository
      * @param DisciplinesRepository $disciplinesRepository
+     * @param SessionInterface $session
+     * @param Events|null $events
      * @return Response
+     * @throws \Google_Exception
      */
 
     public function formEvent(
@@ -143,6 +146,7 @@ class AdminController extends AbstractController
         FileUpLoader $fileUpLoader,
         EntityRepository $entityRepository,
         DisciplinesRepository $disciplinesRepository,
+        SessionInterface $session,
         Events $events = NULL
         )
         {
@@ -171,6 +175,8 @@ class AdminController extends AbstractController
 
             $form->handleRequest($request);
 
+
+
             if($form->isSubmitted() && $form->isValid())
             {
                 $file=$events->getPhoto();
@@ -179,7 +185,48 @@ class AdminController extends AbstractController
                 $manager->persist($events);
                 $manager->flush();
 
+                /** ******************************************************************************
+                 * Debut GOOGLE CALENDAR
+                 ******************************************************************************* */
+                $client = new \Google_Client();
+                $client->setAuthConfig('../client_secret.json');
+                $client->addScope(\Google_Service_Calendar::CALENDAR_EVENTS);
 
+                $guzzleClient = new Client(array('curl' => array(CURLOPT_SSL_VERIFYPEER => false)));
+                $client->setHttpClient($guzzleClient);
+
+                if ($session->get('access_token')){
+                    $client->setAccessToken($session->get('access_token'));
+                    $service = new Google_Service_Calendar($client);
+
+                    // modèle
+                    $event = new Google_Service_Calendar_Event(array(
+                        'summary' => $events->getTitle(),
+                        'location' => $events->getPlace(),
+                        'description' => $events->getDescription(),
+                        'start'=> array(
+                            'date' => $events->getDate(),
+                            'timeZone' => 'Europe/Paris'
+                        ),
+                        'end' => array(
+                            'date' => $events->getDate()+1,
+                            'timeZone' => 'Europe/Paris'
+                        ),
+                        'endTimeUnspecified' => true,
+                        'organizer' => $events->getEmailContact(),
+
+                    ));
+
+                    // primary = calendrier principal
+                    $calendarId = 'primary';
+                    $service->events->insert($calendarId, $event);
+
+                } else{
+                    return $this->redirectToRoute('oauth'); // redirection vers authentication
+                }
+                /** ******************************************************************************
+                 * Fin GOOGLE CALENDAR
+                 ********************************************************************************* */
 
 
                 return $this->redirectToRoute('event');

@@ -33,6 +33,10 @@ public function buildForm(FormBuilderInterface $builder, array $options)
              ])
         ->add('date',DateType::class, [
             'label' => 'Date de l\'évènement',
+            'placeholder' => [
+                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+            ],
+            'format' => 'yyyy-MM-dd'
              ])
         ->add('emailcontact',EmailType::class, [
             'label' => 'Email de contact',

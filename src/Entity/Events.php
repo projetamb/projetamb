@@ -76,6 +76,11 @@ class Events
      */
     private $phonecontact;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $endDate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -185,6 +190,18 @@ class Events
     public function setPhoneContact(?string $phonecontact): self
     {
         $this->phonecontact = $phonecontact;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(?\DateTimeInterface $endDate): self
+    {
+        $this->endDate = $endDate;
 
         return $this;
     }
