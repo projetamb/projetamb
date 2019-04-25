@@ -11,6 +11,10 @@
     visibility: hidden;
 }
 
+a.title:hover {
+    text-decoration: none;
+}
+
 section .row {
     padding-top: 5px;
 }
